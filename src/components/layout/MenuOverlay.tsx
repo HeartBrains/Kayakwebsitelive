@@ -239,8 +239,6 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
                         />
                         <a 
                             href="https://bkk.thaicms.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
                             className="text-xl md:text-2xl text-white font-normal hover:text-gray-300 transition-colors uppercase tracking-wide cursor-pointer"
                         >
                             BKKK

@@ -13,8 +13,8 @@ export const PRESS_ITEMS: PressItem[] = [
     id: 1,
     date: "November 22, 2025",
     dateTH: "22 พฤศจิกายน 2568",
-    title: "Khao Yai Art Forest Opens New Exhibition",
-    titleTH: "เขาใหญ่ อาร์ตฟอเรสต์ เปิดนิทรรศการใหม่",
+    title: "Khao Yai Art Forrest Opens New Exhibition",
+    titleTH: "เขาใหญ่ อาร์ตฟอร์เรสต์ เปิดนิทรรศการใหม่",
     link: "#",
     type: 'pdf'
   },

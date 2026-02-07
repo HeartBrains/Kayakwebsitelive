@@ -22,7 +22,7 @@ const SECTIONS = [
       {
         id: 2,
         image: IMG_FOG_SRC,
-        title: "Khao Yai Fog Forest",
+        title: "Khao Yai Fog Forrest",
         date: "Permanent"
       }
     ]

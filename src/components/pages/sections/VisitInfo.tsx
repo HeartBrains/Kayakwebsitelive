@@ -17,7 +17,7 @@ export function VisitInfo() {
             <div className="md:col-span-6 flex flex-col gap-8">
                 <div className="flex flex-col gap-1">
                     <p className={`text-xl md:text-2xl font-sans text-black ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                      {language === 'th' ? 'เขาใหญ่ อาร์ตฟอเรสต์' : 'Khao Yai Art Forest'}
+                      {language === 'th' ? 'เขาใหญ่ อาร์ตฟอเรสต์' : 'Khao Yai Art Forrest'}
                     </p>
                     <p className={`text-xl md:text-2xl font-sans text-black ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
                       Pong Ta Long, Pak Chong District,
@@ -54,7 +54,7 @@ export function VisitInfo() {
                 <div className="w-full aspect-square md:aspect-[4/3] bg-[#D9D9D9] relative overflow-hidden">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61748.97609802094!2d101.48784332167969!3d14.5020468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311c3a64795e1c77%3A0x6c6e755259929849!2sPong%20Ta%20Long%2C%20Pak%20Chong%20District%2C%20Nakhon%20Ratchasima%2030130!5e0!3m2!1sen!2sth!4v1709292837283!5m2!1sen!2sth"
-                        title="Khao Yai Art Forest Map"
+                        title="Khao Yai Art Forrest Map"
                         width="100%" 
                         height="100%" 
                         style={{ border: 0 }} 

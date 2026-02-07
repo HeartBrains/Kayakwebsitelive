@@ -20,7 +20,7 @@ export function Header({ onMenuClick, onLogoClick, isTransparent = false }: Head
       >
         Khao Yai
         <br />
-        Art Forest
+        Art Forrest
       </div>
       <Button 
         variant="ghost" 

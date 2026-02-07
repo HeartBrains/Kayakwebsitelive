@@ -111,12 +111,12 @@ export const MOCK_POSTS_BILINGUAL = {
     }
   ),
 
-  'khao-yai-fog-forest': createBilingualMockPost(
-    'khao-yai-fog-forest',
+  'khao-yai-fog-forrest': createBilingualMockPost(
+    'khao-yai-fog-forrest',
     'exhibition',
     IMG_FOG,
     {
-        title: 'Khao Yai Fog Forest',
+        title: 'Khao Yai Fog Forrest',
         date: 'Permanent (Activates 3x daily)',
         artist: 'Fujiko Nakaya',
         categories: ['Fog Sculpture', 'Installation', 'Fujiko Nakaya'],
@@ -154,7 +154,7 @@ export const MOCK_POSTS_BILINGUAL = {
         listing_summary: "A conceptual sculpture where the word 'GOD' becomes hidden inside stone.",
         extra: {
             tags: ["Francesco Arena", "Conceptual Art", "Limestone Sculpture", "Italian Artist", "Minimalist Art", "Divine Concept", "Public Art", "Site Specific", "Sculpture", "Abstract Art"],
-            specifications: { "material": "Limestone", "concept": "Invisible divinity", "installation": "Forest floor" }
+            specifications: { "material": "Limestone", "concept": "Invisible divinity", "installation": "Forrest floor" }
         }
     },
     {
@@ -184,7 +184,7 @@ export const MOCK_POSTS_BILINGUAL = {
         listing_summary: "Video installations showing reactions of locals to reproductions of worldwide masterpieces.",
         extra: {
             tags: ["Araya Rasdjarmrearnsook", "Video Art", "Thai Contemporary Art", "Mise en Abyme", "Cultural Dialogue", "Masterpiece Parody", "Social Experiment", "Art Film", "Southeast Asian Art", "Digital Media"],
-            specifications: { "medium": "Video installation", "featured_works": ["Manet", "Millet"], "location": "Outdoor screening in forest" }
+            specifications: { "medium": "Video installation", "featured_works": ["Manet", "Millet"], "location": "Outdoor screening in forrest" }
         }
     },
     {
@@ -210,10 +210,10 @@ export const MOCK_POSTS_BILINGUAL = {
         date: 'Permanent',
         artist: 'Scenocosme',
         categories: ['Interactive', 'Sound', 'Bio-feedback'],
-        content: `<p>This interactive bio-feedback work allows visitors to touch or lean against a living tree to feel sonorous vibrations synchronized with a human heartbeat. It creates a sensory dialogue between the human body and the forest, emphasizing the shared 'pulse' of life.</p>`,
+        content: `<p>This interactive bio-feedback work allows visitors to touch or lean against a living tree to feel sonorous vibrations synchronized with a human heartbeat. It creates a sensory dialogue between the human body and the forrest, emphasizing the shared 'pulse' of life.</p>`,
         listing_summary: "A sound installation that features a living tree acting as a bridge between earth and sky.",
         extra: {
-            tags: ["Bio-feedback", "Interactive Sound", "Nature Art", "Heartbeat Sync", "Digital Arts", "Environmental Art", "Sensory Experience", "Bio-Art", "Forest Healing", "Technological Art"],
+            tags: ["Bio-feedback", "Interactive Sound", "Nature Art", "Heartbeat Sync", "Digital Arts", "Environmental Art", "Sensory Experience", "Bio-Art", "Forrest Healing", "Technological Art"],
             specifications: { "medium": "Bio-feedback / Sound", "interaction": "Tactile / Auditory", "theme": "Interconnectivity" }
         }
     },
@@ -271,10 +271,10 @@ export const MOCK_POSTS_BILINGUAL = {
         date: 'Past Exhibition (Nov 2025)',
         artist: 'Elena Vora',
         categories: ['Installation', 'Light Art', 'Site-Specific'],
-        content: `<p>Using projection mapping and LED structures, Elena Vora engaged with the natural topography of the forest at night. The work questioned our perception of darkness and safety in nature, turning the forest into a canvas of shifting constellations.</p>`,
-        listing_summary: "An immersive light installation that transformed the forest into a luminous dreamscape.",
+        content: `<p>Using projection mapping and LED structures, Elena Vora engaged with the natural topography of the forrest at night. The work questioned our perception of darkness and safety in nature, turning the forrest into a canvas of shifting constellations.</p>`,
+        listing_summary: "An immersive light installation that transformed the forrest into a luminous dreamscape.",
         extra: {
-            tags: ["Light Art", "Elena Vora", "Night Exhibition", "Projection Mapping", "Forest Art", "Immersive", "Site-specific"],
+            tags: ["Light Art", "Elena Vora", "Night Exhibition", "Projection Mapping", "Forrest Art", "Immersive", "Site-specific"],
             specifications: { "technology": "LED & Projection", "duration": "Nightly 18:00 - 22:00", "location": "Bamboo Grove" }
         }
     },
@@ -387,6 +387,7 @@ export const MOCK_POSTS_BILINGUAL = {
         date: 'Closed mid-August 2025',
         categories: ['Charity', 'Pop-up', 'Gastronomy'],
         content: `<p>A pop-up coffee experience where 100% of the profits were dedicated to building schools and supporting local education in Khao Yai.</p>`,
+        listing_summary: "A pop-up coffee experience where 100% of the profits were dedicated to building schools and supporting local education in Khao Yai.",
         extra: {
             tags: ["% Arabica", "Coffee Popup", "Charity Event", "Social Impact", "Khao Yai Cafe", "Educational Support", "Community Project", "Non-profit", "Boutique Coffee", "Art & Coffee"],
             type_label: "Charity Pop-up"
@@ -397,6 +398,7 @@ export const MOCK_POSTS_BILINGUAL = {
         date: 'ปิดให้บริการกลางเดือนสิงหาคม 2025',
         categories: ['การกุศล', 'ป๊อปอัพ', 'อาหารและเครื่องดื่ม'],
         content: `<p>ประสบการณ์กาแฟป๊อปอัพที่รายได้ 100% มอบให้กับการสร้างโรงเรียนและสนับสนุนการศึกษาในท้องถิ่นที่เขาใหญ่</p>`,
+        listing_summary: "ประสบการณ์กาแฟป๊อปอัพที่รายได้ 100% มอบให้กับการสร้างโรงเรียนและสนับสนุนการศึกษาในท้องถิ่นที่เขาใหญ่",
         extra: {
             tags: ["% Arabica", "กาแฟป๊อปอัพ", "กิจกรรมการกุศล", "ผลกระทบทางสังคม", "คาเฟ่เขาใหญ่", "สนับสนุนการศึกษา", "โครงการชุมชน", "ไม่แสวงหากำไร", "กาแฟบูติก", "ศิลปะและกาแฟ"],
             type_label: "ป๊อปอัพการกุศล"
@@ -412,7 +414,7 @@ export const MOCK_POSTS_BILINGUAL = {
         title: 'Star Gazing Night',
         date: 'December 15, 2025',
         categories: ['Nature', 'Education', 'Night Event'],
-        content: `<p>A guided tour of the winter sky. Visitors joined astronomers to observe constellations, planets, and deep-sky objects from the light-pollution-free zone of the Art Forest.</p>`,
+        content: `<p>A guided tour of the winter sky. Visitors joined astronomers to observe constellations, planets, and deep-sky objects from the light-pollution-free zone of the Art Forrest.</p>`,
         listing_summary: "Guided tour of the winter sky, observing constellations and planets.",
         extra: {
             tags: ["Astronomy", "Night Sky", "Stargazing", "Nature Tour", "Education", "Family Event", "Khao Yai Night"],
@@ -423,7 +425,7 @@ export const MOCK_POSTS_BILINGUAL = {
         title: 'คืนดูดาว (Star Gazing Night)',
         date: '15 ธันวาคม 2025',
         categories: ['ธรรมชาติ', 'การศึกษา', 'กิจกรรมกลางคืน'],
-        content: `<p>ทัวร์ชมท้องฟ้าฤดูหนาวพร้อมวิทยากร ผู้เข้าชมได้ร่วมสังเกตกลุ่มดาว ดาวเคราะห์ และวัตถุท้องฟ้าจากเขตปลอดมลภาวะทางแสงของ Art Forest</p>`,
+        content: `<p>ทัวร์ชมท้องฟ้าฤดูหนาวพร้อมวิทยากร ผู้เข้าชมได้ร่วมสังเกตกลุ่มดาว ดาวเคราะห์ และวัตถุท้องฟ้าจากเขตปลอดมลภาวะทางแสงของ Art Forrest</p>`,
         listing_summary: "ทัวร์ชมท้องฟ้าฤดูหนาว สังเกตกลุ่มดาวและดาวเคราะห์",
         extra: {
             tags: ["ดาราศาสตร์", "ท้องฟ้ายามค่ำคืน", "ดูดาว", "ทัวร์ธรรมชาติ", "การศึกษา", "กิจกรรมครอบครัว", "ค่ำคืนเขาใหญ่"],

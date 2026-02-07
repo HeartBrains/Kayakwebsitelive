@@ -39,7 +39,7 @@ export function KhaoYaiPage({ onNavigate }: { onNavigate?: (page: string) => voi
                     {language === 'th' ? (
                         <>เขาใหญ่<br />อาร์ต ฟอเรสต์</>
                     ) : (
-                        <>Khao Yai<br />Art Forest</>
+                        <>Khao Yai<br />Art Forrest</>
                     )}
                 </h1>
             </Reveal>
