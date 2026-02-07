@@ -237,15 +237,14 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
                             iconClassName="w-6 h-6 text-white"
                             inputClassName="w-40 text-lg text-white placeholder:text-gray-500"
                         />
-                        <button 
-                            onClick={() => {
-                                onNavigate('khaoyai');
-                                onClose();
-                            }}
-                            className="text-xl md:text-2xl text-white font-normal hover:text-gray-300 transition-colors uppercase tracking-wide"
+                        <a 
+                            href="https://bkk.thaicms.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xl md:text-2xl text-white font-normal hover:text-gray-300 transition-colors uppercase tracking-wide cursor-pointer"
                         >
                             BKKK
-                        </button>
+                        </a>
                     </div>
 
                     <div className="text-xl md:text-2xl font-normal text-gray-500 select-none tracking-wide flex items-center">
