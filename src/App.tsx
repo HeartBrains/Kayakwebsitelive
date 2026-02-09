@@ -63,8 +63,7 @@ export default function App() {
   };
 
   // Header is transparent on all pages when at the top
-  // Exception: TeamPage (founder/team) always has black text (isTransparent=false)
-  const isTransparent = !scrolled && !['founder', 'team'].includes(currentPage);
+  const isTransparent = !scrolled;
 
   return (
     <LanguageProvider>
@@ -90,7 +89,7 @@ export default function App() {
           {currentPage === 'history' && <AboutPage onNavigate={handleNavigate} activePage="history" />}
           
           {currentPage === 'founder' && <TeamPage onNavigate={handleNavigate} activePage="founder" />}
-          {currentPage === 'team' && <TeamPage onNavigate={handleNavigate} activePage="founder" />}
+          {currentPage === 'team' && <TeamPage onNavigate={handleNavigate} activePage="team" />}
           
           {currentPage === 'support' && <SupportPage />}
           {currentPage === 'visit' && <VisitPage />}

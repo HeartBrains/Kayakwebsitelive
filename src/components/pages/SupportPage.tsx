@@ -25,13 +25,13 @@ export function SupportPage() {
                 image={TEAM_HERO_IMAGE}
                 height="h-[80vh]"
             >
-                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none md:hidden" />
+                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />
             </ParallaxHero>
 
             {/* Content */}
             <div className="w-full px-6 py-16 md:py-24">
                 <Reveal>
-                    <h1 className={`text-3xl md:text-4xl font-sans mb-16 md:mb-24 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
+                    <h1 className="text-3xl md:text-4xl font-sans mb-16 md:mb-24">
                       {language === 'th' ? 'ผู้สนับสนุน' : 'Support'}
                     </h1>
                 </Reveal>
@@ -52,7 +52,9 @@ export function SupportPage() {
                                         }}
                                     />
                                 </div>
-                                <span className="text-sm font-medium tracking-wide">{language === 'th' ? partner.nameTh : partner.name}</span>
+                                <span className="text-sm font-medium tracking-wide flex flex-col items-center gap-1">
+                                    <span>{language === 'th' ? partner.nameTh : partner.name}</span>
+                                </span>
                             </div>
                         </Reveal>
                     ))}

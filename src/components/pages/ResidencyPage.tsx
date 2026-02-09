@@ -25,7 +25,7 @@ export function ResidencyPage({ onNavigate }: ResidencyPageProps) {
         height="h-[80vh]"
       >
         <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none md:hidden" />
+        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />
         <div className="absolute inset-0 flex items-center justify-center z-20">
 
         </div>

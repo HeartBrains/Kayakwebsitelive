@@ -15,7 +15,7 @@ export function PostPage({ onNavigate }: PostPageProps) {
                 image={ASSETS.POST_HERO}
                 height="h-[80vh]"
              >
-                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none md:hidden" />
+                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />
                 <div className="absolute bottom-8 left-6 md:left-12 z-20">
                     <button 
                         onClick={() => onNavigate('home')}

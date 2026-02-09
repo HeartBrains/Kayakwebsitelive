@@ -11,10 +11,10 @@ export function Footer({ onNavigate }: { onNavigate?: (page: string) => void }) 
         {/* Left: Logo */}
         <div className="flex flex-col">
           <h1 className="md:text-[2.4vw] font-bold font-sans leading-none text-[24px]">
-            {language === 'th' ? 'เขาใหญ่' : 'Khao Yai'}
+            Khao Yai
           </h1>
           <h1 className="text-3xl md:text-[2.4vw] font-bold font-sans leading-none">
-            {language === 'th' ? 'อาร์ตฟอเรสต์' : 'Art Forrest'}
+            Art Forrest
           </h1>
         </div>
 

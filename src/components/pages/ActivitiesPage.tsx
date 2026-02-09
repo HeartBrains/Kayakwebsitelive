@@ -3,7 +3,7 @@ import { Reveal } from '../ui/Reveal';
 import { ParallaxHero } from '../ui/ParallaxHero';
 import { useState } from 'react';
 import { useLanguage } from '../../utils/languageContext';
-import { getMockPostsByType, ACTIVITY_HERO_IMAGE } from '../../utils/mockDataBilingual';
+import { MOCK_POSTS_BILINGUAL, ACTIVITY_HERO_IMAGE } from '../../utils/mockDataBilingual';
 
 interface ActivitiesPageProps {
   onNavigate: (page: string, slug?: string) => void;
@@ -12,19 +12,20 @@ interface ActivitiesPageProps {
 type Category = 'current' | 'past';
 
 export function ActivitiesPage({ onNavigate }: ActivitiesPageProps) {
-  const { language, t } = useLanguage();
+  const { language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<Category>('current');
 
-  // Get all activities in current language
-  const allActivities = getMockPostsByType('activity', language);
+  // Get all activities
+  const allPosts = Object.values(MOCK_POSTS_BILINGUAL);
+  const allActivities = allPosts.filter(item => item.en.type === 'activity');
 
   // 'k-bar-experience' is Current
-  const currentActivities = allActivities.filter(act => 
-    ['k-bar-experience'].includes(act.slug) || (act.date && act.date.includes('Permanent'))
+  const currentActivities = allActivities.filter(item => 
+    ['k-bar-experience'].includes(item.en.slug) || (item.en.date && item.en.date.includes('Permanent'))
   );
   
-  const pastActivities = allActivities.filter(act => 
-    !['k-bar-experience'].includes(act.slug) && (!act.date || !act.date.includes('Permanent'))
+  const pastActivities = allActivities.filter(item => 
+    !['k-bar-experience'].includes(item.en.slug) && (!item.en.date || !item.en.date.includes('Permanent'))
   );
 
   const filteredData = activeCategory === 'current' ? currentActivities : pastActivities;
@@ -36,7 +37,7 @@ export function ActivitiesPage({ onNavigate }: ActivitiesPageProps) {
         image={ACTIVITY_HERO_IMAGE}
         height="h-[80vh]"
       >
-        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none md:hidden" />
+        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />
       </ParallaxHero>
 
       {/* Main Content */}
@@ -48,19 +49,19 @@ export function ActivitiesPage({ onNavigate }: ActivitiesPageProps) {
                 <div className="sticky top-32 flex flex-col items-start gap-4">
                     <button 
                         onClick={() => setActiveCategory('current')}
-                        className={`text-xl md:text-2xl font-sans text-left transition-colors duration-300 ${language === 'th' ? 'leading-[1.82em]' : ''} ${
+                        className={`text-xl md:text-2xl font-sans text-left transition-colors duration-300 flex flex-col items-start ${
                             activeCategory === 'current' ? 'text-black font-medium' : 'text-gray-400 hover:text-gray-600'
                         }`}
                     >
-                        {t('nav.activities')}
+                        <span>{language === 'th' ? 'กิจกรรม' : 'Activities'}</span>
                     </button>
                     <button 
                         onClick={() => setActiveCategory('past')}
-                        className={`text-xl md:text-2xl font-sans text-left transition-colors duration-300 ${language === 'th' ? 'leading-[1.82em]' : ''} ${
+                        className={`text-xl md:text-2xl font-sans text-left transition-colors duration-300 flex flex-col items-start ${
                             activeCategory === 'past' ? 'text-black font-medium' : 'text-gray-400 hover:text-gray-600'
                         }`}
                     >
-                        {language === 'th' ? 'กิจกรรมที่ผ่านมา' : 'Past Activities'}
+                        <span>{language === 'th' ? 'กิจกรรมที่ผ่านมา' : 'Past Activities'}</span>
                     </button>
                 </div>
             </div>
@@ -70,36 +71,57 @@ export function ActivitiesPage({ onNavigate }: ActivitiesPageProps) {
                 <div className="space-y-16 md:space-y-24">
                     {filteredData.length > 0 ? (
                         filteredData.map((item, idx) => (
-                            <Reveal key={item.id} delay={idx * 0.1}>
+                            <Reveal key={item.en.id} delay={idx * 0.1}>
                                 <div 
                                     className="flex flex-col gap-6 w-full md:w-[45vw] cursor-pointer group"
-                                    onClick={() => onNavigate('activity-detail', item.slug)}
+                                    onClick={() => onNavigate('activity-detail', item.en.slug)}
                                 >
                                     <div className="aspect-[4/3] w-full bg-gray-100 overflow-hidden">
                                         <ImageWithFallback 
-                                            src={item.featuredImage.sourceUrl} 
-                                            alt={item.title}
+                                            src={item.en.featuredImage.sourceUrl} 
+                                            alt={item.en.title}
                                             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                                         />
                                     </div>
-                                    <div className="flex flex-col gap-2">
-                                        <div className="flex flex-col gap-1">
-                                            <h3 className={`text-lg md:text-xl font-normal text-black leading-tight whitespace-pre-wrap ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                                                {item.title}
-                                            </h3>
-                                             {item.acf?.type_label && (
-                                                <p className={`text-lg md:text-xl font-normal text-gray-500 leading-tight ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                                                    {item.acf.type_label}
-                                                </p>
-                                            )}
-                                        </div>
+                                    <div className="flex flex-col gap-6">
+                                        {/* English */}
+                                        {language !== 'th' && (
+                                            <div className="flex flex-col gap-2">
+                                                <div className="flex flex-col gap-1">
+                                                    <h3 className="text-lg md:text-xl font-normal text-black leading-tight whitespace-pre-wrap">
+                                                        {item.en.title}
+                                                    </h3>
+                                                     {item.en.acf?.type_label && (
+                                                        <p className="text-lg md:text-xl font-normal text-gray-500 leading-tight">
+                                                            {item.en.acf.type_label}
+                                                        </p>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {/* Thai */}
+                                        {language === 'th' && (
+                                            <div className="flex flex-col gap-2">
+                                                <div className="flex flex-col gap-1">
+                                                    <h3 className="text-lg md:text-xl font-normal text-black leading-[1.82em] font-sans whitespace-pre-wrap">
+                                                        {item.th.title}
+                                                    </h3>
+                                                     {item.th.acf?.type_label && (
+                                                        <p className="text-lg md:text-xl font-normal text-gray-500 leading-[1.82em] font-sans">
+                                                            {item.th.acf.type_label}
+                                                        </p>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </Reveal>
                         ))
                     ) : (
                         <div className="py-20 text-gray-400 font-sans text-xl">
-                            {t('common.noResults')}
+                            {language === 'th' ? 'ไม่พบข้อมูล' : 'No results found'}
                         </div>
                     )}
                 </div>

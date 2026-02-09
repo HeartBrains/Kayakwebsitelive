@@ -32,16 +32,18 @@ export function KhaoYaiPage({ onNavigate }: { onNavigate?: (page: string) => voi
         </motion.div>
         
         <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />
         
         <div className="absolute inset-0 flex items-center justify-center">
             <Reveal>
-                <h1 className={`text-4xl md:text-6xl lg:text-8xl font-sans text-white text-center ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                    {language === 'th' ? (
-                        <>เขาใหญ่<br />อาร์ต ฟอเรสต์</>
-                    ) : (
-                        <>Khao Yai<br />Art Forrest</>
-                    )}
-                </h1>
+                <div className="flex flex-col items-center gap-4 md:gap-8">
+                    <h1 className="text-4xl md:text-6xl lg:text-8xl font-sans text-white text-center leading-tight">
+                        Khao Yai<br />Art Forrest
+                    </h1>
+                    <h2 className="text-2xl md:text-4xl lg:text-6xl font-sans text-white text-center leading-[1.82em]">
+                        เขาใหญ่<br />อาร์ต ฟอเรสต์
+                    </h2>
+                </div>
             </Reveal>
         </div>
       </div>
@@ -50,7 +52,9 @@ export function KhaoYaiPage({ onNavigate }: { onNavigate?: (page: string) => voi
       <div className="w-full px-6 py-12 md:py-20 space-y-4">
         <Reveal>
             <div className="text-center py-20">
-                <p className={`text-xl text-gray-500 font-sans ${language === 'th' ? 'leading-[1.82em]' : ''}`}>{getTranslation(language, 'khaoyai.comingSoon')}</p>
+                <p className="text-xl text-gray-500 font-sans">
+                    Coming Soon / <span className="font-sans leading-[1.82em]">เร็วๆ นี้</span>
+                </p>
             </div>
         </Reveal>
       </div>

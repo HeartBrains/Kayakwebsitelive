@@ -137,6 +137,9 @@ export function ExhibitionDetailPage({ onNavigate, exhibition, slug, backPage }:
              </div>
          )}
 
+         {/* Gradient Overlay */}
+         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />
+
          {/* Back Button */}
          <div className="absolute bottom-8 left-6 md:left-12 z-20">
             <button 

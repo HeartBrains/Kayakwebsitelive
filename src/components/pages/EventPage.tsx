@@ -10,7 +10,7 @@ export function EventPage() {
          image={ASSETS.EVENT_HERO} 
          height="h-[80vh]"
        >
-         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none md:hidden" />
+         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />
        </ParallaxHero>
 
       {/* Content Section */}

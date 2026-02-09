@@ -17,7 +17,7 @@ export function ContactPage() {
         image={CONTACT_HERO_IMAGE}
         height="h-[60vh] md:h-[80vh]"
       >
-        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none md:hidden" />
+        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />
       </ParallaxHero>
 
       <div className="w-full px-6 pt-24">
@@ -27,7 +27,7 @@ export function ContactPage() {
              {/* Left Column */}
             <div className="w-full md:w-1/2 mb-12 md:mb-0">
                 <Reveal>
-                    <h1 className={`text-xl md:text-2xl font-normal sticky top-32 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
+                    <h1 className="text-xl md:text-2xl font-normal sticky top-32">
                       {language === 'th' ? 'ติดต่อเรา' : 'Contact Us'}
                     </h1>
                 </Reveal>
@@ -38,28 +38,36 @@ export function ContactPage() {
                 <Reveal delay={0.1}>
                     <div className="flex flex-col gap-8">
                          <div className="flex flex-col gap-2">
-                            <span className="text-sm uppercase tracking-wider text-gray-500">General Inquiries</span>
+                            <span className="text-sm uppercase tracking-wider text-gray-500">
+                                {language === 'th' ? 'สอบถามทั่วไป' : 'General Inquiries'}
+                            </span>
                             <a href="mailto:info@khaoyaiart.com" className="text-xl md:text-2xl font-normal hover:text-gray-600 transition-colors">
                                 info@khaoyaiart.com
                             </a>
                         </div>
                         
                         <div className="flex flex-col gap-2">
-                            <span className="text-sm uppercase tracking-wider text-gray-500">Press Inquiries</span>
+                            <span className="text-sm uppercase tracking-wider text-gray-500">
+                                {language === 'th' ? 'สอบถามข้อมูลสื่อมวลชน' : 'Press Inquiries'}
+                            </span>
                             <a href="mailto:press@khaoyaiart.com" className="text-xl md:text-2xl font-normal hover:text-gray-600 transition-colors">
                                 press@khaoyaiart.com
                             </a>
                         </div>
                         
                          <div className="flex flex-col gap-2">
-                            <span className="text-sm uppercase tracking-wider text-gray-500">Social Media</span>
+                            <span className="text-sm uppercase tracking-wider text-gray-500">
+                                {language === 'th' ? 'โซเชียลมีเดีย' : 'Social Media'}
+                            </span>
                             <a href="https://instagram.com/khaoyai_art_forrest" target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl font-normal hover:text-gray-600 transition-colors">
                                 @khaoyai_art_forrest
                             </a>
                         </div>
                         
                          <div className="flex flex-col gap-2">
-                            <span className="text-sm uppercase tracking-wider text-gray-500">Website</span>
+                            <span className="text-sm uppercase tracking-wider text-gray-500">
+                                {language === 'th' ? 'เว็บไซต์' : 'Website'}
+                            </span>
                             <a href="https://www.khaoyaiart.com" target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl font-normal hover:text-gray-600 transition-colors">
                                 www.khaoyaiart.com
                             </a>
@@ -68,9 +76,18 @@ export function ContactPage() {
                 </Reveal>
 
                 <Reveal delay={0.2}>
-                    <p className={`text-xl md:text-2xl font-normal leading-tight mt-4 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                        {language === 'th' ? 'หรือฝากข้อความด้านล่าง' : 'Or leave a message below.'}
-                    </p>
+                    <div className="flex flex-col gap-1 mt-4">
+                        {language !== 'th' && (
+                            <p className="text-xl md:text-2xl font-normal leading-tight">
+                                Or leave a message below.
+                            </p>
+                        )}
+                        {language === 'th' && (
+                            <p className="text-xl md:text-2xl font-normal font-sans leading-[1.82em]">
+                                หรือฝากข้อความด้านล่าง
+                            </p>
+                        )}
+                    </div>
                     <form className="flex flex-col gap-6 w-full max-w-lg mt-8" onSubmit={(e) => e.preventDefault()}>
                         <Input 
                             placeholder={language === 'th' ? 'อีเมล' : 'Email'}
@@ -78,7 +95,7 @@ export function ContactPage() {
                         />
                         <Textarea 
                             placeholder={language === 'th' ? 'ข้อความสอบถาม' : 'Inquiry Box'}
-                            className={`rounded-none border-gray-300 min-h-[200px] text-lg placeholder:text-gray-400 resize-none font-sans ${language === 'th' ? 'leading-[1.82em]' : ''}`}
+                            className="rounded-none border-gray-300 min-h-[200px] text-lg placeholder:text-gray-400 resize-none font-sans"
                         />
                         <Button 
                             type="submit"

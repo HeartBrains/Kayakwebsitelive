@@ -1,86 +1,69 @@
-export interface Director {
+export interface TeamMember {
     name: string;
     role: string;
     roleTH: string;
-    bio: string[];
-    bioTH: string[];
-    image?: string;
     email?: string;
 }
 
-export interface TeamGroup {
-    role: string;
-    roleTH: string;
-    members: string[];
-    membersTH?: string[]; 
+export interface AdvisoryMember {
+    name: string;
+    title?: string;
+    titleTH?: string;
 }
 
-export const FOUNDER: Director = {
-    name: 'Marisa Chearavanont',
-    role: 'Founder / President',
-    roleTH: 'ผู้ก่อตั้ง / ประธาน',
-    email: 'marisa.c@khaoyaiart.com',
-    bio: [
-        "Founded by philanthropist and art patron Marisa Chearavanont, Khao Yai Art Forest (known in Thai as 'Silpa Pa') is a contemporary art institution where site-specific installations are designed to 'heal the land through art.' Spanning 210 acres (850,000 sq. m.) in the lush landscape of Pak Chong, the project serves as a sanctuary that blends art, ecology, and education. It operates alongside its sister institution, Bangkok Kunsthalle, to create a dialogue between the urban jungle and the natural forest."
-    ],
-    bioTH: [
-        "ก่อตั้งโดยนักการกุศลและผู้อุปถัมภ์ศิลปะ มาริษา เจียรวนนท์ เขาใหญ่ อาร์ตฟอเรสต์ (หรือที่รู้จักในชื่อภาษาไทยว่า 'ศิลปะ ป่า') เป็นสถาบันศิลปะร่วมสมัยที่การติดตั้งงานศิลปะเฉพาะพื้นถูกออกแบบมาเพื่อ 'เยียวยาผืนดินด้วยศิลปะ' ครอบคลุมพื้นที่ 210 เอเคอร์ (850,000 ตร.ม.) ในภูมิทัศน์อันเขียวชอุ่มของปากช่อง โครงการนี้ทำหน้าที่เป็นสถานที่ศักดิ์สิทธิ์ที่ผสมผสานศิลปะ นิเวศวิทยา และการศึกษา ดำเนินงานควบคู่ไปกับสถาบันพี่น้องอย่าง Bangkok Kunsthalle เพื่อสร้างบทสนทนาระหว่างป่าคอนกรีตและป่าธรรมชาติ"
-    ]
-};
-
-export const DIRECTORS: Director[] = [
+export const TEAM_MEMBERS: TeamMember[] = [
+    {
+        name: 'Marisa Chearavanont',
+        role: 'Founder / President',
+        roleTH: 'ผู้ก่อตั้ง / ประธาน',
+        email: 'marisa.c@khaoyaiart.com'
+    },
     {
         name: 'Stefano Rabolli Pansera',
         role: 'Director',
         roleTH: 'ผู้อำนวยการ',
-        email: 'stefano.rp@khaoyaiart.com',
-        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYW4lMjBwb3J0cmFpdCUyMHByb2Zlc3Npb25hbCUyMGdsYXNzZXN8ZW58MXx8fHwxNzY1MDA1MDAwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-        bio: [
-            "Stefano Rabolli Pansera is the Director of Khao Yai Art Forest."
-        ],
-        bioTH: [
-            "สเตฟาโน ราโบลลี พันเซรา เป็นผู้อำนวยการของเขาใหญ่ อาร์ตฟอเรสต์"
-        ]
+        email: 'stefano.rp@khaoyaiart.com'
     },
     {
         name: 'Ratsiree Rattanawan',
         role: 'Assistant Curator',
         roleTH: 'ผู้ช่วยภัณฑารักษ์',
-        email: 'ratsiree.r@khaoyaiart.com',
-        bio: ["Assistant Curator at Khao Yai Art Forest."],
-        bioTH: ["ผู้ช่วยภัณฑารักษ์ที่เขาใหญ่ อาร์ตฟอเรสต์"]
+        email: 'ratsiree.r@khaoyaiart.com'
     },
     {
         name: 'Phakjira Pattapong',
         role: 'Project Manager',
         roleTH: 'ผู้จัดการโครงการ',
-        email: 'phakjira.p@khaoyaiart.com',
-        bio: ["Project Manager at Khao Yai Art Forest."],
-        bioTH: ["ผู้จัดการโครงการที่เขาใหญ่ อาร์ตฟอเรสต์"]
+        email: 'phakjira.p@khaoyaiart.com'
+    },
+    {
+        name: 'Claudia Ko',
+        role: 'Financial Sustainability & Donor Relations',
+        roleTH: 'ความยั่งยืนทางการเงินและความสัมพันธ์กับผู้บริจาค',
+        email: 'claudia.k@khaoyaiart.com'
+    },
+    {
+        name: 'Poonperm Paitayawat',
+        role: 'Food & Gastronomy',
+        roleTH: 'อาหารและศาสตร์การทำอาหาร',
+        email: 'perm.p@khaoyaiart.com'
     }
 ];
 
-export const TEAM_GROUPS: TeamGroup[] = [
-    {
-        role: 'Financial Sustainability & Donor Relations',
-        roleTH: 'ความยั่งยืนทางการเงินและความสัมพันธ์กับผู้บริจาค',
-        members: ['Claudia Ko']
-    },
-    {
-        role: 'Food & Gastronomy',
-        roleTH: 'อาหารและศาสตร์การทำอาหาร',
-        members: ['Poonperm Paitayawat']
-    },
-    {
-        role: 'Advisory Board',
-        roleTH: 'คณะกรรมการที่ปรึกษา',
-        members: [
-            "Jessica Morgan (Director of Dia Art Foundation)",
-            "Manuela Luca-Dazio (Executive Director Pritzker Architecture Prize)",
-            "Rita and Uli Sigg (Founders/Donors of M+)",
-            "Taizo Son (Founder of Mistletoe, Inc.)",
-            "Juan Carlos Verme (President of Proyectoamil)",
-            "Alan Lau (Vice Chairman of M+)"
-        ]
-    }
+export const ADVISORY_BOARD_WITH_TITLES: AdvisoryMember[] = [
+    { name: "Jessica Morgan", title: "Director of Dia Art Foundation", titleTH: "ผู้อำนวยการมูลนิธิ Dia Art" },
+    { name: "Manuela Luca-Dazio", title: "Executive Director Pritzker Architecture Prize", titleTH: "ผู้อำนวยการบริหารรางวัล Pritzker Architecture" },
+    { name: "Rita and Uli Sigg", title: "Founders and Donors of M+", titleTH: "ผู้ก่อตั้งและผู้บริจาค M+" },
+    { name: "Taizo Son", title: "Founder of Mistletoe, Inc.", titleTH: "ผู้ก่อตั้ง Mistletoe, Inc." },
+    { name: "Juan Carlos Verme", title: "President of Proyectoamil", titleTH: "ประธาน Proyectoamil" },
+    { name: "Alan Lau", title: "Vice Chairman of M+", titleTH: "รองประธาน M+" }
+];
+
+export const ADVISORY_BOARD_MEMBERS: string[] = [
+    "Anna Guggenbuehl",
+    "Shu Jin",
+    "Dominique Petite-Frer",
+    "Ralph Segreti",
+    "Victor Wang",
+    "Shala Monroque"
 ];
