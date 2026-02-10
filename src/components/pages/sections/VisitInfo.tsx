@@ -97,7 +97,7 @@ export function VisitInfo() {
                 {/* Closed */}
                 <div className="flex flex-col gap-1">
                     <p className="text-xl md:text-2xl font-sans text-black font-medium">
-                      {language === 'th' ? 'วันปิดบริการ' : 'Closed'}
+                      {language === 'th' ? 'วันปิดทำการ' : 'Closed'}
                     </p>
                     <div className="flex flex-col">
                         {language !== 'th' && (
