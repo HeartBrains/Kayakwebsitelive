@@ -24,7 +24,7 @@ export function VisitInfo() {
                     )}
                     {language === 'th' && (
                         <p className="text-xl md:text-2xl font-sans text-black leading-[1.82em]">
-                          เขาใหญ่ อาร์ตฟอเรสต์
+                          Khao Yai Art Forest
                         </p>
                     )}
                 </div>

@@ -197,7 +197,7 @@ export const translations = {
     'shop.bookTicket': 'จองบัตร',
 
     // Khao Yai - Thai
-    'khaoyai.title': 'เขาใหญ่ อาร์ต ฟอเรสต์',
+    'khaoyai.title': 'Khao Yai Art Forest',
     'khaoyai.comingSoon': 'เร็วๆ นี้',
     
     // Common - Thai
@@ -224,12 +224,12 @@ export const translations = {
     'home.latestNews': 'ข่าวสารล่าสุด',
     
     // About - Thai
-    'about.title': 'เกี่ยวกับเขาใหญ่ อาร์ตฟอเรสต์',
-    'about.description': 'เขาใหญ่ อาร์ตฟอเรสต์ คือพื้นที่ศิลปะร่วมสมัยที่มุ่งเน้นการสร้างบทสนทนาระหว่างศิลปิน ภัณฑารักษ์ และสาธารณชน',
+    'about.title': 'เกี่ยวกับ Khao Yai Art Forest',
+    'about.description': 'Khao Yai Art Forest คือพื้นที่ศิลปะร่วมสมัยที่มุ่งเน้นการสร้างบทสนทนาระหว่างศิลปิน ภัณฑารักษ์ และสาธารณชน',
     'about.vision.title': 'วิสัยทัศน์',
     'about.vision.content': 'วิสัยทัศน์ของเราคือการสร้างแพลตฟอร์มสำหรับศิลปะร่วมสมัยที่ท้าทายธรรมเนียมและสร้างแรงบันดาลใจมุมมองใหม่',
     'about.history.title': 'ประวัติ',
-    'about.history.content': 'ก่อตั้งขึ้นในปี 2567 เขาใหญ่ อาร์ตฟอเรสต์ได้กลายเป็นส่วนสำคัญของวงการศิลปะร่วมสมัยในเขาใหญ่อย่างรวดเร็ว',
+    'about.history.content': 'ก่อตั้งขึ้นในปี 2567 Khao Yai Art Forest ได้กลายเป็นส่วนสำคัญของวงการศิลปะร่วมสมัยในเขาใหญ่อย่างรวดเร็ว',
     'about.foundingDirector': 'ผู้อำนวยการผู้ก่อตั้ง',
     'about.vision': 'วิสัยทัศน์',
     'about.mission': 'พันธกิจ',

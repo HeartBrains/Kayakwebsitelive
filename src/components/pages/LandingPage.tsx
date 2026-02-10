@@ -12,7 +12,7 @@ export function LandingPage({ onEnter }: LandingPageProps) {
   const { language, t } = useLanguage();
 
   const bangkokTitle = language === 'th' ? 'บางกอก\nคุนสต์ฮัลเลอ' : 'Bangkok\nKunsthalle';
-  const khaoYaiTitle = language === 'th' ? 'เขาใหญ่\nอาร์ตฟอเรสต์' : 'Khao Yai\nArt Forest';
+  const khaoYaiTitle = language === 'th' ? 'Khao Yai\nArt Forest' : 'Khao Yai\nArt Forest';
 
   return (
     <div className="relative w-full h-screen bg-black overflow-hidden flex font-sans">

@@ -14,7 +14,7 @@ export interface SearchDocument {
 }
 
 const STATIC_PAGES_CONFIG = [
-  { id: 'home', page: 'home', titleKey: 'nav.home', content: { en: 'Khao Yai Art Forest is a multidisciplinary platform for contemporary art in Thailand.', th: 'เขาใหญ่ อาร์ตฟอเรสต์ เป็นพื้นที่ทางศิลปะร่วมสมัยและพหุสาขาวิชาในประเทศไทย' }, keywords: 'art contemporary thailand platform bangkok main ศิลปะ ร่วมสมัย ไทย กรุงเทพ' },
+  { id: 'home', page: 'home', titleKey: 'nav.home', content: { en: 'Khao Yai Art Forest is a multidisciplinary platform for contemporary art in Thailand.', th: 'Khao Yai Art Forest เป็นพื้นที่ทางศิลปะร่วมสมัยและพหุสาขาวิชาในประเทศไทย' }, keywords: 'art contemporary thailand platform bangkok main ศิลปะ ร่วมสมัย ไทย กรุงเทพ' },
   { id: 'about', page: 'about', titleKey: 'nav.aboutUs', contentKey: 'about.description', keywords: 'history vision team background mission story who we are ประวัติ วิสัยทัศน์ ทีมงาน' },
   { id: 'vision', page: 'vision', titleKey: 'nav.vision', contentKey: 'about.vision.content', keywords: 'mission goals creativity dialogue future strategy manifesto พันธกิจ เป้าหมาย' },
   { id: 'visit', page: 'visit', titleKey: 'nav.visit', contentKey: 'visit.title', keywords: 'location map hours directions ticket access transport address ที่ตั้ง แผนที่ เวลาทำการ' },
