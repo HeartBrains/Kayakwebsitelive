@@ -28,10 +28,10 @@ export default function Slider() {
       <div className="absolute h-[1365px] left-0 top-[2810px] w-[2048px]" data-name="Puma_Calligraphic Abstraction- Puttisin Choojesroom 11">
         <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgPumaCalligraphicAbstractionPuttisinChoojesroom11} />
       </div>
-      <div className="absolute h-[1365px] left-[2088px] top-[2810px] w-[2048px]" data-name="Puma_About Khao Yai Art Forrest- Andrea Rossetti 3">
+      <div className="absolute h-[1365px] left-[2088px] top-[2810px] w-[2048px]" data-name="Puma_About Khao Yai Art Forest- Andrea Rossetti 3">
         <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgPumaAboutBangkokKunsthalleAndreaRossetti3} />
       </div>
-      <div className="absolute h-[1365px] left-[4176px] top-[2810px] w-[2048px]" data-name="Puma_About Khao Yai Art Forrest- Andrea Rossetti 7">
+      <div className="absolute h-[1365px] left-[4176px] top-[2810px] w-[2048px]" data-name="Puma_About Khao Yai Art Forest- Andrea Rossetti 7">
         <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgPumaAboutBangkokKunsthalleAndreaRossetti7} />
       </div>
     </div>

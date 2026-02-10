@@ -14,13 +14,20 @@ export function Header({ onMenuClick, onLogoClick, isTransparent = false }: Head
         isTransparent ? 'bg-transparent text-white' : 'bg-transparent text-black'
       }`}
     >
+      {/* Gradient Overlay for Desktop */}
+      <div 
+        className={`absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-black/50 to-transparent -z-10 pointer-events-none transition-opacity duration-300 ${
+          isTransparent ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
+      
       <div 
         onClick={onLogoClick}
         className="text-3xl md:text-[2.4vw] font-bold font-sans cursor-pointer mt-0 mr-0 mb-0 ml-0 md:ml-[24px] p-0 overflow-visible"
       >
         Khao Yai
         <br />
-        Art Forrest
+        Art Forest
       </div>
       <Button 
         variant="ghost" 

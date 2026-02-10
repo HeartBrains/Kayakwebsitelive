@@ -12,7 +12,7 @@ export function ContactPage() {
   
   return (
     <div className="bg-white min-h-screen pb-24 font-sans text-black">
-      {/* Hero Map - Using Fog Forrest image from JSON */}
+      {/* Hero Map - Using Fog Forest image from JSON */}
        <ParallaxHero 
         image={CONTACT_HERO_IMAGE}
         height="h-[60vh] md:h-[80vh]"
@@ -59,8 +59,8 @@ export function ContactPage() {
                             <span className="text-sm uppercase tracking-wider text-gray-500">
                                 {language === 'th' ? 'โซเชียลมีเดีย' : 'Social Media'}
                             </span>
-                            <a href="https://instagram.com/khaoyai_art_forrest" target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl font-normal hover:text-gray-600 transition-colors">
-                                @khaoyai_art_forrest
+                            <a href="https://instagram.com/khaoyai_art_forest" target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl font-normal hover:text-gray-600 transition-colors">
+                                @khaoyai_art_forest
                             </a>
                         </div>
                         

@@ -35,7 +35,7 @@ export function EventPage() {
             {/* Right Column - Details */}
             <div className="md:w-2/3 flex flex-col gap-8 text-xs md:text-sm text-black leading-relaxed">
                 <p>
-                    This August and September, Khao Yai Art Forrest screens four Wong Kar Wai classics on Saturday nights, beginning with 'In the Mood for Love' (2000) on August 22—filmed partly in the Yaowarat neighborhood of the Art Forrest. The series continues with 'Happy Together' (1997) on August 23, 'Chungking Express' (1994) on August 30, and 'Fallen Angels' (1995) on September 6. Moving from quiet longing to restless encounters and neon-lit nights, the films capture Wong's unforgettable vision of love, loneliness, and fleeting connection.
+                    This August and September, Khao Yai Art Forest screens four Wong Kar Wai classics on Saturday nights, beginning with 'In the Mood for Love' (2000) on August 22—filmed partly in the Yaowarat neighborhood of the Art Forest. The series continues with 'Happy Together' (1997) on August 23, 'Chungking Express' (1994) on August 30, and 'Fallen Angels' (1995) on September 6. Moving from quiet longing to restless encounters and neon-lit nights, the films capture Wong's unforgettable vision of love, loneliness, and fleeting connection.
                 </p>
 
                 <div>
@@ -54,7 +54,7 @@ export function EventPage() {
                 </div>
 
                 <p className="max-w-prose">
-                    We encourage you to arrive at Khao Yai Art Forrest 15-30 minutes before the screening begins. Seats not claimed by the start of the film may be released to visitors in the standby line.
+                    We encourage you to arrive at Khao Yai Art Forest 15-30 minutes before the screening begins. Seats not claimed by the start of the film may be released to visitors in the standby line.
                 </p>
             </div>
         </div>

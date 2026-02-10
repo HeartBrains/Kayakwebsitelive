@@ -23,7 +23,7 @@ export const MOCK_POSTS: Record<string, WPPost> = {
         title: 'Neon Reveries',
         date: '01 Oct – 01 Nov 2025',
         categories: ['Wong Kar-Wai', 'Screening Series', 'Screenings'],
-        content: `<p>This August and September, Khao Yai Art Forrest screens four Wong Kar Wai classics on Saturday nights, beginning with 'In the Mood for Love' (2000) on August 22—filmed partly in the Yaowarat neighborhood of the Art Forrest. The series continues with 'Happy Together' (1997) on August 23, 'Chungking Express' (1994) on August 30, and 'Fallen Angels' (1995) on September 6. Moving from quiet longing to restless encounters and neon-lit nights, the films capture Wong's unforgettable vision of love, loneliness, and fleeting connection.</p>`,
+        content: `<p>This August and September, Khao Yai Art Forest screens four Wong Kar Wai classics on Saturday nights, beginning with 'In the Mood for Love' (2000) on August 22—filmed partly in the Yaowarat neighborhood of the Art Forest. The series continues with 'Happy Together' (1997) on August 23, 'Chungking Express' (1994) on August 30, and 'Fallen Angels' (1995) on September 6. Moving from quiet longing to restless encounters and neon-lit nights, the films capture Wong's unforgettable vision of love, loneliness, and fleeting connection.</p>`,
         featuredImage: {
             sourceUrl: ASSETS.EVENT_HERO,
             altText: 'Neon Reveries'
@@ -42,7 +42,7 @@ export const MOCK_POSTS: Record<string, WPPost> = {
                 { title: "'Chungking Express' (1994)", details: "on August 30 Round 1 at 17.00 Round 2 at 19.00" },
                 { title: "'Fallen Angels' (1995)", details: "on September 6 Round 1 at 17.00 Round 2 at 19.00" }
             ],
-            additionalContent: `We encourage you to arrive at Khao Yai Art Forrest 15-30 minutes before the screening begins. Seats not claimed by the start of the film may be released to visitors in the standby line.`
+            additionalContent: `We encourage you to arrive at Khao Yai Art Forest 15-30 minutes before the screening begins. Seats not claimed by the start of the film may be released to visitors in the standby line.`
         }
     },
     'liminal-signals': createMockPost('liminal-signals', 'activity', 'Liminal Signals', '21 November 2025', 'https://images.unsplash.com/photo-1747504858849-fde086e3680a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXJrJTIwZXhwZXJpbWVudGFsJTIwY2luZW1hJTIwcGVyZm9ybWFuY2UlMjBhcnR8ZW58MXx8fHwxNzY4MDI5MDM2fDA&ixlib=rb-4.1.0&q=80&w=1080', 'Cedric Arnold & Thanapat Ogaslert'),
@@ -60,9 +60,9 @@ export const MOCK_POSTS: Record<string, WPPost> = {
         date: '10 Jan - 10 Mar 2025',
         content: `
     <p>The serpent moves across time, across borders. It is a transcultural and transhistorical symbol appearing in diverse mythologies from the frozen landscapes of Russia to the arid expanses of Egypt, from the dense jungles of the Americas to the sacred temples of Thailand. Across millennia, the serpent has persisted as an emblem of ritual, an artifact of ancient epistemologies, and a bridge between the seen and the unseen.</p>
-    <p>At Khao Yai Art Forrest, this presence moves across floors and across buildings.</p>
-    <p>It is not imposed but revealed. The serpent stretches along the banister, winding across four flights of green terrazzo stairs. Nicolas Amato, arriving at the Art Forrest on the first day of the Chinese New Year—the Year of the Snake—recognized it embedded within the architecture itself. His intervention does not introduce something foreign; rather, it uncovers what was already there, transforming perception through an act as subtle yet profound as polishing.</p>
-    <p>The Art Forrest's curatorial program is the architectural intervention, a practice of domesticating the building through art. Amato's work is in perfect dialogue with this dynamic—not an addition, but a revelation, an unveiling of what was always there.</p>
+    <p>At Khao Yai Art Forest, this presence moves across floors and across buildings.</p>
+    <p>It is not imposed but revealed. The serpent stretches along the banister, winding across four flights of green terrazzo stairs. Nicolas Amato, arriving at the Art Forest on the first day of the Chinese New Year—the Year of the Snake—recognized it embedded within the architecture itself. His intervention does not introduce something foreign; rather, it uncovers what was already there, transforming perception through an act as subtle yet profound as polishing.</p>
+    <p>The Art Forest's curatorial program is the architectural intervention, a practice of domesticating the building through art. Amato's work is in perfect dialogue with this dynamic—not an addition, but a revelation, an unveiling of what was always there.</p>
     <p>The act of polishing becomes the intervention itself, not an imposition but an attunement, blurring the boundaries between art and architecture. The decision to polish the terrazzo rather than mark or alter it ensures that the intervention does not announce itself as a discrete artwork but instead dissolves into the materiality of the space. The act of refinement—of rendering the surface luminous—becomes the artistic gesture itself, reinforcing the conceptual and physical integration of the work within the architecture.</p>
     <p>The snake of green polished terrazzo inhabits the in-between spaces.</p>
     <p>Like an emerald entangled in the derelict building, it stretches across floors, piercing through the building, a silent guide toward the roof. It traverses thresholds, operating both spatially and metaphorically. More than a decorative motif, it acts as a structural force, shaping the movement through the building. It is more than moving through the floors, it is about dwelling the liminal spaces.</p>
@@ -90,7 +90,7 @@ export const MOCK_POSTS: Record<string, WPPost> = {
         categories: ['Contemporary Art', 'Culture', 'Insights'],
         content: `
     <p>Art has always served as a mirror to society, reflecting its triumphs, struggles, and evolving identity. In the contemporary landscape, this relationship has become even more intricate. Artists are not merely observers but active participants in the cultural dialogue, challenging norms and envisioning new futures.</p>
-    <p>The role of public institutions like the Khao Yai Art Forrest is to facilitate this conversation. By providing a space where diverse voices can be heard, we foster a community that values creativity and critical thinking. Our upcoming exhibitions aim to explore these themes deeply, inviting visitors to engage with art that speaks directly to the human condition in the 21st century.</p>
+    <p>The role of public institutions like the Khao Yai Art Forest is to facilitate this conversation. By providing a space where diverse voices can be heard, we foster a community that values creativity and critical thinking. Our upcoming exhibitions aim to explore these themes deeply, inviting visitors to engage with art that speaks directly to the human condition in the 21st century.</p>
   `,
         featuredImage: {
             sourceUrl: ASSETS.BLOG_1,

@@ -19,7 +19,7 @@ export function VisitInfo() {
                 <div className="flex flex-col gap-1">
                     {language !== 'th' && (
                         <p className="text-xl md:text-2xl font-sans text-black">
-                          Khao Yai Art Forrest
+                          Khao Yai Art Forest
                         </p>
                     )}
                     {language === 'th' && (
@@ -32,7 +32,7 @@ export function VisitInfo() {
                 {/* Opening Hour */}
                 <div className="flex flex-col gap-4">
                     <p className="text-xl md:text-2xl font-sans text-black font-medium">
-                      {language === 'th' ? 'เวลาทำการ' : 'Opening Hours'}
+                      {language === 'th' ? 'วันเปิดบริการ' : 'Opening Hours'}
                     </p>
                     
                     <div className="flex flex-col gap-4">
@@ -53,12 +53,12 @@ export function VisitInfo() {
                              <div className="flex flex-col">
                                  {language !== 'th' && (
                                      <p className="text-xl md:text-2xl font-sans text-gray-500">
-                                        Fog Forrest Experience: 16:00 (10 minutes)
+                                        Fog Forest Experience: 16:00 (10 minutes)
                                      </p>
                                  )}
                                  {language === 'th' && (
                                      <p className="text-xl md:text-2xl font-sans text-gray-500 leading-[1.82em]">
-                                        ประสบการณ์ป่าหมอก: 16:00 (10 นาที)
+                                        เวลาชมผลงาน Fog forest: 16:00 (10 นาที)
                                      </p>
                                  )}
                              </div>
@@ -81,12 +81,12 @@ export function VisitInfo() {
                              <div className="flex flex-col">
                                  {language !== 'th' && (
                                      <p className="text-xl md:text-2xl font-sans text-gray-500">
-                                        Fog Forrest Experience: 11:30 and 16:30 (10 minutes)
+                                        Fog Forest Experience: 11:30 and 16:30 (10 minutes)
                                      </p>
                                  )}
                                  {language === 'th' && (
                                      <p className="text-xl md:text-2xl font-sans text-gray-500 leading-[1.82em]">
-                                        ประสบการณ์ป่าหมอก: 11:30 และ 16:30 (10 นาที)
+                                        เวลาชมผลงาน Fog forest: 11:30 และ 16:30 (10 นาที)
                                      </p>
                                  )}
                              </div>
@@ -97,7 +97,7 @@ export function VisitInfo() {
                 {/* Closed */}
                 <div className="flex flex-col gap-1">
                     <p className="text-xl md:text-2xl font-sans text-black font-medium">
-                      {language === 'th' ? 'วันหยุด' : 'Closed'}
+                      {language === 'th' ? 'วันปิดบริการ' : 'Closed'}
                     </p>
                     <div className="flex flex-col">
                         {language !== 'th' && (
@@ -117,7 +117,7 @@ export function VisitInfo() {
                 <div className="w-full aspect-square md:aspect-[4/3] bg-[#D9D9D9] relative overflow-hidden mt-4">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61748.97609802094!2d101.48784332167969!3d14.5020468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311c3a64795e1c77%3A0x6c6e755259929849!2sPong%20Ta%20Long%2C%20Pak%20Chong%20District%2C%20Nakhon%20Ratchasima%2030130!5e0!3m2!1sen!2sth!4v1709292837283!5m2!1sen!2sth"
-                        title="Khao Yai Art Forrest Map"
+                        title="Khao Yai Art Forest Map"
                         width="100%" 
                         height="100%" 
                         style={{ border: 0 }} 

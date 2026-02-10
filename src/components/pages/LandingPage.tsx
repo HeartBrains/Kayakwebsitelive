@@ -12,7 +12,7 @@ export function LandingPage({ onEnter }: LandingPageProps) {
   const { language, t } = useLanguage();
 
   const bangkokTitle = language === 'th' ? 'บางกอก\nคุนสต์ฮัลเลอ' : 'Bangkok\nKunsthalle';
-  const khaoYaiTitle = language === 'th' ? 'เขาใหญ่\nอาร์ตฟอเรสต์' : 'Khao Yai\nArt Forrest';
+  const khaoYaiTitle = language === 'th' ? 'เขาใหญ่\nอาร์ตฟอเรสต์' : 'Khao Yai\nArt Forest';
 
   return (
     <div className="relative w-full h-screen bg-black overflow-hidden flex font-sans">
@@ -23,7 +23,7 @@ export function LandingPage({ onEnter }: LandingPageProps) {
       >
         <ImageWithFallback 
             src={ABOUT_HERO_IMAGE} 
-            alt="Khao Yai Art Forrest"
+            alt="Khao Yai Art Forest"
             className="w-full h-full object-cover" 
         />
       </div>
@@ -33,7 +33,7 @@ export function LandingPage({ onEnter }: LandingPageProps) {
       >
         <ImageWithFallback 
             src={VISIT_HERO_IMAGE} 
-            alt="Khao Yai Art Forrest" 
+            alt="Khao Yai Art Forest" 
             className="w-full h-full object-cover opacity-80"
         />
         <div className="absolute inset-0 bg-black/30" />
@@ -51,7 +51,7 @@ export function LandingPage({ onEnter }: LandingPageProps) {
         </h1>
       </div>
 
-      {/* Right Trigger Zone - Khao Yai Art Forrest */}
+      {/* Right Trigger Zone - Khao Yai Art Forest */}
       <div 
         className="w-1/2 h-full z-10 flex items-center justify-end cursor-pointer relative pr-8 md:pr-16 lg:pr-24"
         onClick={() => onEnter('khaoyai')}

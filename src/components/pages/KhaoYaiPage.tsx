@@ -38,7 +38,7 @@ export function KhaoYaiPage({ onNavigate }: { onNavigate?: (page: string) => voi
             <Reveal>
                 <div className="flex flex-col items-center gap-4 md:gap-8">
                     <h1 className="text-4xl md:text-6xl lg:text-8xl font-sans text-white text-center leading-tight">
-                        Khao Yai<br />Art Forrest
+                        Khao Yai<br />Art Forest
                     </h1>
                     <h2 className="text-2xl md:text-4xl lg:text-6xl font-sans text-white text-center leading-[1.82em]">
                         เขาใหญ่<br />อาร์ต ฟอเรสต์
