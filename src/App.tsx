@@ -67,7 +67,7 @@ export default function App() {
 
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-white font-sans text-black selection:bg-black selection:text-white">
+      <div className="relative min-h-screen bg-white font-sans text-black selection:bg-black selection:text-white">
         <Header 
           onMenuClick={() => setIsMenuOpen(true)} 
           onLogoClick={() => handleNavigate('home')}
