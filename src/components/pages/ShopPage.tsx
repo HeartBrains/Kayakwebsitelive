@@ -1,7 +1,6 @@
 import { ASSETS } from '../../utils/assets';
 import { ParallaxHero } from '../ui/ParallaxHero';
 import { useState } from 'react';
-import { Reveal } from '../ui/Reveal';
 import { useLanguage } from '../../utils/languageContext';
 import { getTranslation } from '../../utils/translations';
 import heroImage from 'figma:asset/b602c6fcb8c0e0c94fac7732e44d0776b18060a0.png';
@@ -14,7 +13,7 @@ interface ShopPageProps {
 
 export function ShopPage({ onNavigate }: ShopPageProps) {
   const { language } = useLanguage();
-  const [activeTab, setActiveTab] = useState<'products' | 'bookings'>('products');
+  const [activeTab, setActiveTab] = useState<'products' | 'bookings'>('bookings');
   const [sortBy, setSortBy] = useState<SortOption>('newest');
 
   // Mock data for products with Unsplash images
@@ -38,7 +37,7 @@ export function ShopPage({ onNavigate }: ShopPageProps) {
   const bookings = [
     { id: 1, name: 'Workshop Booking', nameTH: 'จองเวิร์กช็อป', price: '฿1500', image: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080' },
     { id: 2, name: 'Private Tour', nameTH: 'ทัวร์ส่วนตัว', price: '฿2500', image: 'https://images.unsplash.com/photo-1544531586-fde5298cdd40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080' },
-    { id: 3, name: 'Art Class', nameTH: 'ชั้นเรียนศิลปะ', price: '฿1200', image: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080' },
+    { id: 3, name: 'Art Class', nameTH: 'ชั้นเรียนิลปะ', price: '฿1200', image: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080' },
   ];
 
   const sortOptions: { labelKey: string; value: SortOption }[] = [
@@ -62,103 +61,105 @@ export function ShopPage({ onNavigate }: ShopPageProps) {
       <div className="w-full px-6 py-12 md:py-16 min-h-[800px]">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-x-8">
             
-            {/* Col 1-2: Title & Navigation */}
-            <div className="md:col-span-2">
-                <div className="sticky top-32 flex flex-col gap-6">
-                    <h2 className="text-xl md:text-2xl font-normal font-sans text-black">{getTranslation(language, 'shop.title')}</h2>
-                    <div className="flex flex-col gap-2 items-start">
-                        <button 
-                            onClick={() => setActiveTab('products')}
-                            className={`text-xl md:text-2xl font-sans transition-colors text-left ${
-                                activeTab === 'products' ? 'text-black font-medium' : 'text-gray-300 hover:text-gray-500'
-                            }`}
-                        >
-                            {getTranslation(language, 'shop.products')}
-                        </button>
+            {/* Left Sidebar: Combined Navigation & Sort */}
+            <div className="md:col-span-3">
+                <div className="sticky top-32 flex flex-col gap-8">
+                    {/* Shop Title */}
+                    <h2 className="text-xl md:text-2xl font-normal font-sans text-black">
+                        {getTranslation(language, 'shop.title')}
+                    </h2>
+                    
+                    {/* Tab Navigation */}
+                    <div className="flex flex-col gap-1">
                         <button 
                             onClick={() => setActiveTab('bookings')}
                             className={`text-xl md:text-2xl font-sans transition-colors text-left ${
-                                activeTab === 'bookings' ? 'text-black font-medium' : 'text-gray-300 hover:text-gray-500'
+                                activeTab === 'bookings' ? 'text-black' : 'text-gray-400 hover:text-gray-600'
                             }`}
                         >
                             {getTranslation(language, 'shop.bookings')}
                         </button>
+                        <button 
+                            onClick={() => setActiveTab('products')}
+                            className={`text-xl md:text-2xl font-sans transition-colors text-left ${
+                                activeTab === 'products' ? 'text-black' : 'text-gray-400 hover:text-gray-600'
+                            }`}
+                        >
+                            {getTranslation(language, 'shop.products')}
+                        </button>
                     </div>
+
+                    {/* Sort By Section - Only show for Products */}
+                    {activeTab === 'products' && (
+                        <div className="flex flex-col gap-1">
+                            <h3 className="text-xl md:text-2xl font-normal text-black mb-1">
+                                {getTranslation(language, 'shop.sortBy')}
+                            </h3>
+                            {sortOptions.map((option) => (
+                                <button
+                                    key={option.value}
+                                    onClick={() => setSortBy(option.value)}
+                                    className={`text-left text-xl md:text-2xl font-normal leading-tight transition-colors duration-200 ${
+                                        sortBy === option.value ? 'text-black' : 'text-gray-400 hover:text-gray-600'
+                                    }`}
+                                >
+                                    {getTranslation(language, option.labelKey)}
+                                </button>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
 
-            {/* Col 3-4: Sort Menu */}
-            <div className="md:col-span-3">
-                {activeTab === 'bookings' && (
-                    <div className="sticky top-32 flex flex-col gap-2 items-end">
-                        <h3 className="text-xl md:text-2xl font-normal text-black text-right mb-2">{getTranslation(language, 'shop.sortBy')}</h3>
-                        {sortOptions.map((option) => (
-                            <button
-                                key={option.value}
-                                onClick={() => setSortBy(option.value)}
-                                className={`text-right text-xl md:text-2xl font-normal leading-tight transition-colors duration-200 ${
-                                    sortBy === option.value ? 'text-black' : 'text-gray-400 hover:text-black'
-                                }`}
-                            >
-                                {getTranslation(language, option.labelKey)}
-                            </button>
-                        ))}
-                    </div>
-                )}
-            </div>
-
-            {/* Col 6-12: Main Content */}
-            <div className="md:col-start-6 md:col-span-7 w-full flex flex-col gap-24">
+            {/* Main Content */}
+            <div className="md:col-start-6 md:col-span-7 w-full flex flex-col gap-24 md:pr-[19px]">
                 {activeTab === 'products' ? (
                     products.map((product, index) => (
-                        <Reveal key={product.id} delay={index * 0.05}>
-                            <div 
-                                className="flex flex-col gap-6 w-full md:w-[45vw] cursor-pointer group"
-                                onClick={() => onNavigate?.('contact')}
-                            >
-                                {/* Image with hover effect */}
-                                <div className="aspect-[3/4] w-full overflow-hidden">
-                                    <img 
-                                        src={product.image} 
-                                        alt={product.name}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                    />
-                                </div>
-                                
-                                {/* Info */}
-                                <h3 className={`text-xl md:text-2xl font-normal font-sans text-black ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                                    {language === 'th' ? product.nameTH : product.name}
-                                </h3>
+                        <div 
+                            key={product.id}
+                            className="flex flex-col gap-6 w-full cursor-pointer group"
+                            onClick={() => onNavigate?.('contact')}
+                        >
+                            {/* Image with hover effect */}
+                            <div className="aspect-[3/4] w-full overflow-hidden">
+                                <img 
+                                    src={product.image} 
+                                    alt={product.name}
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
                             </div>
-                        </Reveal>
+                            
+                            {/* Info */}
+                            <h3 className={`text-xl md:text-2xl font-normal font-sans text-black ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
+                                {language === 'th' ? product.nameTH : product.name}
+                            </h3>
+                        </div>
                     ))
                 ) : (
                     bookings.map((booking, index) => (
-                        <Reveal key={booking.id} delay={index * 0.1}>
-                            <div className="flex flex-col gap-6 w-full md:w-[45vw] group">
-                                {/* Image */}
-                                <div className="aspect-[3/4] w-full bg-gray-200 overflow-hidden">
-                                     <img 
-                                        src={booking.image} 
-                                        alt={booking.name}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                    />
-                                </div>
-                                
-                                {/* Info */}
-                                <div className="flex justify-between items-start mb-4">
-                                    <h3 className={`text-xl md:text-2xl font-normal font-sans text-black ${language === 'th' ? 'leading-[1.82em]' : ''}`}>{language === 'th' ? booking.nameTH : booking.name}</h3>
-                                    <span className="text-xl md:text-2xl font-normal font-sans text-black">{booking.price}</span>
-                                </div>
-                                
-                                <button 
-                                    className={`border border-black px-4 py-2 text-lg font-sans text-black hover:bg-black hover:text-white transition-colors cursor-pointer w-fit ${language === 'th' ? 'leading-[1.82em]' : ''}`}
-                                    onClick={() => onNavigate?.('contact')}
-                                >
-                                    {getTranslation(language, 'shop.bookTicket')}
-                                </button>
+                        <div key={booking.id} className="flex flex-col gap-6 w-full group">
+                            {/* Image */}
+                            <div className="aspect-[3/4] w-full bg-gray-200 overflow-hidden">
+                                 <img 
+                                    src={booking.image} 
+                                    alt={booking.name}
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
                             </div>
-                        </Reveal>
+                            
+                            {/* Info */}
+                            <div className="flex justify-between items-start mb-4">
+                                <h3 className={`text-xl md:text-2xl font-normal font-sans text-black ${language === 'th' ? 'leading-[1.82em]' : ''}`}>{language === 'th' ? booking.nameTH : booking.name}</h3>
+                                <span className="text-xl md:text-2xl font-normal font-sans text-black">{booking.price}</span>
+                            </div>
+                            
+                            <button 
+                                className={`border border-black px-4 py-2 text-lg font-sans text-black hover:bg-black hover:text-white transition-colors cursor-pointer w-fit ${language === 'th' ? 'leading-[1.82em]' : ''}`}
+                                onClick={() => onNavigate?.('contact')}
+                            >
+                                {getTranslation(language, 'shop.bookTicket')}
+                            </button>
+                        </div>
                     ))
                 )}
             </div>

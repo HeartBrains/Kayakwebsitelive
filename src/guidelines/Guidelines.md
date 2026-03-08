@@ -2,6 +2,13 @@
 ## font consistent ##
 - make font size consistent for entire website, adjust to 5  font sizes, font's weight to 4 weight
 
+## Menu Overlay Guidelines ##
+- **Layout & Alignment:** The Menu Overlay must use a percent-based Grid & Alignment system.
+- **Gutters:** Left and right gutters must be exactly `6vw`.
+- **Bottom Bar:** The bottom bar should be positioned `10vh` from the bottom.
+- **Typography:** All menu items (both primary and sub-menus) must use an `18px` font size, white color (`text-white`), and be strictly left-aligned.
+- **Controls Alignment:** The close button and language switcher must be strictly right-aligned, snapping to the precise grid line to match the layout.
+- *
 <!--
 
 System Guidelines

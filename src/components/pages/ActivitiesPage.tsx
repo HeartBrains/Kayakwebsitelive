@@ -1,5 +1,4 @@
 import { ImageWithFallback } from '../figma/ImageWithFallback';
-import { Reveal } from '../ui/Reveal';
 import { ParallaxHero } from '../ui/ParallaxHero';
 import { useState } from 'react';
 import { useLanguage } from '../../utils/languageContext';
@@ -71,53 +70,52 @@ export function ActivitiesPage({ onNavigate }: ActivitiesPageProps) {
                 <div className="space-y-16 md:space-y-24">
                     {filteredData.length > 0 ? (
                         filteredData.map((item, idx) => (
-                            <Reveal key={item.en.id} delay={idx * 0.1}>
-                                <div 
-                                    className="flex flex-col gap-6 w-full md:w-[45vw] cursor-pointer group"
-                                    onClick={() => onNavigate('activity-detail', item.en.slug)}
-                                >
-                                    <div className="aspect-[4/3] w-full bg-gray-100 overflow-hidden">
-                                        <ImageWithFallback 
-                                            src={item.en.featuredImage.sourceUrl} 
-                                            alt={item.en.title}
-                                            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                                        />
-                                    </div>
-                                    <div className="flex flex-col gap-6">
-                                        {/* English */}
-                                        {language !== 'th' && (
-                                            <div className="flex flex-col gap-2">
-                                                <div className="flex flex-col gap-1">
-                                                    <h3 className="text-lg md:text-xl font-normal text-black leading-tight whitespace-pre-wrap">
-                                                        {item.en.title}
-                                                    </h3>
-                                                     {item.en.acf?.type_label && (
-                                                        <p className="text-lg md:text-xl font-normal text-gray-500 leading-tight">
-                                                            {item.en.acf.type_label}
-                                                        </p>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        )}
-
-                                        {/* Thai */}
-                                        {language === 'th' && (
-                                            <div className="flex flex-col gap-2">
-                                                <div className="flex flex-col gap-1">
-                                                    <h3 className="text-lg md:text-xl font-normal text-black leading-[1.82em] font-sans whitespace-pre-wrap">
-                                                        {item.th.title}
-                                                    </h3>
-                                                     {item.th.acf?.type_label && (
-                                                        <p className="text-lg md:text-xl font-normal text-gray-500 leading-[1.82em] font-sans">
-                                                            {item.th.acf.type_label}
-                                                        </p>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
+                            <div 
+                                key={item.en.id}
+                                className="flex flex-col gap-6 w-full md:w-[45vw] cursor-pointer group"
+                                onClick={() => onNavigate('activity-detail', item.en.slug)}
+                            >
+                                <div className="aspect-[4/3] w-full bg-gray-100 overflow-hidden">
+                                    <ImageWithFallback 
+                                        src={item.en.featuredImage.sourceUrl} 
+                                        alt={item.en.title}
+                                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                    />
                                 </div>
-                            </Reveal>
+                                <div className="flex flex-col gap-6">
+                                    {/* English */}
+                                    {language !== 'th' && (
+                                        <div className="flex flex-col gap-2">
+                                            <div className="flex flex-col gap-1">
+                                                <h3 className="text-lg md:text-xl font-normal text-black leading-tight whitespace-pre-wrap">
+                                                    {item.en.title}
+                                                </h3>
+                                                 {item.en.acf?.type_label && (
+                                                    <p className="text-lg md:text-xl font-normal text-gray-500 leading-tight">
+                                                        {item.en.acf.type_label}
+                                                    </p>
+                                                )}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Thai */}
+                                    {language === 'th' && (
+                                        <div className="flex flex-col gap-2">
+                                            <div className="flex flex-col gap-1">
+                                                <h3 className="text-lg md:text-xl font-normal text-black leading-[1.82em] font-sans whitespace-pre-wrap">
+                                                    {item.th.title}
+                                                </h3>
+                                                 {item.th.acf?.type_label && (
+                                                    <p className="text-lg md:text-xl font-normal text-gray-500 leading-[1.82em] font-sans">
+                                                        {item.th.acf.type_label}
+                                                    </p>
+                                                )}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
                         ))
                     ) : (
                         <div className="py-20 text-gray-400 font-sans text-xl">

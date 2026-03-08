@@ -1,4 +1,3 @@
-import { Reveal } from '../../ui/Reveal';
 import { useLanguage } from '../../../utils/languageContext';
 
 export function VisitInfo() {
@@ -7,8 +6,7 @@ export function VisitInfo() {
   return (
     <div className="flex flex-col gap-12 md:gap-16">
       {/* Visit Info */}
-      <Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-y-4 md:gap-x-8">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-y-4 md:gap-x-8">
             <div className="md:col-span-6">
                 <span className="text-xl md:text-2xl font-sans text-black">
                   {language === 'th' ? 'เยี่ยมชม' : 'Visit'}
@@ -129,7 +127,6 @@ export function VisitInfo() {
                 </div>
             </div>
         </div>
-      </Reveal>
     </div>
   );
 }

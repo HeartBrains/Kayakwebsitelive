@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { Reveal } from '../ui/Reveal';
 import { ParallaxHero } from '../ui/ParallaxHero';
 import { useLanguage } from '../../utils/languageContext';
 import { TEAM_MEMBERS, ADVISORY_BOARD_WITH_TITLES, ADVISORY_BOARD_MEMBERS } from '../../utils/teamDataBilingual';
@@ -49,36 +48,32 @@ export function TeamPage({ activePage = 'team' }: TeamPageProps) {
         <section id="team" className="flex flex-col md:flex-row mb-32 md:mb-40">
             {/* Left Column - Title */}
             <div className="w-full md:w-1/2 mb-12 md:mb-0">
-                <Reveal>
-                    <h2 className={`text-xl md:text-2xl font-normal sticky top-32 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                        {language === 'th' ? 'ทีมงาน' : 'Team'}
-                    </h2>
-                </Reveal>
+                <h2 className={`text-xl md:text-2xl font-normal sticky top-32 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
+                    {language === 'th' ? 'ทีมงาน' : 'Team'}
+                </h2>
             </div>
 
             {/* Right Column - Content */}
             <div className="w-full md:w-1/2 flex flex-col gap-12">
                 {TEAM_MEMBERS.map((member, idx) => (
-                    <Reveal key={idx} delay={idx * 0.05}>
-                        <div className="flex flex-col text-xl md:text-2xl font-sans text-black font-normal">
-                            {/* Name */}
-                            <div>
-                                {member.name}
-                            </div>
-                            {/* Role */}
-                            <div className="text-gray-500">
-                                {language === 'th' ? member.roleTH : member.role}
-                            </div>
-                            {/* Email */}
-                            <div>
-                                {member.email && (
-                                    <a href={`mailto:${member.email}`} className="hover:text-gray-600 transition-colors">
-                                        {member.email}
-                                    </a>
-                                )}
-                            </div>
+                    <div key={idx} className="flex flex-col text-xl md:text-2xl font-sans text-black font-normal">
+                        {/* Name */}
+                        <div>
+                            {member.name}
                         </div>
-                    </Reveal>
+                        {/* Role */}
+                        <div className="text-gray-500">
+                            {language === 'th' ? member.roleTH : member.role}
+                        </div>
+                        {/* Email */}
+                        <div>
+                            {member.email && (
+                                <a href={`mailto:${member.email}`} className="hover:text-gray-600 transition-colors">
+                                    {member.email}
+                                </a>
+                            )}
+                        </div>
+                    </div>
                 ))}
             </div>
         </section>
@@ -87,11 +82,9 @@ export function TeamPage({ activePage = 'team' }: TeamPageProps) {
         <section id="advisory-board" className="flex flex-col md:flex-row mb-12">
             {/* Left Column - Title */}
             <div className="w-full md:w-1/2 mb-12 md:mb-0">
-                <Reveal>
-                    <h2 className={`text-xl md:text-2xl font-normal sticky top-32 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                        {language === 'th' ? 'คณะกรรมการที่ปรึกษา' : 'Advisory Board'}
-                    </h2>
-                </Reveal>
+                <h2 className={`text-xl md:text-2xl font-normal sticky top-32 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
+                    {language === 'th' ? 'คณะกรรมการที่ปรึกษา' : 'Advisory Board'}
+                </h2>
             </div>
 
             {/* Right Column - Content */}
@@ -100,32 +93,23 @@ export function TeamPage({ activePage = 'team' }: TeamPageProps) {
                 {/* With Titles */}
                 <div className="flex flex-col gap-12">
                     {ADVISORY_BOARD_WITH_TITLES.map((person, idx) => (
-                        <Reveal key={idx} delay={idx * 0.05}>
-                            <div className="flex flex-col text-xl md:text-2xl font-sans text-black font-normal">
-                                <div>
-                                    {person.name}
-                                </div>
-                                <div>
-                                    {language === 'th' && person.titleTH ? person.titleTH : person.title}
-                                </div>
+                        <div key={idx} className="flex flex-col text-xl md:text-2xl font-sans text-black font-normal">
+                            <div>
+                                {person.name}
                             </div>
-                        </Reveal>
+                            <div>
+                                {language === 'th' && person.titleTH ? person.titleTH : person.title}
+                            </div>
+                        </div>
                     ))}
                 </div>
-
-                {/* Divider */}
-                <Reveal>
-                    <hr className="border-black border-t-[1px] w-full" />
-                </Reveal>
 
                 {/* Members only */}
                 <div className="flex flex-col gap-4">
                     {ADVISORY_BOARD_MEMBERS.map((member, idx) => (
-                        <Reveal key={idx} delay={idx * 0.05}>
-                            <p className="text-xl md:text-2xl font-sans text-black font-normal">
-                                {member}
-                            </p>
-                        </Reveal>
+                        <p key={idx} className="text-xl md:text-2xl font-sans text-black font-normal">
+                            {member}
+                        </p>
                     ))}
                 </div>
             </div>

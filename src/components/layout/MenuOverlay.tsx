@@ -115,7 +115,7 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
             className="w-full md:w-1/2 h-full bg-black flex flex-col relative overflow-y-auto"
           >
              {/* Close Button */}
-             <div className="absolute top-6 right-6 z-20">
+             <div className="absolute top-[calc(8vh+15px)] right-[6vw] z-20">
                 <button onClick={onClose} className="hover:opacity-70 transition-opacity duration-300">
                     <X className="w-6 h-6 text-white" />
                 </button>
@@ -123,7 +123,7 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
 
              {/* Navigation Links Container */}
              <motion.div 
-                className="flex-1 flex flex-col px-8 md:px-16 pt-20 pb-8"
+                className="flex-1 flex flex-col px-[6vw] py-[8vh] bg-black/60"
                 initial="hidden"
                 animate="show"
                 variants={{
@@ -137,7 +137,7 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
                     }
                 }}
              >
-                <div className="flex flex-col gap-2 -mt-14 px-[0px] py-[0.18px] pt-[15px] pr-[0px] pb-[0px] pl-[0px]">
+                <div className="flex-1 flex flex-col gap-2 px-[0px] py-[0.18px] pt-[15px] pr-[0px] pb-[0px] pl-[0px]">
                     {sitemap.map((item) => {
                         const isExpanded = expandedItems.includes(item.label);
                         const hasChildren = item.children && item.children.length > 0;
@@ -182,7 +182,7 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
                                             animate={{ height: 'auto', opacity: 1 }}
                                             exit={{ height: 0, opacity: 0 }}
                                             transition={{ duration: 0.3 }}
-                                            className="overflow-hidden pl-4 md:pl-6 border-l border-white/10 ml-2 mt-2 space-y-2"
+                                            className="overflow-hidden pl-4 md:pl-6  border-white/10 ml-2 mt-2 space-y-2"
                                         >
                                             {item.children!.map((child) => {
                                                 // Translate specific child labels
@@ -204,7 +204,7 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
                                                             onNavigate(child.page);
                                                             onClose();
                                                         }}
-                                                        className="block w-full text-left text-lg text-gray-500 hover:text-white transition-colors py-1"
+                                                        className="block w-full text-left text-xl md:text-2xl font-normal text-white hover:text-gray-300 transition-colors tracking-wide leading-relaxed py-1"
                                                     >
                                                         {displayLabel}
                                                     </button>
@@ -221,7 +221,7 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
                 </div>
 
                 <motion.div 
-                    className="mt-auto flex justify-between items-end w-full pt-8"
+                    className="h-[10vh] flex justify-between items-end w-full"
                     variants={{
                         hidden: { opacity: 0, y: 20 },
                         show: { opacity: 1, y: 0 }

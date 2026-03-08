@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { Reveal } from '../ui/Reveal';
 import { ParallaxHero } from '../ui/ParallaxHero';
 import { useLanguage } from '../../utils/languageContext';
 
@@ -54,31 +53,27 @@ export function AboutPage({ onNavigate, activePage = 'about' }: AboutPageProps) 
         <section id="about" className="flex flex-col md:flex-row">
             {/* Left Column */}
             <div className="w-full md:w-1/2 mb-8 md:mb-0">
-                <Reveal>
-                    <h2 className="text-xl md:text-2xl font-normal font-sans text-black leading-tight">
-                        {language === 'th' ? 'เกี่ยวกับเรา' : 'About Us'}
-                    </h2>
-                </Reveal>
+                <h2 className="text-xl md:text-2xl font-normal font-sans text-black leading-tight">
+                    {language === 'th' ? 'เกี่ยวกับเรา' : 'About Us'}
+                </h2>
             </div>
 
             {/* Right Column */}
             <div className="w-full md:w-1/2">
                 <div className="flex flex-col gap-8">
                     {contentEN.map((paragraph, index) => (
-                        <Reveal key={`content-${index}`} delay={index * 0.1}>
-                            <div className="flex flex-col gap-4">
-                                {language !== 'th' && (
-                                    <p className="text-xl md:text-2xl text-black font-normal leading-tight">
-                                        {paragraph}
-                                    </p>
-                                )}
-                                {language === 'th' && (
-                                    <p className="text-xl md:text-2xl text-black font-normal font-sans leading-[1.82em]">
-                                        {contentTH[index]}
-                                    </p>
-                                )}
-                            </div>
-                        </Reveal>
+                        <div key={`content-${index}`} className="flex flex-col gap-4">
+                            {language !== 'th' && (
+                                <p className="text-xl md:text-2xl text-black font-normal leading-tight">
+                                    {paragraph}
+                                </p>
+                            )}
+                            {language === 'th' && (
+                                <p className="text-xl md:text-2xl text-black font-normal font-sans leading-[1.82em]">
+                                    {contentTH[index]}
+                                </p>
+                            )}
+                        </div>
                     ))}
                 </div>
             </div>

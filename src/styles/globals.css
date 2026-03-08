@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Forestype';
   src: url('https://www.khaoyaiart.com/_next/static/media/29297acd61a237bc-s.p.woff2') format('woff2');
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
@@ -9,7 +9,7 @@
 @font-face {
   font-family: 'Forestype';
   src: url('https://www.khaoyaiart.com/_next/static/media/3e5c1db3e9b8afef-s.p.woff2') format('woff2');
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }

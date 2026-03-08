@@ -162,7 +162,7 @@ export function ExhibitionDetailPage({ onNavigate, exhibition, slug, backPage }:
         <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-x-8">
             
             {/* Left Column - Meta Data */}
-            <div className="md:col-span-4 flex flex-col gap-8">
+            <div className="md:col-span-4 flex flex-col gap-8 md:pl-[28px]">
                 <Reveal>
                     <div className="flex flex-col gap-1">
                         <h1 className={`text-xl md:text-2xl font-normal text-black leading-tight ${language === 'th' ? 'leading-[1.82em]' : ''}`}>

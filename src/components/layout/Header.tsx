@@ -1,5 +1,6 @@
 import { Menu } from 'lucide-react';
 import { Button } from '../ui/button';
+import KyafBlk from '../../imports/KyafBlk';
 
 interface HeaderProps {
   onMenuClick: () => void;
@@ -23,11 +24,14 @@ export function Header({ onMenuClick, onLogoClick, isTransparent = false }: Head
       
       <div 
         onClick={onLogoClick}
-        className="text-3xl md:text-[2.4vw] font-bold font-sans cursor-pointer mt-0 mr-0 mb-0 ml-0 md:ml-[24px] p-0 overflow-visible"
+        className={`w-[180px] h-[77px] md:w-[200px] md:h-[86px] cursor-pointer mt-0 mr-0 mb-0 ml-0 md:ml-[24px] p-0 transition-opacity duration-300 ${
+          isTransparent ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{ 
+          filter: isTransparent ? 'invert(1) brightness(2)' : 'none'
+        }}
       >
-        Khao Yai
-        <br />
-        Art Forest
+        <KyafBlk />
       </div>
       <Button 
         variant="ghost" 
