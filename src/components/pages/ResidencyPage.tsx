@@ -1,7 +1,7 @@
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { ParallaxHero } from '../ui/ParallaxHero';
 import { Reveal } from '../ui/Reveal';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ARTISTS_DATA } from '../../utils/residencyData';
 import { useLanguage } from '../../utils/languageContext';
 import { getTranslation } from '../../utils/translations';
@@ -9,11 +9,22 @@ import { IMG_FOG_SRC, IMG_PULSUS_SRC } from '../../utils/mockDataBilingual';
 
 interface ResidencyPageProps {
   onNavigate?: (page: string, slug?: string) => void;
+  activeSection?: string;
 }
 
-export function ResidencyPage({ onNavigate }: ResidencyPageProps) {
+export function ResidencyPage({ onNavigate, activeSection }: ResidencyPageProps) {
   const { language } = useLanguage();
-  const [activeCategory, setActiveCategory] = useState<'current' | 'previous'>('current');
+  const [activeCategory, setActiveCategory] = useState<'current' | 'previous'>(
+    (activeSection === 'past' ? 'previous' : activeSection as 'current' | 'previous') || 'current'
+  );
+
+  // Update activeCategory when activeSection prop changes
+  useEffect(() => {
+    if (activeSection) {
+      // Map 'past' to 'previous' for compatibility
+      setActiveCategory(activeSection === 'past' ? 'previous' : activeSection as 'current' | 'previous');
+    }
+  }, [activeSection]);
 
   const filteredArtists = ARTISTS_DATA.filter(artist => artist.category === activeCategory);
 

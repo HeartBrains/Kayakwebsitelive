@@ -2,19 +2,29 @@ import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { Reveal } from '../ui/Reveal';
 import { ParallaxHero } from '../ui/ParallaxHero';
 import { motion } from 'motion/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../../utils/languageContext';
 import { MOCK_POSTS_BILINGUAL, EXHIBITIONS_HERO_IMAGE } from '../../utils/mockDataBilingual';
 
 interface ExhibitionsPageProps {
     onNavigate?: (page: string, slug?: string) => void;
+    activeSection?: string;
 }
 
-type Category = 'current' | 'past';
+type Category = 'current' | 'upcoming';
 
-export function ExhibitionsPage({ onNavigate }: ExhibitionsPageProps) {
-  const [activeCategory, setActiveCategory] = useState<Category>('current');
+export function ExhibitionsPage({ onNavigate, activeSection }: ExhibitionsPageProps) {
+  const [activeCategory, setActiveCategory] = useState<Category>(
+    (activeSection as Category) || 'current'
+  );
   const { language } = useLanguage();
+
+  // Update activeCategory when activeSection prop changes
+  useEffect(() => {
+    if (activeSection) {
+      setActiveCategory(activeSection as Category);
+    }
+  }, [activeSection]);
 
   // Get all exhibitions
   const allPosts = Object.values(MOCK_POSTS_BILINGUAL);
@@ -24,11 +34,11 @@ export function ExhibitionsPage({ onNavigate }: ExhibitionsPageProps) {
     item.en.date && item.en.date.includes('Permanent')
   );
   
-  const pastExhibitions = allExhibitions.filter(item => 
-    item.en.date && item.en.date.includes('Past')
+  const upcomingExhibitions = allExhibitions.filter(item => 
+    item.en.date && item.en.date.includes('Upcoming')
   );
 
-  const filteredExhibitions = activeCategory === 'current' ? currentExhibitions : pastExhibitions;
+  const filteredExhibitions = activeCategory === 'current' ? currentExhibitions : upcomingExhibitions;
 
   return (
     <div className="w-full bg-white min-h-screen pb-24">
@@ -56,12 +66,12 @@ export function ExhibitionsPage({ onNavigate }: ExhibitionsPageProps) {
                         <span>{language === 'th' ? 'นิทรรศการปัจจุบัน' : 'Current Exhibitions'}</span>
                     </button>
                     <button 
-                        onClick={() => setActiveCategory('past')}
+                        onClick={() => setActiveCategory('upcoming')}
                         className={`text-xl md:text-2xl font-sans text-left transition-colors duration-300 flex flex-col items-start ${
-                            activeCategory === 'past' ? 'text-black font-medium' : 'text-gray-400 hover:text-gray-600'
+                            activeCategory === 'upcoming' ? 'text-black font-medium' : 'text-gray-400 hover:text-gray-600'
                         }`}
                     >
-                        <span>{language === 'th' ? 'นิทรรศการที่ผ่านมา' : 'Past Exhibitions'}</span>
+                        <span>{language === 'th' ? 'นิทรรศการที่จะมา' : 'Upcoming Exhibitions'}</span>
                     </button>
                 </div>
             </div>

@@ -8,13 +8,14 @@ import { useLanguage } from '../../utils/languageContext';
 interface MenuOverlayProps {
   isOpen: boolean;
   onClose: () => void;
-  onNavigate: (page: string) => void;
+  onNavigate: (page: string, slug?: string, backTo?: any, section?: string) => void;
   activePage: string;
 }
 
 interface MenuItem {
     label: string;
     page: string;
+    section?: string;
     children?: MenuItem[];
 }
 
@@ -39,25 +40,24 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
       label: t('nav.exhibitions'), 
       page: 'exhibitions',
       children: [
-          { label: t('exhibitions.current'), page: 'exhibitions' },
-          { label: t('exhibitions.upcoming'), page: 'exhibitions' },
-          { label: 'Moving Image Program', page: 'exhibitions' },
+          { label: t('exhibitions.current'), page: 'exhibitions', section: 'current' },
+          { label: t('exhibitions.upcoming'), page: 'exhibitions', section: 'upcoming' },
       ]
     },
     {
         label: t('nav.activities'),
         page: 'activities',
         children: [
-            { label: 'Public Program', page: 'activities' },
-            { label: t('activities.screenings'), page: 'activities' },
+            { label: t('activities.current'), page: 'activities', section: 'current' },
+            { label: t('activities.upcoming'), page: 'activities', section: 'upcoming' },
         ]
     },
     {
         label: t('nav.residency'),
         page: 'residency',
         children: [
-            { label: t('residency.currentArtists'), page: 'residency' },
-            { label: t('residency.pastArtists'), page: 'residency' },
+            { label: t('residency.currentArtists'), page: 'residency', section: 'current' },
+            { label: t('residency.pastArtists'), page: 'residency', section: 'past' },
         ]
     },
     { label: t('nav.blog'), page: 'blog' },
@@ -185,14 +185,12 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
                                             className="overflow-hidden pl-4 md:pl-6  border-white/10 ml-2 mt-2 space-y-2"
                                         >
                                             {item.children!.map((child) => {
-                                                // Translate specific child labels
+                                                // No additional translation needed - using t() function from menu structure
                                                 let displayLabel = child.label;
                                                 if (language === 'th') {
                                                     switch (child.label) {
                                                         case 'Bookings': displayLabel = 'การจอง'; break;
                                                         case 'Products': displayLabel = 'สินค้า'; break;
-                                                        case 'Moving Image Program': displayLabel = 'โปรแกรมภาพเคลื่อนไหว'; break;
-                                                        case 'Public Program': displayLabel = 'โปรแกรมสาธารณะ'; break;
                                                         case 'Past Activities': displayLabel = 'กิจกรรมที่ผ่านมา'; break;
                                                     }
                                                 }
@@ -201,7 +199,7 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
                                                     <button
                                                         key={child.label}
                                                         onClick={() => {
-                                                            onNavigate(child.page);
+                                                            onNavigate(child.page, undefined, undefined, child.section);
                                                             onClose();
                                                         }}
                                                         className="block w-full text-left text-xl md:text-2xl font-normal text-white hover:text-gray-300 transition-colors tracking-wide leading-relaxed py-1"

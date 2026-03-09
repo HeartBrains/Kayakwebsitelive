@@ -35,6 +35,7 @@ export default function App() {
   // New state for navigation history and detail pages
   const [selectedSlug, setSelectedSlug] = useState<string | undefined>();
   const [backPage, setBackPage] = useState<Page | undefined>();
+  const [activeSection, setActiveSection] = useState<string | undefined>();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,7 +45,7 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavigate = (page: string, slug?: string, backTo?: Page) => {
+  const handleNavigate = (page: string, slug?: string, backTo?: Page, section?: string) => {
       // If navigating to a detail page, set the slug and back reference
       if (slug) {
           setSelectedSlug(slug);
@@ -55,6 +56,13 @@ export default function App() {
           // If simply navigating top-level, reset backPage unless we want to keep history?
           // Usually we want to reset it so default "Back" works.
           setBackPage(undefined);
+      }
+      
+      // Set active section for filtering
+      if (section) {
+          setActiveSection(section);
+      } else {
+          setActiveSection(undefined);
       }
 
       setCurrentPage(page as Page);
@@ -94,14 +102,14 @@ export default function App() {
           {currentPage === 'support' && <SupportPage />}
           {currentPage === 'visit' && <VisitPage />}
           {currentPage === 'news' && <PostPage onNavigate={handleNavigate} />}
-          {currentPage === 'activities' && <ActivitiesPage onNavigate={handleNavigate} />}
+          {currentPage === 'activities' && <ActivitiesPage onNavigate={handleNavigate} activeSection={activeSection} />}
           {currentPage === 'activity-detail' && <ActivityDetailPage onNavigate={handleNavigate} slug={selectedSlug || "neon-reveries"} backPage={backPage} />}
           {currentPage === 'blog' && <BlogPage onNavigate={handleNavigate} />}
           {currentPage === 'blog-detail' && <BlogDetailPage onNavigate={handleNavigate} slug={selectedSlug || "art-as-reflection"} />}
-          {currentPage === 'exhibitions' && <ExhibitionsPage onNavigate={handleNavigate} />}
+          {currentPage === 'exhibitions' && <ExhibitionsPage onNavigate={handleNavigate} activeSection={activeSection} />}
           {currentPage === 'exhibition-detail' && <ExhibitionDetailPage onNavigate={handleNavigate} slug={selectedSlug || "unwinding-architecture"} backPage={backPage} />}
           {currentPage === 'archives' && <ArchivesPage onNavigate={handleNavigate} />}
-          {currentPage === 'residency' && <ResidencyPage onNavigate={handleNavigate} />}
+          {currentPage === 'residency' && <ResidencyPage onNavigate={handleNavigate} activeSection={activeSection} />}
           {currentPage === 'artist-detail' && <ArtistDetailPage onNavigate={handleNavigate} slug={selectedSlug} backPage={backPage} />}
           {currentPage === 'shop' && <ShopPage onNavigate={handleNavigate} />}
           {currentPage === 'press' && <PressPage />}

@@ -85,6 +85,8 @@ export const translations = {
     
     // Activities
     'activities.title': 'Activities',
+    'activities.current': 'Current Activities',
+    'activities.upcoming': 'Upcoming Activities',
     'activities.screenings': 'Screenings',
     'activities.talks': 'Talks',
     'activities.workshops': 'Workshops',
@@ -100,6 +102,9 @@ export const translations = {
     'residency.description': 'Our residency program supports emerging and established artists.',
     'residency.currentArtists': 'Current Artists',
     'residency.pastArtists': 'Past Artists',
+    'residency.applyNow': 'Apply Now',
+    'residency.currentResidents': 'Current Residents',
+    'residency.alumniArtists': 'Alumni Artists',
     
     // Visit
     'visit.title': 'Visit Us',
@@ -107,6 +112,10 @@ export const translations = {
     'visit.location': 'Location',
     'visit.admission': 'Admission',
     'visit.admissionFree': 'Free Admission',
+    'visit.openingHours': 'Opening Hours',
+    'visit.closed': 'Closed',
+    'visit.direction': 'Direction',
+    'visit.accessibility': 'Accessibility',
     
     // Contact
     'contact.title': 'Contact Us',
@@ -114,6 +123,9 @@ export const translations = {
     'contact.phone': 'Phone',
     'contact.email': 'Email',
     'contact.followUs': 'Follow Us',
+    'contact.generalInquiries': 'General Inquiries',
+    'contact.pressInquiries': 'Press Inquiries',
+    'contact.visitUs': 'Visit Us',
     
     // Footer
     'footer.newsletter': 'Subscribe to our newsletter',
@@ -138,22 +150,6 @@ export const translations = {
     'about.vision': 'Vision',
     'about.mission': 'Mission',
     'about.history': 'History',
-    
-    // Visit
-    'visit.openingHours': 'Opening Hours',
-    'visit.closed': 'Closed',
-    'visit.direction': 'Direction',
-    'visit.accessibility': 'Accessibility',
-    
-    // Contact
-    'contact.generalInquiries': 'General Inquiries',
-    'contact.pressInquiries': 'Press Inquiries',
-    'contact.visitUs': 'Visit Us',
-    
-    // Residency
-    'residency.applyNow': 'Apply Now',
-    'residency.currentResidents': 'Current Residents',
-    'residency.alumniArtists': 'Alumni Artists',
   },
   th: {
     // Navigation - Thai translations
@@ -244,6 +240,8 @@ export const translations = {
     
     // Activities - Thai
     'activities.title': 'กิจกรรม',
+    'activities.current': 'กิจกรรมปัจจุบัน',
+    'activities.upcoming': 'กิจกรรมที่จะมาถึง',
     'activities.screenings': 'การฉายภาพยนตร์',
     'activities.talks': 'การพูดคุย',
     'activities.workshops': 'เวิร์คช็อป',

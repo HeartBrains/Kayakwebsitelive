@@ -1,18 +1,28 @@
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { ParallaxHero } from '../ui/ParallaxHero';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../../utils/languageContext';
 import { MOCK_POSTS_BILINGUAL, ACTIVITY_HERO_IMAGE } from '../../utils/mockDataBilingual';
 
 interface ActivitiesPageProps {
   onNavigate: (page: string, slug?: string) => void;
+  activeSection?: string;
 }
 
-type Category = 'current' | 'past';
+type Category = 'current' | 'upcoming';
 
-export function ActivitiesPage({ onNavigate }: ActivitiesPageProps) {
+export function ActivitiesPage({ onNavigate, activeSection }: ActivitiesPageProps) {
   const { language } = useLanguage();
-  const [activeCategory, setActiveCategory] = useState<Category>('current');
+  const [activeCategory, setActiveCategory] = useState<Category>(
+    (activeSection as Category) || 'current'
+  );
+
+  // Update activeCategory when activeSection prop changes
+  useEffect(() => {
+    if (activeSection) {
+      setActiveCategory(activeSection as Category);
+    }
+  }, [activeSection]);
 
   // Get all activities
   const allPosts = Object.values(MOCK_POSTS_BILINGUAL);
@@ -23,11 +33,11 @@ export function ActivitiesPage({ onNavigate }: ActivitiesPageProps) {
     ['k-bar-experience'].includes(item.en.slug) || (item.en.date && item.en.date.includes('Permanent'))
   );
   
-  const pastActivities = allActivities.filter(item => 
-    !['k-bar-experience'].includes(item.en.slug) && (!item.en.date || !item.en.date.includes('Permanent'))
+  const upcomingActivities = allActivities.filter(item => 
+    item.en.date && item.en.date.includes('Upcoming')
   );
 
-  const filteredData = activeCategory === 'current' ? currentActivities : pastActivities;
+  const filteredData = activeCategory === 'current' ? currentActivities : upcomingActivities;
 
   return (
     <div className="w-full bg-white pb-24 min-h-screen font-sans text-black">
@@ -55,12 +65,12 @@ export function ActivitiesPage({ onNavigate }: ActivitiesPageProps) {
                         <span>{language === 'th' ? 'กิจกรรม' : 'Activities'}</span>
                     </button>
                     <button 
-                        onClick={() => setActiveCategory('past')}
+                        onClick={() => setActiveCategory('upcoming')}
                         className={`text-xl md:text-2xl font-sans text-left transition-colors duration-300 flex flex-col items-start ${
-                            activeCategory === 'past' ? 'text-black font-medium' : 'text-gray-400 hover:text-gray-600'
+                            activeCategory === 'upcoming' ? 'text-black font-medium' : 'text-gray-400 hover:text-gray-600'
                         }`}
                     >
-                        <span>{language === 'th' ? 'กิจกรรมที่ผ่านมา' : 'Past Activities'}</span>
+                        <span>{language === 'th' ? 'กิจกรรมที่กำลังจะเกิดขึ้น' : 'Upcoming Activities'}</span>
                     </button>
                 </div>
             </div>
