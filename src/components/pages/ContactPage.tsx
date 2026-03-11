@@ -2,102 +2,158 @@ import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
 import { Button } from '../ui/button';
 import { useLanguage } from '../../utils/languageContext';
-import { ParallaxHero } from '../ui/ParallaxHero';
+import { ParallaxHeroSlideshow } from '../ui/ParallaxHeroSlideshow';
+import { Facebook, Instagram, Globe } from 'lucide-react';
 
-import { CONTACT_HERO_IMAGE } from '../../utils/mockDataBilingual';
+import { CONTACT_HERO_IMAGE, CONTACT_HERO_IMAGE_2 } from '../../utils/mockDataBilingual';
 
 export function ContactPage() {
   const { language } = useLanguage();
   
   return (
     <div className="bg-white min-h-screen pb-24 font-sans text-black">
-      {/* Hero Map - Using Fog Forest image from JSON */}
-       <ParallaxHero 
-        image={CONTACT_HERO_IMAGE}
+      {/* Hero Map - Using slideshow with 2 images */}
+       <ParallaxHeroSlideshow 
+        images={[CONTACT_HERO_IMAGE, CONTACT_HERO_IMAGE_2]}
         height="h-[60vh] md:h-[80vh]"
       >
         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />
-      </ParallaxHero>
+      </ParallaxHeroSlideshow>
 
       <div className="w-full px-6 pt-24">
         
-        {/* Contact Content */}
-        <div className="flex flex-col md:flex-row mb-32 md:mb-40">
+        {/* Section 1: Connect with Khao Yai Art Forest */}
+        <div className="flex flex-col md:flex-row mb-12 md:mb-16">
              {/* Left Column */}
-            <div className="w-full md:w-1/2 mb-12 md:mb-0">
-                <h1 className="text-xl md:text-2xl font-normal sticky top-32">
-                  {language === 'th' ? 'ติดต่อเรา' : 'Contact Us'}
+            <div className="w-full md:w-1/2 mb-12 md:mb-0 md:ml-6">
+                <h1 className="text-[19px] font-normal">
+                  {language === 'th' ? 'เชื่อมต่อกับเขาใหญ่ อาร์ตฟอเรสต์' : 'Connect with Khao Yai Art Forest'}
                 </h1>
             </div>
 
             {/* Right Column */}
             <div className="w-full md:w-1/2 flex flex-col gap-12">
-                <div className="flex flex-col gap-8">
-                     <div className="flex flex-col gap-2">
-                        <span className="text-sm uppercase tracking-wider text-gray-500">
-                            {language === 'th' ? 'สอบถามทั่วไป' : 'General Inquiries'}
-                        </span>
-                        <a href="mailto:info@khaoyaiart.com" className="text-xl md:text-2xl font-normal hover:text-gray-600 transition-colors">
-                            info@khaoyaiart.com
-                        </a>
-                    </div>
-                    
-                    <div className="flex flex-col gap-2">
-                        <span className="text-sm uppercase tracking-wider text-gray-500">
-                            {language === 'th' ? 'สอบถามข้อมูลสื่อมวลชน' : 'Press Inquiries'}
-                        </span>
-                        <a href="mailto:press@khaoyaiart.com" className="text-xl md:text-2xl font-normal hover:text-gray-600 transition-colors">
-                            press@khaoyaiart.com
-                        </a>
-                    </div>
-                    
-                     <div className="flex flex-col gap-2">
-                        <span className="text-sm uppercase tracking-wider text-gray-500">
-                            {language === 'th' ? 'โซเชียลมีเดีย' : 'Social Media'}
-                        </span>
-                        <a href="https://instagram.com/khaoyai_art_forest" target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl font-normal hover:text-gray-600 transition-colors">
-                            @khaoyai_art_forest
-                        </a>
-                    </div>
-                    
-                     <div className="flex flex-col gap-2">
-                        <span className="text-sm uppercase tracking-wider text-gray-500">
-                            {language === 'th' ? 'เว็บไซต์' : 'Website'}
-                        </span>
-                        <a href="https://www.khaoyaiart.com" target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl font-normal hover:text-gray-600 transition-colors">
-                            www.khaoyaiart.com
-                        </a>
-                    </div>
+                {/* Introduction */}
+                <div className="flex flex-col gap-4">
+                    <p className="text-[19px] font-normal">
+                        {language === 'th' 
+                            ? 'สำหรับการสอบถามเกี่ยวกับนิทรรศการ สื่อมวลชน การเยี่ยมชมส่วนตัว หรือวัตถุประสงค์ทางการศึกษา' 
+                            : 'For inquiries regarding exhibitions, press, private visits, or educational purpose.'}
+                    </p>
                 </div>
 
-                <div className="flex flex-col gap-1 mt-4">
-                    {language !== 'th' && (
-                        <p className="text-xl md:text-2xl font-normal leading-tight">
-                            Or leave a message below.
-                        </p>
-                    )}
-                    {language === 'th' && (
-                        <p className="text-xl md:text-2xl font-normal font-sans leading-[1.82em]">
-                            หรือฝากข้อความด้านล่าง
-                        </p>
-                    )}
+                {/* Email */}
+                <div className="flex flex-col gap-2">
+                    <p className="text-[19px] font-normal">
+                        {language === 'th' 
+                            ? 'กรุณาฝากข้อความด้านล่าง หรือติดต่อเราทางอีเมล: ' 
+                            : 'Please leave a message below, or contact us by email: '}
+                        <a href="mailto:info@khaoyaiart.com" className="hover:text-gray-600 transition-colors">
+                            info@khaoyaiart.com
+                        </a>
+                    </p>
                 </div>
-                <form className="flex flex-col gap-6 w-full max-w-lg mt-8" onSubmit={(e) => e.preventDefault()}>
+
+                {/* Contact Form */}
+                <form className="flex flex-col gap-6 w-full max-w-lg" onSubmit={(e) => e.preventDefault()}>
                     <Input 
                         placeholder={language === 'th' ? 'อีเมล' : 'Email'}
-                        className="rounded-none border-gray-300 h-12 text-lg placeholder:text-gray-400 font-sans"
+                        className="rounded-none border-gray-300 h-12 text-[19px] placeholder:text-gray-400 font-sans"
                     />
                     <Textarea 
                         placeholder={language === 'th' ? 'ข้อความสอบถาม' : 'Inquiry Box'}
-                        className="rounded-none border-gray-300 min-h-[200px] text-lg placeholder:text-gray-400 resize-none font-sans"
+                        className="rounded-none border-gray-300 min-h-[200px] text-[19px] placeholder:text-gray-400 resize-none font-sans"
                     />
                     <Button 
                         type="submit"
-                        className="rounded-none bg-[#1A1A1A] hover:bg-black text-white px-8 py-6 text-lg w-fit font-sans"
+                        className="rounded-none bg-[#1A1A1A] hover:bg-black text-white px-8 py-6 text-[19px] w-fit font-sans"
                     >
                         {language === 'th' ? 'ส่ง' : 'Submit'}
                     </Button>
                 </form>
+            </div>
+        </div>
+
+        {/* Section 2: Social Media */}
+        <div className="flex flex-col md:flex-row mb-12 md:mb-16">
+            {/* Left Column */}
+            <div className="w-full md:w-1/2 mb-12 md:mb-0 md:ml-6">
+                <h2 className="text-[19px] font-normal">
+                    {language === 'th' ? 'โซเชียลมีเดีย' : 'Social Media'}
+                </h2>
+            </div>
+
+            {/* Right Column */}
+            <div className="w-full md:w-1/2 md:mr-6">
+                <div className="flex flex-col gap-2">
+                    <a 
+                        href="https://www.facebook.com/profile.php?id=61569868164323" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="font-normal hover:text-gray-600 transition-colors flex items-center text-[19px]"
+                    >
+                        <Facebook className="mr-6" size={16} />
+                        Khao Yai Art Forest
+                    </a>
+                    <a 
+                        href="https://www.instagram.com/khaoyai_art_forest/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="font-normal hover:text-gray-600 transition-colors flex items-center text-[19px]"
+                    >
+                        <Instagram className="mr-6" size={16} />
+                        khaoyai_art_forest
+                    </a>
+                    <a 
+                        href="http://www.khaoyaiart.com" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="font-normal hover:text-gray-600 transition-colors flex items-center text-[19px]"
+                    >
+                        <Globe className="mr-6" size={16} />
+                        www.khaoyaiart.com
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        {/* Section 3: Address */}
+        <div className="flex flex-col md:flex-row mb-12 md:mb-16">
+            {/* Left Column */}
+            <div className="w-full md:w-1/2 mb-12 md:mb-0 md:ml-6">
+                <h2 className="text-[19px] font-normal">
+                    {language === 'th' ? 'ที่อยู่' : 'Address'}
+                </h2>
+            </div>
+
+            {/* Right Column */}
+            <div className="w-full md:w-1/2">
+                <div className="text-[19px] font-normal">
+                    <p className="text-[19px]">Khao Yai Art Forest</p>
+                    <p className="text-[19px]">{language === 'th' 
+                        ? 'โป่งตาลอง ปากช่อง นครราชสีมา 30130 ประเทศไทย' 
+                        : 'Pong Ta Long, Pak Chong, Nakhon Ratchasima, 30130 Thailand'}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {/* Section 4: Opening Hours */}
+        <div className="flex flex-col md:flex-row mb-12 md:mb-16">
+            {/* Left Column */}
+            <div className="w-full md:w-1/2 mb-12 md:mb-0 md:ml-6">
+                <h2 className="text-[19px] font-normal">
+                    {language === 'th' ? 'เวลาเปิดทำการ' : 'Opening Hours'}
+                </h2>
+            </div>
+
+            {/* Right Column */}
+            <div className="w-full md:w-1/2">
+                <div className="text-[19px] font-normal">
+                    <p className="text-[19px]">{language === 'th' ? 'พฤหัสบดี - ศุกร์: 12:30 - 18:00' : 'Thursday - Friday: 12:30 - 18:00'}</p>
+                    <p className="text-[19px]">{language === 'th' ? 'เสาร์ - อาทิตย์: 10:00 - 18:00' : 'Saturday - Sunday: 10:00 - 18:00'}</p>
+                    <p className="mt-2 text-[19px]">{language === 'th' ? 'ปิด: จันทร์ - พุธ' : 'Closed: Monday - Wednesday'}</p>
+                </div>
             </div>
         </div>
 

@@ -3,8 +3,9 @@ import IMG_GOD_ASSET from 'figma:asset/333e45022861ad8d6b5f75dd9cb8b429f6dccc77.
 import IMG_MUSIC_ON_THE_MOVE_ASSET from 'figma:asset/3aee81884c982f6a3494a9f241977094c9d2ef0f.png';
 
 // New Image Assets (LIRP CDN)
-const IMG_ABOUT_HERO = "https://lirp.cdn-website.com/5516674f/dms3rep/multi/opt/Z44owZbqstJ99oRa_CopyofIMG_7215-1920w.jpeg";
-const IMG_CONTACT_HERO = "https://lirp.cdn-website.com/5516674f/dms3rep/multi/opt/aGyt20MqNJQqHqMu__DSC9701-1920w.jpg";
+const IMG_ABOUT_HERO = "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-About__Madrid+Circle-+Krittawat+and+Puttisin+1.png";
+const IMG_CONTACT_HERO = "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-contact-slider-pic-1__Activity+-+People-+Puttisin+16.jpg";
+const IMG_CONTACT_HERO_2 = "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-Contact-slider-pic-2__Activity+-+People-+Chittawan+Limcharoen+35.jpg";
 const IMG_MADRID = "https://lirp.cdn-website.com/5516674f/dms3rep/multi/opt/Z4XpjJbqstJ99aFF_Forest-Circle-II-01-1920w.jpg";
 const IMG_MUSIC = IMG_MUSIC_ON_THE_MOVE_ASSET;
 const IMG_FOG = "https://lirp.cdn-website.com/5516674f/dms3rep/multi/opt/aGywKEMqNJQqHqM-_KYAF_03-1920w.jpg";
@@ -13,15 +14,26 @@ const IMG_MAMAN = "https://lirp.cdn-website.com/5516674f/dms3rep/multi/opt/Z44UM
 const IMG_KBAR = "https://lirp.cdn-website.com/5516674f/dms3rep/multi/opt/Z44YyZbqstJ99oE8_03K-Bar_PhotobyAndreaRossetti-1920w.jpg";
 const IMG_ARABICA = "https://lirp.cdn-website.com/5516674f/dms3rep/multi/opt/Z44iuJbqstJ99oM__CopyofDSC001792.885100-1--1920w.jpg";
 const IMG_PULSUS = "https://lirp.cdn-website.com/5516674f/dms3rep/multi/opt/Z39x8ZbqstJ99M5I_Walking-In-Nature-1920w.jpeg";
-const IMG_VISIT_HERO = "https://lirp.cdn-website.com/5516674f/dms3rep/multi/opt/Z44I-5bqstJ99n62_202_0F4A8809-1920w.jpeg";
-const IMG_TEAM_HERO = "https://lirp.cdn-website.com/5516674f/dms3rep/multi/opt/aXnw0AIvOtkhCBs8_A915147B-6743-45F3-8563-591E3EDF16B0-1920w.jpeg";
+const IMG_VISIT_HERO = "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-Visit__Activity+-+People-+Puttisin+2.jpg";
+const IMG_TEAM_HERO = "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-team__Activity+-+People-+Nawaphon-+Film+41.jpg";
+const IMG_EXHIBITIONS_HERO = "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-exhibitions__Fog+Forest-+Andrea+Rossetti+5.jpg";
 const IMG_GOD = IMG_GOD_ASSET;
 
-// New Assets
-const IMG_LIGHT = "https://images.unsplash.com/photo-1732038332358-c18d5dbaa068?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsaWdodCUyMGluc3RhbGxhdGlvbiUyMGZvcmVzdCUyMGFydHxlbnwxfHx8fDE3NzA0NzQyODV8MA&ixlib=rb-4.1.0&q=80&w=1080";
-const IMG_CERAMIC = "https://images.unsplash.com/photo-1766802981812-5de4f231fc9a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjZXJhbWljJTIwYXJ0JTIwZXhoaWJpdGlvbiUyMG5hdHVyZXxlbnwxfHx8fDE3NzA0NzQyODR8MA&ixlib=rb-4.1.0&q=80&w=1080";
-const IMG_STAR = "https://images.unsplash.com/photo-1759774043517-906f3a1c9773?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdGFyZ2F6aW5nJTIwZXZlbnQlMjBuaWdodCUyMGZvcmVzdHxlbnwxfHx8fDE3NzA0NzQyODR8MA&ixlib=rb-4.1.0&q=80&w=1080";
-const IMG_POTTERY = "https://images.unsplash.com/photo-1767476106226-ff48f2e12286?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3R0ZXJ5JTIwd29ya3Nob3AlMjBvdXRkb29yc3xlbnwxfHx8fDE3NzA0NzQyODV8MA&ixlib=rb-4.1.0&q=80&w=1080";
+// Placeholder images for past exhibitions/activities
+const IMG_LIGHT = IMG_FOG; // Reuse fog forest image
+const IMG_CERAMIC = IMG_ARABICA; // Reuse arabica image
+const IMG_STAR = IMG_PULSUS; // Reuse pulsus image
+const IMG_POTTERY = IMG_KBAR; // Reuse k-bar image
+
+// Home Page Hero Slider Images (All 6 images from CSV)
+const HOME_HERO_IMAGES = [
+  "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-Contact-slider-pic-2__Activity+-+People-+Chittawan+Limcharoen+35.jpg",
+  "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-team__Activity+-+People-+Nawaphon-+Film+41.jpg",
+  "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-About__Madrid+Circle-+Krittawat+and+Puttisin+1.png",
+  "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-Visit__Activity+-+People-+Puttisin+2.jpg",
+  "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-contact-slider-pic-1__Activity+-+People-+Puttisin+16.jpg",
+  "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-exhibitions__Fog+Forest-+Andrea+Rossetti+5.jpg"
+];
 
 interface PostData {
     title: string;
@@ -314,7 +326,7 @@ export const MOCK_POSTS_BILINGUAL = {
         artist: 'สมศักดิ์ ชัย',
         categories: ['เซรามิก', 'ประติมากรรม', 'ธรรมชาติ'],
         content: `<p>ผลงานของสมศักดิ์ ชัย สำรวจความทนทานของดินเหนียวเมื่อต้องเผชิญกับสภาวะสุดขั้ว ภาชนะขนาดใหญ่เหล่านี้สร้างขึ้นโดยใช้ดินในท้องถิ่นและเผาในสถานที่จริง ร่องรอยการเผาไหม้บนชิ้นงานเป็นเครื่องยืนยันถึงความสัมพันธ์ระหว่างดินและไฟ</p>`,
-        listing_summary: "คอลเลกชันประติมากรรมเซรามิกที่ผ่านการเผาในหลุมเปิด สะท้อนถึงธาตุแท้ของธรรมชาติ",
+        listing_summary: "คอลเลกชันประติมากรรมเซราิกที่ผ่านการเผาในหลุมเปิด สะท้อนถึงธาตุแท้ของธรรมชาติ",
         extra: {
             tags: ["เซรามิก", "สมศักดิ์ ชัย", "ศิลปะดินเหนียว", "วัสดุธรรมชาติ", "ประติมากรรม", "ศิลปินไทย", "Process Art"],
             specifications: { "วัสดุ": "ดินท้องถิ่น", "เทคนิค": "การเผาแบบหลุม", "สถานที่": "ลานกลางแจ้ง" }
@@ -479,9 +491,10 @@ export const getMockPostsByType = (type: 'exhibition' | 'activity' | 'post', lan
 export const ACTIVITY_HERO_IMAGE = IMG_KBAR;
 export const ABOUT_HERO_IMAGE = IMG_ABOUT_HERO;
 export const CONTACT_HERO_IMAGE = IMG_CONTACT_HERO;
+export const CONTACT_HERO_IMAGE_2 = IMG_CONTACT_HERO_2;
 export const VISIT_HERO_IMAGE = IMG_VISIT_HERO;
 export const TEAM_HERO_IMAGE = IMG_TEAM_HERO;
-export const EXHIBITIONS_HERO_IMAGE = IMG_MADRID;
+export const EXHIBITIONS_HERO_IMAGE = IMG_EXHIBITIONS_HERO;
 
 export const IMG_MADRID_SRC = IMG_MADRID;
 export const IMG_FOG_SRC = IMG_FOG;
@@ -492,3 +505,5 @@ export const IMG_MAMAN_SRC = IMG_MAMAN;
 export const IMG_KBAR_SRC = IMG_KBAR;
 export const IMG_MUSIC_SRC = IMG_MUSIC;
 export const IMG_ARABICA_SRC = IMG_ARABICA;
+
+export { HOME_HERO_IMAGES };

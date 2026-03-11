@@ -17,6 +17,7 @@ interface MenuItem {
     page: string;
     section?: string;
     children?: MenuItem[];
+    externalUrl?: string;
 }
 
 export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOverlayProps) {
@@ -63,6 +64,7 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
     { label: t('nav.blog'), page: 'blog' },
     { label: t('nav.aboutUs'), page: 'about' },
     { label: t('nav.team'), page: 'team' },
+    { label: t('nav.booking'), page: '', externalUrl: 'https://www.tickettailor.com/events/khaoyaiart' },
     {
         label: t('nav.shop'),
         page: 'shop',
@@ -155,8 +157,13 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
                                 <div className="flex items-center justify-between group">
                                     <button
                                         onClick={() => {
-                                            onNavigate(item.page);
-                                            onClose();
+                                            if (item.externalUrl) {
+                                                window.open(item.externalUrl, '_blank', 'noopener,noreferrer');
+                                                onClose();
+                                            } else {
+                                                onNavigate(item.page);
+                                                onClose();
+                                            }
                                         }}
                                         className={`text-left text-xl md:text-2xl font-normal transition-colors duration-300 tracking-wide ${
                                             isActive ? 'text-gray-300' : 'text-white group-hover:text-gray-300'

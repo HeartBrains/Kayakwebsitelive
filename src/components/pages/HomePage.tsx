@@ -1,7 +1,7 @@
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { HeroSlider } from '../ui/HeroSlider';
 import { useLanguage } from '../../utils/languageContext';
-import { MOCK_POSTS_BILINGUAL } from '../../utils/mockDataBilingual';
+import { MOCK_POSTS_BILINGUAL, HOME_HERO_IMAGES } from '../../utils/mockDataBilingual';
 
 export function HomePage({ onNavigate }: { onNavigate?: (page: string, slug?: string) => void }) {
   const { language } = useLanguage();
@@ -22,18 +22,11 @@ export function HomePage({ onNavigate }: { onNavigate?: (page: string, slug?: st
     !item.en.date.includes('2025') && !item.en.date.includes('Closed')
   );
 
-  // Derive Hero Images from Current Exhibitions + Current Activities
-  // Limit to 5 images max
-  const heroImages = [
-    ...currentExhibitions.map(ex => ex.en.featuredImage.sourceUrl),
-    ...currentActivities.map(act => act.en.featuredImage.sourceUrl)
-  ].slice(0, 5);
-
   return (
     <div className="w-full bg-white min-h-screen pb-24 font-sans text-black">
-      {/* Hero Section */}
+      {/* Hero Section - Using all 6 images from CSV */}
       <HeroSlider 
-        images={heroImages} 
+        images={HOME_HERO_IMAGES} 
         height="h-[80vh]"
       >
         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />

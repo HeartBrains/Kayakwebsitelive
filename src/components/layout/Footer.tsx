@@ -1,4 +1,4 @@
-import { Instagram, Facebook, AtSign } from 'lucide-react';
+import { Instagram, Facebook } from 'lucide-react';
 import { useLanguage } from '../../utils/languageContext';
 
 export function Footer({ onNavigate }: { onNavigate?: (page: string) => void }) {
@@ -37,11 +37,11 @@ export function Footer({ onNavigate }: { onNavigate?: (page: string) => void }) 
           </div>
 
           <div className="flex-1 flex justify-start md:justify-around items-center gap-6 w-[80%] sm:w-[40%] px-0 md:px-[29px] py-[0px]">
-            <a href="https://instagram.com/khaoyai_art_forest" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
-              <Instagram className="w-5 h-5" />
+            <a href="https://www.facebook.com/profile.php?id=61569868164323" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
+              <Facebook className="w-5 h-5" />
             </a>
-            <a href="mailto:info@khaoyaiart.com" className="hover:text-gray-300 transition-colors">
-              <AtSign className="w-5 h-5" />
+            <a href="https://www.instagram.com/khaoyai_art_forest/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
+              <Instagram className="w-5 h-5" />
             </a>
           </div>
 
