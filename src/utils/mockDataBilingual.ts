@@ -25,14 +25,14 @@ const IMG_CERAMIC = IMG_ARABICA; // Reuse arabica image
 const IMG_STAR = IMG_PULSUS; // Reuse pulsus image
 const IMG_POTTERY = IMG_KBAR; // Reuse k-bar image
 
-// Home Page Hero Slider Images (All 6 images from CSV)
+// Home Page Hero Slider Images (All 6 images from CSV - Reversed Order)
 const HOME_HERO_IMAGES = [
-  "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-Contact-slider-pic-2__Activity+-+People-+Chittawan+Limcharoen+35.jpg",
-  "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-team__Activity+-+People-+Nawaphon-+Film+41.jpg",
-  "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-About__Madrid+Circle-+Krittawat+and+Puttisin+1.png",
-  "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-Visit__Activity+-+People-+Puttisin+2.jpg",
+  "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-exhibitions__Fog+Forest-+Andrea+Rossetti+5.jpg",
   "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-contact-slider-pic-1__Activity+-+People-+Puttisin+16.jpg",
-  "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-exhibitions__Fog+Forest-+Andrea+Rossetti+5.jpg"
+  "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-Visit__Activity+-+People-+Puttisin+2.jpg",
+  "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-About__Madrid+Circle-+Krittawat+and+Puttisin+1.png",
+  "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-team__Activity+-+People-+Nawaphon-+Film+41.jpg",
+  "https://irp.cdn-website.com/5516674f/dms3rep/multi/Puma_kyaf-bg-Contact-slider-pic-2__Activity+-+People-+Chittawan+Limcharoen+35.jpg"
 ];
 
 interface PostData {
