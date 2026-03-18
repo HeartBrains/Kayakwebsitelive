@@ -105,7 +105,7 @@ export default function App() {
           {currentPage === 'activities' && <ActivitiesPage onNavigate={handleNavigate} activeSection={activeSection} />}
           {currentPage === 'activity-detail' && <ActivityDetailPage onNavigate={handleNavigate} slug={selectedSlug || "neon-reveries"} backPage={backPage} />}
           {currentPage === 'blog' && <BlogPage onNavigate={handleNavigate} />}
-          {currentPage === 'blog-detail' && <BlogDetailPage onNavigate={handleNavigate} slug={selectedSlug || "art-as-reflection"} />}
+          {currentPage === 'blog-detail' && <BlogDetailPage onNavigate={handleNavigate} slug={selectedSlug || "art-as-reflection"} backPage={backPage} />}
           {currentPage === 'exhibitions' && <ExhibitionsPage onNavigate={handleNavigate} activeSection={activeSection} />}
           {currentPage === 'exhibition-detail' && <ExhibitionDetailPage onNavigate={handleNavigate} slug={selectedSlug || "unwinding-architecture"} backPage={backPage} />}
           {currentPage === 'archives' && <ArchivesPage onNavigate={handleNavigate} />}

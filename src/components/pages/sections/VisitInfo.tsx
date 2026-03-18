@@ -15,7 +15,7 @@ export function VisitInfo() {
             <div className="md:col-span-6 flex flex-col gap-8">
                 {/* Location */}
                 <div className="flex flex-col gap-4">
-                    <p className="text-xl md:text-2xl font-sans text-black font-medium">
+                    <p className="text-xl md:text-2xl font-sans text-black font-medium text-left">
                       {language === 'th' ? 'สถานที่' : 'Location'}
                     </p>
                     {language !== 'th' && (
@@ -261,7 +261,7 @@ export function VisitInfo() {
                                     บริการทุกวันพฤหัสบดีถึงวันอาทิตย์
                                 </p>
                                 <p className="text-xl md:text-2xl font-sans text-gray-500 leading-[1.82em]">
-                                    ค่าบริการเพิ่มเติม ฿500 / ท่าน สำหรับไป-กลับ (ไม่รวมค่าเข้าชม)
+                                    ค่าบริการเพิ่เติม ฿500 / ท่าน สำหรับไป-กลับ (ไม่รวมค่าเข้าชม)
                                 </p>
                                 <p className="text-xl md:text-2xl font-sans text-gray-500 leading-[1.82em]">
                                     ใช้ได้กับค่าเข้าชมทั้งหมด หรือ "Bamboo Journey" Tasting Experience (มื้อกลางวัน)
@@ -326,7 +326,7 @@ export function VisitInfo() {
                 {/* Map */}
                 <div className="w-full aspect-square md:aspect-[4/3] bg-[#D9D9D9] relative overflow-hidden mt-4">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3867.234!2d101.372!3d14.502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDMwJzA3LjIiTiAxMDHCsDIyJzE5LjIiRQ!5e0!3m2!1sen!2sth!4v1709292837283!5m2!1sen!2sth"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3867.234!2d101.372!3d14.502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f-8.9!3m3!1m2!1s0x0%3A0x0!2zMTTCsDMwJzA3LjIiTiAxMDHCsDIyJzE5LjIiRQ!5e0!3m2!1sen!2sth!4v1709292837283!5m2!1sen!2sth"
                         title="Khao Yai Art Forest Map"
                         width="100%" 
                         height="100%" 

@@ -1,10 +1,8 @@
-import { ReactNode, useEffect, useState, useRef } from 'react';
-import { motion } from 'motion/react';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
-import { ASSETS } from '../../utils/assets';
 import { Reveal } from '../ui/Reveal';
+import { useLanguage } from '../../utils/languageContext';
 import { ParallaxHero } from '../ui/ParallaxHero';
-import { ABOUT_HERO_IMAGE } from '../../utils/mockDataBilingual';
+import { ABOUT_HERO_IMAGE } from '../../utils/imageConstants';
 
 export type AboutPageType = 'about' | 'vision' | 'history' | 'founder' | 'team';
 
@@ -100,7 +98,7 @@ export function AboutLayout({ children, activePage, onNavigate }: AboutLayoutPro
                   <Reveal key={item.page} delay={index * 0.1} duration={0.5}>
                       <button
                         onClick={() => onNavigate(item.page)}
-                        className={`text-left text-2xl md:text-3xl font-sans transition-all duration-500 ease-out ${
+                        className={`text-left text-2xl md:text-3xl font-sans transition-all duration-500 ease-out cursor-pointer ${
                           isActive
                             ? 'text-black font-medium pl-2 border-l-2 border-black'
                             : 'text-gray-300 hover:text-gray-500 hover:pl-1'

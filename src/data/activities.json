@@ -1,0 +1,177 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-03-18T00:00:00Z",
+    "totalCount": 1,
+    "description": "Activities and events data for Khao Yai Art Forest"
+  },
+  "activities": [
+    {
+      "id": "1",
+      "slug": "k-bar-experience",
+      "title": {
+        "en": "K-BAR Experience",
+        "th": "K-BAR Experience"
+      },
+      "artist": {
+        "en": "Elmgreen & Dragset",
+        "th": "เอล์มกรีน และ แดร็กเซ็ต"
+      },
+      "dateDisplay": {
+        "en": "Every second Saturday of each month",
+        "th": "ทุกวันเสาร์ที่สองของเดือน"
+      },
+      "status": "current",
+      "year": "2024",
+      "categories": {
+        "en": ["Event", "Social", "Gastronomy"],
+        "th": ["กิจกรรม", "สังคม", "อาหารและเครื่องดื่ม"]
+      },
+      "featuredImage": "https://lirp.cdn-website.com/5516674f/dms3rep/multi/opt/Z44YyZbqstJ99oE8_03K-Bar_PhotobyAndreaRossetti-1920w.jpg",
+      "gallery": [
+        "https://lirp.cdn-website.com/5516674f/dms3rep/multi/opt/Z44YyZbqstJ99oE8_03K-Bar_PhotobyAndreaRossetti-1920w.jpg",
+        "https://lirp.cdn-website.com/5516674f/dms3rep/multi/opt/K-Bar-exterior-night-1920w.jpg",
+        "https://lirp.cdn-website.com/5516674f/dms3rep/multi/opt/K-Bar-interior-details-1920w.jpg"
+      ],
+      "imageCredits": "Photo by Andrea Rossetti, Chinnakit Ruenma, Rungkit Tangtongpon",
+      "listingSummary": {
+        "en": "An intimate bar experience open once a month, offering craft cocktails in the heart of the forest.",
+        "th": "ประสบการณ์บาร์สุดพิเศษที่เปิดเดือนละครั้ง เสิร์ฟค็อกเทลคราฟท์ท่ามกลางป่า"
+      },
+      "tags": {
+        "en": ["cocktails", "social", "evening", "monthly"],
+        "th": ["ค็อกเทล", "สังคม", "ตอนเย็น", "รายเดือน"]
+      },
+      "typeLabel": {
+        "en": "Monthly Event",
+        "th": "กิจกรรมรายเดือน"
+      }
+    }
+  ],
+  "exampleActivities": [
+    {
+      "id": "2",
+      "slug": "forest-table-experience",
+      "title": {
+        "en": "Forest Table Tasting Experience",
+        "th": "ประสบการณ์ชิมอาหาร Forest Table"
+      },
+      "dateDisplay": {
+        "en": "Thursday - Sunday, Dinner Service",
+        "th": "พฤหัสบดี - อาทิตย์ มื้อเย็น"
+      },
+      "status": "current",
+      "year": "2024",
+      "categories": {
+        "en": ["Gastronomy", "Dining", "Experience"],
+        "th": ["อาหาร", "การรับประทานอาหาร", "ประสบการณ์"]
+      },
+      "featuredImage": "https://example.com/forest-table.jpg",
+      "listingSummary": {
+        "en": "A multi-course tasting menu celebrating local ingredients and forest-inspired cuisine.",
+        "th": "เมนูชิมหลายคอร์สเฉลิมฉลองวัตถุดิบท้องถิ่นและอาหารที่ได้รับแรงบันดาลใจจากป่า"
+      },
+      "tags": {
+        "en": ["dining", "tasting menu", "local ingredients"],
+        "th": ["การรับประทานอาหาร", "เมนูชิม", "วัตถุดิบท้องถิ่น"]
+      },
+      "typeLabel": {
+        "en": "Dining Experience",
+        "th": "ประสบการณ์การรับประทานอาหาร"
+      }
+    },
+    {
+      "id": "3",
+      "slug": "bamboo-journey-lunch",
+      "title": {
+        "en": "Bamboo Journey Tasting Experience",
+        "th": "ประสบการณ์ชิมอาหาร Bamboo Journey"
+      },
+      "dateDisplay": {
+        "en": "Thursday - Sunday, Lunch Service",
+        "th": "พฤหัสบดี - อาทิตย์ มื้อกลางวัน"
+      },
+      "status": "current",
+      "year": "2024",
+      "categories": {
+        "en": ["Gastronomy", "Dining", "Experience"],
+        "th": ["อาหาร", "การรับประทานอาหาร", "ประสบการณ์"]
+      },
+      "featuredImage": "https://example.com/bamboo-journey.jpg",
+      "listingSummary": {
+        "en": "A lunch tasting experience exploring bamboo-based cuisine and sustainable cooking.",
+        "th": "ประสบการณ์ชิมอาหารกลางวันที่สำรวจอาหารจากไผ่และการทำอาหารที่ยั่งยืน"
+      },
+      "tags": {
+        "en": ["lunch", "bamboo", "sustainable", "local"],
+        "th": ["มื้อกลางวัน", "ไผ่", "ยั่งยืน", "ท้องถิ่น"]
+      },
+      "typeLabel": {
+        "en": "Dining Experience",
+        "th": "ประสบการณ์การรับประทานอาหาร"
+      }
+    },
+    {
+      "id": "4",
+      "slug": "artist-talk-series",
+      "title": {
+        "en": "Artist Talk Series",
+        "th": "ซีรีส์การพูดคุยกับศิลปิน"
+      },
+      "dateDisplay": {
+        "en": "Monthly, Various Dates",
+        "th": "รายเดือน วันต่างๆ"
+      },
+      "status": "upcoming",
+      "year": "2026",
+      "categories": {
+        "en": ["Talk", "Education", "Public Program"],
+        "th": ["การพูดคุย", "การศึกษา", "โปรแกรมสาธารณะ"]
+      },
+      "featuredImage": "https://example.com/artist-talk.jpg",
+      "listingSummary": {
+        "en": "Conversations with featured artists about their work, process, and inspirations.",
+        "th": "การสนทนากับศิลปินที่มีชื่อเสียงเกี่ยวกับผลงาน กระบวนการ และแรงบันดาลใจของพวกเขา"
+      },
+      "tags": {
+        "en": ["talk", "conversation", "education", "artist"],
+        "th": ["การพูดคุย", "การสนทนา", "การศึกษา", "ศิลปิน"]
+      },
+      "typeLabel": {
+        "en": "Public Program",
+        "th": "โปรแกรมสาธารณะ"
+      }
+    },
+    {
+      "id": "5",
+      "slug": "nature-walk-workshop",
+      "title": {
+        "en": "Nature Walk & Observation Workshop",
+        "th": "เวิร์กช็อปเดินเท้าในธรรมชาติและการสังเกต"
+      },
+      "dateDisplay": {
+        "en": "First Saturday of each month",
+        "th": "วันเสาร์แรกของทุกเดือน"
+      },
+      "status": "current",
+      "year": "2024",
+      "categories": {
+        "en": ["Workshop", "Education", "Nature"],
+        "th": ["เวิร์กช็อป", "การศึกษา", "ธรรมชาติ"]
+      },
+      "featuredImage": "https://example.com/nature-walk.jpg",
+      "listingSummary": {
+        "en": "Guided walks exploring the biodiversity and artworks within the forest landscape.",
+        "th": "การเดินเท้าแบบมีไกด์สำรวจความหลากหลายทางชีวภาพและงานศิลปะภายในภูมิทัศน์ป่า"
+      },
+      "tags": {
+        "en": ["nature", "walk", "biodiversity", "guided tour"],
+        "th": ["ธรรมชาติ", "เดิน", "ความหลากหลายทางชีวภาพ", "ทัวร์มีไกด์"]
+      },
+      "typeLabel": {
+        "en": "Workshop",
+        "th": "เวิร์กช็อป"
+      }
+    }
+  ]
+}

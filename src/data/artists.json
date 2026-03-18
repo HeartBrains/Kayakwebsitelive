@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-03-18T00:00:00Z",
+    "totalCount": 3,
+    "description": "Artists in residence and featured artists data for Khao Yai Art Forest"
+  },
+  "artists": [
+    {
+      "id": 1,
+      "slug": "artist-example-1",
+      "name": "Artist Name (Example)",
+      "nameTH": "ชื่อศิลปิน (ตัวอย่าง)",
+      "period": "January - March 2025",
+      "periodTH": "มกราคม - มีนาคม 2568",
+      "image": "https://example.com/artist-1.jpg",
+      "category": "past",
+      "bio": "Artist bio goes here. This would include their background, education, notable exhibitions, and artistic practice. The bio should be comprehensive and give insight into their work and philosophy.",
+      "bioTH": "ประวัติศิลปินอยู่ที่นี่ ซึ่งจะรวมถึงพื้นฐาน การศึกษา นิทรรศการที่โดดเด่น และการปฏิบัติทางศิลปะ ประวัติควรครอบคลุมและให้ข้อมูลเชิงลึกเกี่ยวกับผลงานและปรัชญาของพวกเขา",
+      "statement": "The artist's statement about their work, inspirations, and what they explored during their residency at Khao Yai Art Forest.",
+      "statementTH": "คำกล่าวของศิลปินเกี่ยวกับผลงาน แรงบันดาลใจ และสิ่งที่พวกเขาสำรวจในระหว่างการพำนักที่ Khao Yai Art Forest",
+      "gallery": [
+        "https://example.com/artwork-1.jpg",
+        "https://example.com/artwork-2.jpg",
+        "https://example.com/artwork-3.jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "artist-example-2",
+      "name": "Current Artist Name (Example)",
+      "nameTH": "ชื่อศิลปินปัจจุบัน (ตัวอย่าง)",
+      "period": "January - June 2026",
+      "periodTH": "มกราคม - มิถุนายน 2569",
+      "image": "https://example.com/artist-2.jpg",
+      "category": "current",
+      "bio": "Current artist in residence biography. Details about their practice, previous work, and what they're developing during their time at Khao Yai Art Forest.",
+      "bioTH": "ประวัติศิลปินพำนักปัจจุบัน รายละเอียดเกี่ยวกับการปฏิบัติ ผลงานก่อนหน้า และสิ่งที่พวกเขากำลังพัฒนาในช่วงเวลาที่ Khao Yai Art Forest",
+      "statement": "An exploration of the intersection between nature and technology, examining how digital and organic forms can coexist and inform each other.",
+      "statementTH": "การสำรวจจุดตัดระหว่างธรรมชาติและเทคโนโลยี ตรวจสอบว่ารูปแบบดิจิทัลและอินทรีย์สามารถอยู่ร่วมกันและแจ้งข้อมูลซึ่งกันและกันได้อย่างไร",
+      "gallery": [
+        "https://example.com/current-work-1.jpg",
+        "https://example.com/current-work-2.jpg"
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "artist-example-3",
+      "name": "Upcoming Artist Name (Example)",
+      "nameTH": "ชื่อศิลปินที่กำลังจะมา (ตัวอย่าง)",
+      "period": "July - December 2026",
+      "periodTH": "กรกฎาคม - ธันวาคม 2569",
+      "image": "https://example.com/artist-3.jpg",
+      "category": "upcoming",
+      "bio": "Upcoming artist in residence biography. Background on their practice and what they plan to explore and create during their residency.",
+      "bioTH": "ประวัติศิลปินพำนักที่กำลังจะมา พื้นฐานเกี่ยวกับการปฏิบัติและสิ่งที่พวกเขาวางแผนจะสำรวจและสร้างสรรค์ในระหว่างการพำนัก",
+      "statement": "Planning to investigate themes of memory and landscape, creating site-specific installations that respond to the unique environment of Khao Yai.",
+      "statementTH": "วางแผนที่จะสืบสวนธีมของความทรงจำและภูมิทัศน์ สร้างการจัดวางเฉพาะสถานที่ที่ตอบสนองต่อสภาพแวดล้อมที่เป็นเอกลักษณ์ของเขาใหญ่",
+      "gallery": [
+        "https://example.com/past-work-1.jpg",
+        "https://example.com/past-work-2.jpg",
+        "https://example.com/past-work-3.jpg",
+        "https://example.com/past-work-4.jpg"
+      ]
+    }
+  ]
+}

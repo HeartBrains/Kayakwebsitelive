@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
+import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { ParallaxHero } from '../ui/ParallaxHero';
+import { Reveal } from '../ui/Reveal';
 import { useLanguage } from '../../utils/languageContext';
 import { FOUNDER, DIRECTORS, TEAM_BY_CATEGORY, ADVISORY_BOARD_MEMBERS, DONORS } from '../../utils/teamDataBilingual';
-import { TEAM_HERO_IMAGE } from '../../utils/mockDataBilingual';
+import { TEAM_HERO_IMAGE } from '../../utils/imageConstants';
 
 interface TeamPageProps {
     activePage?: 'team' | 'advisory-board';
@@ -42,7 +44,7 @@ export function TeamPage({ activePage = 'team' }: TeamPageProps) {
         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />
       </ParallaxHero>
 
-      <div className="w-full mx-auto pl-[48px] pr-[46px] pt-[96px] pb-[0px]">
+      <div className="w-full mx-auto px-[6vw] pt-[96px] pb-[0px]">
         
         {/* Founder Section */}
         <section id="founder" className="flex flex-col md:flex-row mb-24 md:mb-32">
@@ -153,7 +155,7 @@ export function TeamPage({ activePage = 'team' }: TeamPageProps) {
             {/* Left Column - Title */}
             <div className="w-full md:w-1/2 mb-12 md:mb-0">
                 <h2 className={`text-xl md:text-2xl font-normal sticky top-32 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                    {language === 'th' ? 'ทีมงาน' : 'Team'}
+                    {language === 'th' ? 'ทีมงาน' : 'Teams'}
                 </h2>
             </div>
 

@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-03-18T00:00:00Z",
+    "totalCount": 10,
+    "description": "Press releases and media coverage for Khao Yai Art Forest"
+  },
+  "pressItems": [
+    {
+      "id": 1,
+      "date": "November 22, 2025",
+      "dateTH": "22 พฤศจิกายน 2568",
+      "title": "Khao Yai Art Forest Opens New Exhibition",
+      "titleTH": "Khao Yai Art Forest เปิดนิทรรศการใหม่",
+      "link": "#",
+      "type": "pdf"
+    },
+    {
+      "id": 2,
+      "date": "October 15, 2025",
+      "dateTH": "15 ตุลาคม 2568",
+      "title": "Interview with Curator Mark Chearavanont",
+      "titleTH": "บทสัมภาษณ์ภัณฑารักษ์ มาร์ค เจียรวนนท์",
+      "link": "#",
+      "type": "article"
+    },
+    {
+      "id": 3,
+      "date": "September 8, 2025",
+      "dateTH": "8 กันยายน 2568",
+      "title": "Art in Nature: Thailand's New Cultural Destination",
+      "titleTH": "ศิลปะในธรรมชาติ: จุดหมายทางวัฒนธรรมใหม่ของไทย",
+      "link": "#",
+      "type": "article"
+    },
+    {
+      "id": 4,
+      "date": "August 20, 2025",
+      "dateTH": "20 สิงหาคม 2568",
+      "title": "Fog Forest Experience: A Conversation with Fujiko Nakaya",
+      "titleTH": "ประสบการณ์ป่าหมอก: การสนทนากับฟูจิโกะ นากายะ",
+      "link": "#",
+      "type": "pdf"
+    },
+    {
+      "id": 5,
+      "date": "July 12, 2025",
+      "dateTH": "12 กรกฎาคม 2568",
+      "title": "Bangkok Kunsthalle's Expansion to Khao Yai",
+      "titleTH": "การขยายตัวของ Bangkok Kunsthalle สู่เขาใหญ่",
+      "link": "#",
+      "type": "article"
+    },
+    {
+      "id": 6,
+      "date": "June 5, 2025",
+      "dateTH": "5 มิถุนายน 2568",
+      "title": "Marisa Chearavanont: Championing Contemporary Art in Thailand",
+      "titleTH": "มาริสา เจียระวนนท์: แชมเปี้ยนศิลปะร่วมสมัยในประเทศไทย",
+      "link": "#",
+      "type": "pdf"
+    },
+    {
+      "id": 7,
+      "date": "May 18, 2025",
+      "dateTH": "18 พฤษภาคม 2568",
+      "title": "Richard Long's Madrid Circle: Land Art Meets Thai Landscape",
+      "titleTH": "Madrid Circle ของริชาร์ด ลอง: ศิลปะบนพื้นดินพบกับภูมิทัศน์ไทย",
+      "link": "#",
+      "type": "article"
+    },
+    {
+      "id": 8,
+      "date": "April 10, 2025",
+      "dateTH": "10 เมษายน 2568",
+      "title": "K-BAR: Where Art Meets Social Experience",
+      "titleTH": "K-BAR: ที่ซึ่งศิลปะพบกับประสบการณ์ทางสังคม",
+      "link": "#",
+      "type": "article"
+    },
+    {
+      "id": 9,
+      "date": "March 22, 2025",
+      "dateTH": "22 มีนาคม 2568",
+      "title": "Louise Bourgeois' Maman Finds New Home in Thai Forest",
+      "titleTH": "Maman ของหลุยส์ บูร์ชัวส์พบบ้านใหม่ในป่าไทย",
+      "link": "#",
+      "type": "pdf"
+    },
+    {
+      "id": 10,
+      "date": "February 14, 2025",
+      "dateTH": "14 กุมภาพันธ์ 2568",
+      "title": "Gastronomy and Art Unite at Forest Table",
+      "titleTH": "การทำอาหารและศิลปะรวมตัวกันที่ Forest Table",
+      "link": "#",
+      "type": "article"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import { ImageWithFallback } from '../figma/ImageWithFallback';
-import { VISIT_HERO_IMAGE } from '../../utils/mockDataBilingual';
+import { VISIT_HERO_IMAGE } from '../../utils/imageConstants';
 import { Reveal } from '../ui/Reveal';
 import { motion } from 'motion/react';
 import { useLanguage } from '../../utils/languageContext';

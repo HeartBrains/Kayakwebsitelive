@@ -1,6 +1,10 @@
 import { ImageWithFallback } from '../figma/ImageWithFallback';
+import { useState, useEffect, useRef } from 'react';
 import { ArrowLeft } from 'lucide-react';
-import { useRef, useState, useEffect } from 'react';
+import { useLanguage } from '../../utils/languageContext';
+import { getExhibitionBySlug, type Exhibition } from '../../utils/exhibitionsDataNew';
+import { getDetailContentByLanguage } from '../../utils/detailContent';
+import { Reveal } from '../ui/Reveal';
 import {
   Carousel,
   CarouselContent,
@@ -8,26 +12,22 @@ import {
   CarouselNext,
   CarouselPrevious,
   type CarouselApi,
-} from "../ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import { WPPost } from '../../utils/types';
-import { Reveal } from '../ui/Reveal';
-import { VisitInfo } from './sections/VisitInfo';
-import { useLanguage } from '../../utils/languageContext';
-import { getMockPost } from '../../utils/mockDataBilingual';
+} from '../ui/carousel';
+import Autoplay from 'embla-carousel-autoplay';
+import { useScrollHide } from '../../utils/useScrollHide';
 
 interface ExhibitionDetailPageProps {
   onNavigate: (page: string) => void;
-  exhibition?: WPPost;
   slug?: string;
   backPage?: string;
 }
 
-export function ExhibitionDetailPage({ onNavigate, exhibition, slug, backPage }: ExhibitionDetailPageProps) {
+export function ExhibitionDetailPage({ onNavigate, slug, backPage }: ExhibitionDetailPageProps) {
   const { language, t } = useLanguage();
-  const [postData, setPostData] = useState<WPPost | undefined>(exhibition);
-  const [loading, setLoading] = useState(!exhibition && !!slug);
+  const [exhibitionData, setExhibitionData] = useState<Exhibition | null>(null);
+  const [loading, setLoading] = useState(!!slug);
   const [error, setError] = useState(false);
+  const { isScrolling } = useScrollHide();
 
   const plugin = useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
@@ -36,25 +36,19 @@ export function ExhibitionDetailPage({ onNavigate, exhibition, slug, backPage }:
   const [current, setCurrent] = useState(0)
 
   useEffect(() => {
-    if (exhibition) {
-        setPostData(exhibition);
-        setLoading(false);
-        return;
-    }
-    
     if (slug) {
         setLoading(true);
-        // Use bilingual mock data instead of API
-        const data = getMockPost(slug, language);
-        if (data) {
-            setPostData(data);
+        // Use new data structure directly
+        const exhibition = getExhibitionBySlug(slug);
+        if (exhibition) {
+            setExhibitionData(exhibition);
             setLoading(false);
         } else {
             setError(true);
             setLoading(false);
         }
     }
-  }, [exhibition, slug, language]);
+  }, [slug]);
 
   // Carousel logic
   useEffect(() => {
@@ -66,34 +60,34 @@ export function ExhibitionDetailPage({ onNavigate, exhibition, slug, backPage }:
   const scrollTo = (index: number) => api?.scrollTo(index);
 
   if (loading) return <div className="min-h-screen flex items-center justify-center font-sans">{t('common.loading')}</div>;
-  if (error || !postData) return <div className="min-h-screen flex items-center justify-center font-sans text-red-500">{language === 'th' ? 'ไม่พบนิทรรศการ' : 'Exhibition not found.'}</div>;
+  if (error || !exhibitionData) return <div className="min-h-screen flex items-center justify-center font-sans text-red-500">{language === 'th' ? 'ไม่พบนิทรรศการ' : 'Exhibition not found.'}</div>;
 
-  // Use gallery from postData or fallback to featured image
-  const baseGallery = postData.gallery && postData.gallery.length > 0 
-    ? postData.gallery 
-    : (postData.featuredImage ? [postData.featuredImage.sourceUrl] : []);
+  // Use gallery from exhibition data or fallback to featured image
+  const galleryImages = exhibitionData.gallery && exhibitionData.gallery.length > 0 
+    ? exhibitionData.gallery 
+    : [exhibitionData.featuredImage];
 
-  // Use provided gallery images directly without random placeholders, as requested ("Only use photo in this")
-  const galleryImages = baseGallery;
+  // Get detailed content from detailContent files
+  const detailContent = slug ? getDetailContentByLanguage(slug, language) : undefined;
 
   return (
     <div className="w-full bg-white pb-24 min-h-screen">
        {/* Hero Section */}
-       <div className="h-[35vh] md:h-[80vh] w-full relative overflow-hidden group bg-black">
+       <div className="w-full relative overflow-hidden group bg-black">
          {galleryImages.length > 0 ? (
              <Carousel
                 setApi={setApi}
                 plugins={[plugin.current]}
-                className="w-full h-full"
+                className="w-full"
                 opts={{ align: "start", loop: true }}
              >
-                <CarouselContent className="h-full -ml-0">
+                <CarouselContent className="-ml-0">
                    {galleryImages.map((src, index) => (
-                      <CarouselItem key={index} className="h-full pl-0">
+                      <CarouselItem key={index} className="pl-0">
                          <ImageWithFallback
                             src={src}
-                            alt={`${postData.title} Gallery ${index + 1}`}
-                            className="w-full h-full object-cover object-center opacity-90"
+                            alt={`${exhibitionData.title} Gallery ${index + 1}`}
+                            className="w-full h-auto max-h-[80vh] block opacity-90 object-cover"
                          />
                       </CarouselItem>
                    ))}
@@ -107,32 +101,27 @@ export function ExhibitionDetailPage({ onNavigate, exhibition, slug, backPage }:
                 )}
              </Carousel>
          ) : (
-             <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+             <div className="w-full h-[50vh] bg-gray-200 flex items-center justify-center">
                 <span className="text-gray-400">
                     {language === 'th' ? 'ไม่มีรูปภาพ' : 'No images available'}
                 </span>
              </div>
          )}
 
-         {/* Thumbnails */}
+         {/* Dot Navigation */}
          {galleryImages.length > 1 && (
-             <div className="absolute bottom-8 right-6 md:right-12 z-20 flex gap-2">
-                {galleryImages.map((src, index) => (
+             <div className="absolute bottom-8 right-6 md:right-[5%] z-20 flex gap-2">
+                {galleryImages.map((_, index) => (
                    <button
                       key={index}
                       onClick={() => scrollTo(index)}
-                      className={`w-16 h-10 rounded-md overflow-hidden border-2 transition-all duration-300 ${
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
                          current === index 
-                            ? 'border-white scale-105 shadow-lg' 
-                            : 'border-transparent opacity-70 hover:opacity-100 hover:scale-105'
+                            ? 'bg-white scale-125' 
+                            : 'bg-white/50 hover:bg-white/75'
                       }`}
-                   >
-                      <ImageWithFallback
-                         src={src}
-                         alt={`Thumbnail ${index + 1}`}
-                         className="w-full h-full object-cover"
-                      />
-                   </button>
+                      aria-label={`Go to image ${index + 1}`}
+                   />
                 ))}
              </div>
          )}
@@ -144,11 +133,15 @@ export function ExhibitionDetailPage({ onNavigate, exhibition, slug, backPage }:
          <div className="absolute bottom-8 left-6 md:left-12 z-20">
             <button 
                 onClick={() => onNavigate(backPage || 'exhibitions')}
-                className="fixed top-[120px] left-6 z-50 md:static flex items-center gap-2 text-white/80 hover:text-white transition-colors bg-black/20 hover:bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm"
+                className={`static flex items-center gap-2 text-white/80 hover:text-white transition-all duration-300 bg-black/20 hover:bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm ${
+                    isScrolling ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                }`}
             >
                 <ArrowLeft className="w-5 h-5" />
                 <span className="text-sm font-medium font-sans">
-                    {backPage === 'archives' 
+                    {backPage === 'home'
+                        ? (language === 'th' ? 'กลับสู่หน้าหลัก' : 'Back to Home')
+                        : backPage === 'archives' 
                         ? (language === 'th' ? 'กลับสู่คลังข้อมูล' : 'Back to Archives') 
                         : (language === 'th' ? 'กลับสู่นิทรรศการ' : 'Back to Exhibitions')
                     }
@@ -158,36 +151,40 @@ export function ExhibitionDetailPage({ onNavigate, exhibition, slug, backPage }:
       </div>
 
       {/* Content Section */}
-      <div className="w-full px-6 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-x-8">
+      <div className="w-full px-[6vw] py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-16">
             
             {/* Left Column - Meta Data */}
-            <div className="md:col-span-4 flex flex-col gap-8 md:pl-[28px]">
+            <div className="flex flex-col gap-8">
                 <Reveal>
                     <div className="flex flex-col gap-1">
                         <h1 className={`text-xl md:text-2xl font-normal text-black leading-tight ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                            {postData.title}
+                            {language === 'th' ? exhibitionData.title.th : exhibitionData.title.en}
                         </h1>
                         
-                        {postData.acf?.artist && (
+                        {exhibitionData.artist && (
                             <p className={`text-xl md:text-2xl font-normal text-black leading-tight ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                                {postData.acf.artist}
+                                {language === 'th' ? exhibitionData.artist.th : exhibitionData.artist.en}
                             </p>
                         )}
 
-                        {postData.date && (
-                            <p className={`text-xl md:text-2xl text-black font-normal leading-tight mt-2 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>{postData.date}</p>
+                        {exhibitionData.dateDisplay && (
+                            <p className={`text-xl md:text-2xl text-black font-normal leading-tight mt-2 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
+                                {language === 'th' ? exhibitionData.dateDisplay.th : exhibitionData.dateDisplay.en}
+                            </p>
                         )}
                     </div>
                 </Reveal>
 
                 {/* Specifications */}
-                {postData.acf?.specifications && (
+                {exhibitionData.specifications && (
                     <Reveal delay={0.1}>
                         <div className="flex flex-col gap-4 mt-4">
-                            <h3 className="text-lg uppercase tracking-wider text-gray-500">Specifications</h3>
+                            <h3 className="text-lg uppercase tracking-wider text-gray-500">
+                                {language === 'th' ? 'รายละเอียด' : 'Specifications'}
+                            </h3>
                             <div className="flex flex-col gap-2">
-                                {Object.entries(postData.acf.specifications).map(([key, value]) => (
+                                {Object.entries(language === 'th' ? exhibitionData.specifications.th : exhibitionData.specifications.en).map(([key, value]) => (
                                     <div key={key} className="flex flex-col">
                                         <span className="text-sm text-gray-400 capitalize">{key.replace(/_/g, ' ')}</span>
                                         <span className={`text-lg md:text-xl font-normal text-black ${language === 'th' ? 'leading-[1.82em]' : ''}`}>{String(value)}</span>
@@ -197,26 +194,13 @@ export function ExhibitionDetailPage({ onNavigate, exhibition, slug, backPage }:
                         </div>
                     </Reveal>
                 )}
-
-                {/* Tags */}
-                {postData.acf?.tags && (
-                    <Reveal delay={0.2}>
-                        <div className="flex flex-wrap gap-2 mt-4">
-                            {postData.acf.tags.map((tag: string, idx: number) => (
-                                <span key={idx} className="px-3 py-1 bg-gray-100 text-sm text-gray-600 rounded-full">
-                                    {tag}
-                                </span>
-                            ))}
-                        </div>
-                    </Reveal>
-                )}
             </div>
 
             {/* Right Column - Text Content */}
-            <div className={`md:col-span-8 text-xl md:text-2xl text-black font-normal leading-tight ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
+            <div className={`text-xl md:text-2xl text-black font-normal leading-tight ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
                 <Reveal delay={0.2}>
                     <div className="flex flex-col gap-6">
-                        <div dangerouslySetInnerHTML={{ __html: postData.content }} />
+                        <div className="[&>p]:mb-8 [&>p:last-child]:mb-0" dangerouslySetInnerHTML={{ __html: detailContent || '' }} />
                     </div>
                 </Reveal>
             </div>

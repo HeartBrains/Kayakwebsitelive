@@ -10,24 +10,25 @@ import {
 } from "../ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef, useState, useEffect } from 'react';
-import { WPPost } from '../../utils/types';
 import { Reveal } from '../ui/Reveal';
 import { VisitInfo } from './sections/VisitInfo';
 import { useLanguage } from '../../utils/languageContext';
-import { getMockPost } from '../../utils/mockDataBilingual';
+import { getActivityBySlug, type Activity } from '../../utils/activitiesDataNew';
+import { getDetailContentByLanguage } from '../../utils/detailContent';
+import { useScrollHide } from '../../utils/useScrollHide';
 
 interface ActivityDetailPageProps {
   onNavigate: (page: string) => void;
-  activity?: WPPost;
   slug?: string;
   backPage?: string;
 }
 
-export function ActivityDetailPage({ onNavigate, activity, slug, backPage }: ActivityDetailPageProps) {
+export function ActivityDetailPage({ onNavigate, slug, backPage }: ActivityDetailPageProps) {
   const { language, t } = useLanguage();
-  const [postData, setPostData] = useState<WPPost | undefined>(activity);
-  const [loading, setLoading] = useState(!activity && !!slug);
+  const [activityData, setActivityData] = useState<Activity | null>(null);
+  const [loading, setLoading] = useState(!!slug);
   const [error, setError] = useState(false);
+  const { isScrolling } = useScrollHide();
 
   const plugin = useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
@@ -36,27 +37,21 @@ export function ActivityDetailPage({ onNavigate, activity, slug, backPage }: Act
   const [current, setCurrent] = useState(0)
 
   useEffect(() => {
-    if (activity) {
-        setPostData(activity);
-        setLoading(false);
-        return;
-    }
-    
     if (slug) {
         setLoading(true);
-        // Use bilingual mock data instead of API
-        const data = getMockPost(slug, language);
-        if (data) {
-            setPostData(data);
+        // Use new data structure directly
+        const activity = getActivityBySlug(slug);
+        if (activity) {
+            setActivityData(activity);
             setLoading(false);
         } else {
             setError(true);
             setLoading(false);
         }
     }
-  }, [activity, slug, language]);
+  }, [slug]);
 
-  // Carousel logic (only if postData exists)
+  // Carousel logic
   useEffect(() => {
     if (!api) return
     setCurrent(api.selectedScrollSnap())
@@ -66,62 +61,68 @@ export function ActivityDetailPage({ onNavigate, activity, slug, backPage }: Act
   const scrollTo = (index: number) => api?.scrollTo(index);
 
   if (loading) return <div className="min-h-screen flex items-center justify-center font-sans">{t('common.loading')}</div>;
-  if (error || !postData) return <div className="min-h-screen flex items-center justify-center font-sans text-red-500">{language === 'th' ? 'ไม่พบกิจกรรม' : 'Activity not found.'}</div>;
+  if (error || !activityData) return <div className="min-h-screen flex items-center justify-center font-sans text-red-500">{language === 'th' ? 'ไม่พบกิจกรรม' : 'Activity not found.'}</div>;
 
-  // Use gallery from postData or fallback to featured image
-  const galleryImages = postData.gallery && postData.gallery.length > 0 
-    ? postData.gallery 
-    : (postData.featuredImage ? [postData.featuredImage.sourceUrl] : []);
+  // Use gallery from activity data or fallback to featured image
+  const galleryImages = activityData.gallery && activityData.gallery.length > 0 
+    ? activityData.gallery 
+    : [activityData.featuredImage];
+
+  // Get detailed content from detailContent files
+  const detailContent = slug ? getDetailContentByLanguage(slug, language) : undefined;
 
   return (
-    <div className="w-full bg-white min-h-screen pb-24">
-      {/* Hero */}
-      <div className="h-[35vh] md:h-[80vh] w-full relative overflow-hidden group bg-black">
-         <Carousel
-            setApi={setApi}
-            plugins={[plugin.current]}
-            className="w-full h-full"
-            opts={{ align: "start", loop: true }}
-         >
-            <CarouselContent className="h-full -ml-0">
-               {galleryImages.map((src, index) => (
-                  <CarouselItem key={index} className="h-full pl-0">
-                     <ImageWithFallback
-                        src={src}
-                        alt={`${postData.title} Gallery ${index + 1}`}
-                        className="w-full h-full object-cover opacity-90"
-                     />
-                  </CarouselItem>
-               ))}
-            </CarouselContent>
-            
-            {galleryImages.length > 1 && (
-                <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                    <CarouselPrevious className="pointer-events-auto static transform-none h-12 w-12 bg-black/30 hover:bg-black/50 border-none text-white" />
-                    <CarouselNext className="pointer-events-auto static transform-none h-12 w-12 bg-black/30 hover:bg-black/50 border-none text-white" />
-                </div>
-            )}
-         </Carousel>
+    <div className="w-full bg-white pb-24 min-h-screen">
+       {/* Hero Section */}
+       <div className="w-full relative overflow-hidden group bg-black">
+         {galleryImages.length > 0 ? (
+             <Carousel
+                setApi={setApi}
+                plugins={[plugin.current]}
+                className="w-full"
+                opts={{ align: "start", loop: true }}
+             >
+                <CarouselContent className="-ml-0">
+                   {galleryImages.map((src, index) => (
+                      <CarouselItem key={index} className="pl-0">
+                         <ImageWithFallback
+                            src={src}
+                            alt={`${activityData.title} Gallery ${index + 1}`}
+                            className="w-full h-auto max-h-[80vh] block opacity-90 object-cover"
+                         />
+                      </CarouselItem>
+                   ))}
+                </CarouselContent>
+                
+                {galleryImages.length > 1 && (
+                    <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                        <CarouselPrevious className="pointer-events-auto static transform-none h-12 w-12 bg-black/30 hover:bg-black/50 border-none text-white" />
+                        <CarouselNext className="pointer-events-auto static transform-none h-12 w-12 bg-black/30 hover:bg-black/50 border-none text-white" />
+                    </div>
+                )}
+             </Carousel>
+         ) : (
+             <div className="w-full h-[50vh] bg-gray-200 flex items-center justify-center">
+                <span className="text-gray-400">
+                    {language === 'th' ? 'ไม่มีรูปภาพ' : 'No images available'}
+                </span>
+             </div>
+         )}
 
-         {/* Thumbnails */}
+         {/* Dot Navigation */}
          {galleryImages.length > 1 && (
-             <div className="absolute bottom-8 right-6 md:right-12 z-20 flex gap-2">
-                {galleryImages.map((src, index) => (
+             <div className="absolute bottom-8 right-6 md:right-[5%] z-20 flex gap-2">
+                {galleryImages.map((_, index) => (
                    <button
                       key={index}
                       onClick={() => scrollTo(index)}
-                      className={`w-16 h-10 rounded-md overflow-hidden border-2 transition-all duration-300 ${
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
                          current === index 
-                            ? 'border-white scale-105 shadow-lg' 
-                            : 'border-transparent opacity-70 hover:opacity-100 hover:scale-105'
+                            ? 'bg-white scale-125' 
+                            : 'bg-white/50 hover:bg-white/75'
                       }`}
-                   >
-                      <ImageWithFallback
-                         src={src}
-                         alt={`Thumbnail ${index + 1}`}
-                         className="w-full h-full object-cover"
-                      />
-                   </button>
+                      aria-label={`Go to image ${index + 1}`}
+                   />
                 ))}
              </div>
          )}
@@ -133,11 +134,15 @@ export function ActivityDetailPage({ onNavigate, activity, slug, backPage }: Act
          <div className="absolute bottom-8 left-6 md:left-12 z-20">
             <button 
                 onClick={() => onNavigate(backPage || 'activities')}
-                className="fixed top-[120px] left-6 z-50 md:static flex items-center gap-2 text-white/80 hover:text-white transition-colors bg-black/20 hover:bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm"
+                className={`static flex items-center gap-2 text-white/80 hover:text-white transition-all duration-300 bg-black/20 hover:bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm ${
+                    isScrolling ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                }`}
             >
                 <ArrowLeft className="w-5 h-5" />
                 <span className="text-sm font-medium font-sans">
-                    {backPage === 'archives' 
+                    {backPage === 'home'
+                        ? (language === 'th' ? 'กลับสู่หน้าหลัก' : 'Back to Home')
+                        : backPage === 'archives'
                         ? (language === 'th' ? 'กลับสู่คลังข้อมูล' : 'Back to Archives')
                         : (language === 'th' ? 'กลับสู่กิจกรรม' : 'Back to Activities')
                     }
@@ -146,63 +151,52 @@ export function ActivityDetailPage({ onNavigate, activity, slug, backPage }: Act
         </div>
       </div>
 
-      {/* Content */}
-      <div className="w-full px-6 pt-[96px] pr-[24px] pb-24 md:pl-[48px]">
-         <div className="flex flex-col md:flex-row">
-            {/* Left Column */}
-            <div className="w-full md:w-1/2 mb-12 md:mb-0">
-               <div className="md:sticky md:top-32">
-                   <Reveal>
-                       <div className="flex flex-col gap-1">
-                           <h1 className={`text-xl md:text-2xl font-normal text-black leading-tight ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                              {postData.title}
-                           </h1>
+      {/* Content Section */}
+      <div className="w-full px-[6vw] py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-16">
+            
+            {/* Left Column - Meta Data */}
+            <div className="flex flex-col gap-8">
+                <Reveal>
+                    <div className="flex flex-col gap-1">
+                        <h1 className={`text-xl md:text-2xl font-normal text-black leading-tight ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
+                            {language === 'th' ? activityData.title.th : activityData.title.en}
+                        </h1>
+                        
+                        {activityData.artist && (
+                            <p className={`text-xl md:text-2xl font-normal text-black leading-tight ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
+                                {language === 'th' ? activityData.artist.th : activityData.artist.en}
+                            </p>
+                        )}
 
-                           {postData.categories?.map((cat, idx) => (
-                               <p key={idx} className={`text-xl md:text-2xl font-normal text-black leading-tight ${language === 'th' ? 'leading-[1.82em]' : ''}`}>{cat}</p>
-                           ))}
-                           
-                           {postData.date && (
-                               <p className={`text-xl md:text-2xl text-black font-normal leading-tight mt-2 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>{postData.date}</p>
-                           )}
-
-                           <div className="mt-8">
-                               <p className={`text-xl md:text-2xl text-black font-normal leading-tight ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                                   {language === 'th' ? 'ภัณฑารักษ์โดย' : 'Curated by'}
-                               </p>
-                               <p className={`text-xl md:text-2xl text-black font-normal leading-tight ${language === 'th' ? 'leading-[1.82em]' : ''}`}>Stefano Rabolli Pansera</p>
-                           </div>
-                       </div>
-                   </Reveal>
-               </div>
+                        {activityData.dateDisplay && (
+                            <p className={`text-xl md:text-2xl text-black font-normal leading-tight mt-2 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
+                                {language === 'th' ? activityData.dateDisplay.th : activityData.dateDisplay.en}
+                            </p>
+                        )}
+                        
+                        {activityData.typeLabel && (
+                            <p className="text-sm text-gray-500 uppercase tracking-wider mt-2">
+                                {language === 'th' ? activityData.typeLabel.th : activityData.typeLabel.en}
+                            </p>
+                        )}
+                    </div>
+                </Reveal>
             </div>
 
-            {/* Right Column */}
-            <div className="w-full md:w-1/2">
-                <div className={`text-xl md:text-2xl text-black font-normal leading-tight space-y-6 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                   <Reveal delay={0.2}>
-                       <div dangerouslySetInnerHTML={{ __html: postData.content }} />
-
-                       {postData.acf?.schedule && (
-                           <div>
-                             <h3 className={`text-xl md:text-2xl font-normal mb-4 text-black leading-tight ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                                 {language === 'th' ? 'ตารางกิจกรรม' : 'Schedule'}
-                             </h3>
-                             <div className={`space-y-2 text-xl md:text-2xl text-black font-normal leading-tight ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                                {postData.acf.schedule.map((item: any, idx: number) => (
-                                    <p key={idx}><span className="font-bold">{item.title}</span> {item.details}</p>
-                                ))}
-                                {postData.acf.additionalContent && (
-                                    <p className="mt-4 text-black">{postData.acf.additionalContent}</p>
-                                )}
-                             </div>
-                           </div>
-                       )}
-                   </Reveal>
-                </div>
+            {/* Right Column - Text Content */}
+            <div className={`text-xl md:text-2xl text-black font-normal leading-tight ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
+                <Reveal delay={0.2}>
+                    <div className="flex flex-col gap-6">
+                        <div dangerouslySetInnerHTML={{ __html: detailContent || '' }} />
+                    </div>
+                </Reveal>
             </div>
-         </div>
+        </div>
       </div>
+
+      {/* Visit Information */}
+      <VisitInfo />
     </div>
   );
 }

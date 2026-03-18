@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Khao Yai Art Forest Data Schema",
+  "description": "Complete data schema for all content types in the website",
+  "version": "1.0.0",
+  "definitions": {
+    "BilingualText": {
+      "type": "object",
+      "properties": {
+        "en": { "type": "string" },
+        "th": { "type": "string" }
+      },
+      "required": ["en", "th"]
+    },
+    "ContentStatus": {
+      "type": "string",
+      "enum": ["current", "upcoming", "past"]
+    },
+    "Exhibition": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "slug": { "type": "string" },
+        "title": { "$ref": "#/definitions/BilingualText" },
+        "artist": { "$ref": "#/definitions/BilingualText" },
+        "curator": { "$ref": "#/definitions/BilingualText" },
+        "dateDisplay": { "$ref": "#/definitions/BilingualText" },
+        "status": { "$ref": "#/definitions/ContentStatus" },
+        "year": { "type": "string" },
+        "categories": {
+          "type": "object",
+          "properties": {
+            "en": { "type": "array", "items": { "type": "string" } },
+            "th": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "featuredImage": { "type": "string", "format": "uri" },
+        "gallery": { "type": "array", "items": { "type": "string", "format": "uri" } },
+        "imageCredits": { "type": "string" },
+        "listingSummary": { "$ref": "#/definitions/BilingualText" },
+        "tags": {
+          "type": "object",
+          "properties": {
+            "en": { "type": "array", "items": { "type": "string" } },
+            "th": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "specifications": {
+          "type": "object",
+          "properties": {
+            "en": { "type": "object", "additionalProperties": { "type": "string" } },
+            "th": { "type": "object", "additionalProperties": { "type": "string" } }
+          }
+        }
+      },
+      "required": ["id", "slug", "title", "artist", "dateDisplay", "status", "featuredImage", "listingSummary"]
+    },
+    "Activity": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "slug": { "type": "string" },
+        "title": { "$ref": "#/definitions/BilingualText" },
+        "artist": { "$ref": "#/definitions/BilingualText" },
+        "dateDisplay": { "$ref": "#/definitions/BilingualText" },
+        "status": { "$ref": "#/definitions/ContentStatus" },
+        "year": { "type": "string" },
+        "categories": {
+          "type": "object",
+          "properties": {
+            "en": { "type": "array", "items": { "type": "string" } },
+            "th": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "featuredImage": { "type": "string", "format": "uri" },
+        "gallery": { "type": "array", "items": { "type": "string", "format": "uri" } },
+        "imageCredits": { "type": "string" },
+        "listingSummary": { "$ref": "#/definitions/BilingualText" },
+        "tags": {
+          "type": "object",
+          "properties": {
+            "en": { "type": "array", "items": { "type": "string" } },
+            "th": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "typeLabel": { "$ref": "#/definitions/BilingualText" }
+      },
+      "required": ["id", "slug", "title", "dateDisplay", "status", "featuredImage", "listingSummary"]
+    },
+    "TeamMember": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "roleTH": { "type": "string" },
+        "bio": { "type": "string" },
+        "bioTH": { "type": "string" },
+        "image": { "type": "string", "format": "uri" }
+      },
+      "required": ["name", "role", "roleTH"]
+    },
+    "Artist": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "number" },
+        "slug": { "type": "string" },
+        "name": { "type": "string" },
+        "nameTH": { "type": "string" },
+        "period": { "type": "string" },
+        "periodTH": { "type": "string" },
+        "image": { "type": "string", "format": "uri" },
+        "category": { "$ref": "#/definitions/ContentStatus" },
+        "bio": { "type": "string" },
+        "bioTH": { "type": "string" },
+        "statement": { "type": "string" },
+        "statementTH": { "type": "string" },
+        "gallery": { "type": "array", "items": { "type": "string", "format": "uri" } }
+      },
+      "required": ["id", "slug", "name", "nameTH", "period", "periodTH", "bio", "bioTH"]
+    },
+    "PressItem": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "number" },
+        "date": { "type": "string" },
+        "dateTH": { "type": "string" },
+        "title": { "type": "string" },
+        "titleTH": { "type": "string" },
+        "link": { "type": "string", "format": "uri" },
+        "type": { "type": "string", "enum": ["pdf", "article"] }
+      },
+      "required": ["id", "date", "dateTH", "title", "titleTH", "link", "type"]
+    }
+  }
+}

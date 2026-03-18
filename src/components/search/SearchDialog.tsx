@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "../ui/dialog";
 import { Input } from "../ui/input";
 import { Search } from "lucide-react";
@@ -18,18 +18,14 @@ export function SearchDialog({ isOpen, onClose, onNavigate, initialQuery = "" }:
     const [results, setResults] = useState<SearchDocument[]>([]);
     const [allData, setAllData] = useState<SearchDocument[]>([]);
 
-    // Fetch search data once on mount
+    // Fetch search index once on mount
     useEffect(() => {
         getFullSearchData().then(fetchedData => {
             setAllData(fetchedData);
         });
     }, []);
 
-    // Filter data based on current language - REMOVED to allow cross-language search
-    // const currentLangData = useMemo(() => {
-    //     return allData.filter(doc => doc.lang === language);
-    // }, [allData, language]);
-
+    // Perform search when query or language changes
     useEffect(() => {
         if (!query.trim()) {
             setResults([]);
@@ -38,7 +34,7 @@ export function SearchDialog({ isOpen, onClose, onNavigate, initialQuery = "" }:
 
         const searchTerm = query.toLowerCase().trim();
 
-        // 1. Find all matches across both languages
+        // Find all matches across both languages
         const matches = allData.filter(doc => {
             const titleMatch = doc.title?.toLowerCase().includes(searchTerm);
             const contentMatch = doc.content?.toLowerCase().includes(searchTerm);
@@ -47,13 +43,7 @@ export function SearchDialog({ isOpen, onClose, onNavigate, initialQuery = "" }:
             return titleMatch || contentMatch || keywordMatch;
         });
 
-        // 2. Deduplicate results:
-        //    - Identify unique content by (page + slug)
-        //    - If we have multiple matches for the same content (e.g. EN and TH doc),
-        //      prefer the one that matches the CURRENT language.
-        //    - If the current language version didn't match the search term but another language did,
-        //      we ideally still want to show the current language version (so the user can read it).
-        
+        // Deduplicate and prefer current language version
         const uniqueKeys = new Set<string>();
         matches.forEach(doc => {
             const key = doc.slug ? `${doc.page}-${doc.slug}` : doc.page;
@@ -63,17 +53,15 @@ export function SearchDialog({ isOpen, onClose, onNavigate, initialQuery = "" }:
         const refinedResults: SearchDocument[] = [];
 
         uniqueKeys.forEach(key => {
-            // Find all versions of this content in the full dataset
+            // Find all versions of this content
             const versions = allData.filter(d => {
                 const dKey = d.slug ? `${d.page}-${d.slug}` : d.page;
                 return dKey === key;
             });
 
-            // Find the version that matches the current language
+            // Prefer the current language version
             const preferred = versions.find(v => v.lang === language);
             
-            // If the preferred version exists, use it.
-            // Otherwise, fall back to the first available version (which matched).
             if (preferred) {
                 refinedResults.push(preferred);
             } else if (versions.length > 0) {
@@ -84,6 +72,7 @@ export function SearchDialog({ isOpen, onClose, onNavigate, initialQuery = "" }:
         setResults(refinedResults);
     }, [query, allData, language]);
 
+    // Reset on dialog open/close
     useEffect(() => {
         if (isOpen) {
             if (initialQuery) {

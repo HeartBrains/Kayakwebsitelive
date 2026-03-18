@@ -1,5 +1,5 @@
 import { ImageWithFallback } from '../figma/ImageWithFallback';
-import { TEAM_HERO_IMAGE, IMG_PULSUS_SRC } from '../../utils/mockDataBilingual';
+import { TEAM_HERO_IMAGE, IMG_PULSUS_SRC } from '../../utils/imageConstants';
 import { ParallaxHero } from '../ui/ParallaxHero';
 import { Reveal } from '../ui/Reveal';
 import { useLanguage } from '../../utils/languageContext';
@@ -36,29 +36,7 @@ export function SupportPage() {
                     </h1>
                 </Reveal>
                 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-16 md:gap-y-24">
-                    {PARTNERS.map((partner, i) => (
-                        <Reveal key={i} delay={i * 0.1}>
-                            <div className="flex flex-col items-center text-center group">
-                                {/* Logo Sprite Replacement - Using an abstract crop of an image as requested */}
-                                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full mb-6 md:mb-8 overflow-hidden relative transition-colors duration-300 bg-gray-100">
-                                    <div 
-                                        className="w-full h-full opacity-50 grayscale group-hover:grayscale-0 transition-all duration-500"
-                                        style={{
-                                            backgroundImage: `url(${IMG_PULSUS_SRC})`,
-                                            backgroundSize: '300% 300%',
-                                            backgroundPosition: partner.bgPos,
-                                            backgroundRepeat: 'no-repeat'
-                                        }}
-                                    />
-                                </div>
-                                <span className="text-sm font-medium tracking-wide flex flex-col items-center gap-1">
-                                    <span>{language === 'th' ? partner.nameTh : partner.name}</span>
-                                </span>
-                            </div>
-                        </Reveal>
-                    ))}
-                </div>
+                
             </div>
         </div>
     );

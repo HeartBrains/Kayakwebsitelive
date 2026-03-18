@@ -9,13 +9,17 @@ interface LanguageContextType {
   t: (key: string) => string;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+// Create context with a default value to prevent errors during HMR
+const defaultContextValue: LanguageContextType = {
+  language: 'en',
+  setLanguage: () => {},
+  t: (key: string) => key
+};
 
-export function useLanguage() {
+const LanguageContext = createContext<LanguageContextType>(defaultContextValue);
+
+export function useLanguage(): LanguageContextType {
   const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
   return context;
 }
 
@@ -31,8 +35,14 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     return getTranslation(language, key);
   };
 
+  const value: LanguageContextType = {
+    language,
+    setLanguage,
+    t
+  };
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   );

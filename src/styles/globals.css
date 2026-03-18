@@ -251,3 +251,63 @@ html {
 .thai-text {
   line-height: 1.82em;
 }
+
+/* Detail Content HTML Styling */
+[dangerouslySetInnerHTML] p {
+  margin-bottom: 1.5rem;
+}
+
+[dangerouslySetInnerHTML] p:last-child {
+  margin-bottom: 0;
+}
+
+/* Artist Biography / Section Headings in Detail Content */
+[dangerouslySetInnerHTML] p:has(strong) {
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Match the pattern " Artist Biography " or " ประวัติศิลปิน " */
+[dangerouslySetInnerHTML] p:empty + p,
+[dangerouslySetInnerHTML] p:contains("Artist Biography"),
+[dangerouslySetInnerHTML] p:contains("ประวัติศิลปิน") {
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Headings in detail content */
+[dangerouslySetInnerHTML] h2 {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+[dangerouslySetInnerHTML] h3 {
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Lists in detail content */
+[dangerouslySetInnerHTML] ul,
+[dangerouslySetInnerHTML] ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+[dangerouslySetInnerHTML] li {
+  margin-bottom: 0.5rem;
+}
+
+/* Blockquotes in detail content */
+[dangerouslySetInnerHTML] blockquote {
+  border-left: 4px solid #e5e7eb;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #6b7280;
+}

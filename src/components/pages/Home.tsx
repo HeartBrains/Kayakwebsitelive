@@ -7,7 +7,7 @@ import {
   IMG_KBAR_SRC, 
   IMG_ARAYA_SRC, 
   IMG_GOD_SRC 
-} from '../../utils/mockDataBilingual';
+} from '../../utils/imageConstants';
 
 const SECTIONS = [
   {

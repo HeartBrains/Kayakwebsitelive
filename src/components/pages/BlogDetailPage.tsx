@@ -2,22 +2,23 @@ import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { ArrowLeft } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { WPPost } from '../../utils/types';
-import { ParallaxHero } from '../ui/ParallaxHero';
 import { Reveal } from '../ui/Reveal';
 import { useLanguage } from '../../utils/languageContext';
-import { getMockPost } from '../../utils/mockDataBilingual';
+import { useScrollHide } from '../../utils/useScrollHide';
 
 interface BlogDetailPageProps {
   onNavigate: (page: string) => void;
   post?: WPPost;
   slug?: string;
+  backPage?: string;
 }
 
-export function BlogDetailPage({ onNavigate, post, slug }: BlogDetailPageProps) {
+export function BlogDetailPage({ onNavigate, post, slug, backPage }: BlogDetailPageProps) {
   const { language, t } = useLanguage();
   const [postData, setPostData] = useState<WPPost | undefined>(post);
   const [loading, setLoading] = useState(!post && !!slug);
   const [error, setError] = useState(false);
+  const { isScrolling } = useScrollHide();
 
   useEffect(() => {
     if (post) {
@@ -28,15 +29,9 @@ export function BlogDetailPage({ onNavigate, post, slug }: BlogDetailPageProps) 
     
     if (slug) {
         setLoading(true);
-        // Use bilingual mock data instead of API
-        const data = getMockPost(slug, language);
-        if (data) {
-            setPostData(data);
-            setLoading(false);
-        } else {
-            setError(true);
-            setLoading(false);
-        }
+        // TODO: Implement blog data fetching
+        setError(true);
+        setLoading(false);
     }
   }, [post, slug, language]);
 
@@ -47,40 +42,54 @@ export function BlogDetailPage({ onNavigate, post, slug }: BlogDetailPageProps) 
     <div className="w-full bg-white min-h-screen pb-24">
       {/* Hero */}
       {postData.featuredImage ? (
-         <ParallaxHero 
-            image={postData.featuredImage.sourceUrl} 
-            height="h-[35vh] md:h-[80vh]"
+         <div 
+            className="relative h-[20vh] md:h-[30vh] bg-cover bg-center"
+            style={{ backgroundImage: `url(${postData.featuredImage.sourceUrl})` }}
          >
              <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />
              <div className="absolute bottom-8 left-6 md:left-12 z-20">
                 <button 
-                    onClick={() => onNavigate('blog')}
-                    className="fixed top-[120px] left-6 z-50 md:static flex items-center gap-2 text-white/80 hover:text-white transition-colors bg-black/20 hover:bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm"
+                    onClick={() => onNavigate(backPage || 'blog')}
+                    className={`static flex items-center gap-2 text-white/80 hover:text-white transition-all duration-300 bg-black/20 hover:bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm ${
+                        isScrolling ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                    }`}
                 >
                     <ArrowLeft className="w-5 h-5" />
-                    <span className="text-sm font-medium font-sans">{language === 'th' ? 'กลับไปบล็อก' : 'Back to Blog'}</span>
+                    <span className="text-sm font-medium font-sans">
+                        {backPage === 'home'
+                            ? (language === 'th' ? 'กลับสู่หน้าหลัก' : 'Back to Home')
+                            : (language === 'th' ? 'กลับไปบล็อก' : 'Back to Blog')
+                        }
+                    </span>
                 </button>
             </div>
-         </ParallaxHero>
+         </div>
       ) : (
          <div className="h-[20vh] bg-gray-100 w-full relative">
             <div className="absolute bottom-8 left-6 md:left-12 z-20">
                 <button 
-                    onClick={() => onNavigate('blog')}
-                    className="fixed top-[120px] left-6 z-50 md:static flex items-center gap-2 text-black hover:text-gray-600 transition-colors bg-white/50 px-4 py-2 rounded-full backdrop-blur-sm"
+                    onClick={() => onNavigate(backPage || 'blog')}
+                    className={`static flex items-center gap-2 text-black hover:text-gray-600 transition-all duration-300 bg-white/50 px-4 py-2 rounded-full backdrop-blur-sm ${
+                        isScrolling ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                    }`}
                 >
                     <ArrowLeft className="w-5 h-5" />
-                    <span className="text-sm font-medium font-sans">{language === 'th' ? 'กลับไปบล็อก' : 'Back to Blog'}</span>
+                    <span className="text-sm font-medium font-sans">
+                        {backPage === 'home'
+                            ? (language === 'th' ? 'กลับสู่หน้าหลัก' : 'Back to Home')
+                            : (language === 'th' ? 'กลับไปบล็อก' : 'Back to Blog')
+                        }
+                    </span>
                 </button>
             </div>
          </div>
       )}
 
       {/* Content */}
-      <div className="w-full px-6 py-12 md:py-16">
-         <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-x-8">
+      <div className="w-full px-[6vw] py-12 md:py-16">
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-16">
             {/* Left Column */}
-            <div className="md:col-span-5 flex flex-col gap-8">
+            <div className="flex flex-col gap-8">
                <Reveal>
                     <div className="flex flex-col gap-1">
                         <h1 className={`text-xl md:text-2xl font-normal text-black leading-tight ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
@@ -103,7 +112,7 @@ export function BlogDetailPage({ onNavigate, post, slug }: BlogDetailPageProps) 
             </div>
 
             {/* Right Column */}
-            <div className={`md:col-start-6 md:col-span-7 text-xl md:text-2xl text-black font-normal leading-tight space-y-6 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
+            <div className={`text-xl md:text-2xl text-black font-normal leading-tight space-y-6 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
                <Reveal delay={0.2}>
                    <div dangerouslySetInnerHTML={{ __html: postData.content }} />
                </Reveal>

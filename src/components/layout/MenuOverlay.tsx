@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { ASSETS } from '../../utils/assets';
 import { ExpandingSearch } from '../search/ExpandingSearch';
 import { useLanguage } from '../../utils/languageContext';
+import { siteConfig, isMenuVisible, isSectionVisible } from '../../utils/siteConfig';
 
 interface MenuOverlayProps {
   isOpen: boolean;
@@ -43,6 +44,7 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
       children: [
           { label: t('exhibitions.current'), page: 'exhibitions', section: 'current' },
           { label: t('exhibitions.upcoming'), page: 'exhibitions', section: 'upcoming' },
+          { label: t('exhibitions.past'), page: 'exhibitions', section: 'past' },
       ]
     },
     {
@@ -51,6 +53,7 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
         children: [
             { label: t('activities.current'), page: 'activities', section: 'current' },
             { label: t('activities.upcoming'), page: 'activities', section: 'upcoming' },
+            { label: t('activities.past'), page: 'activities', section: 'past' },
         ]
     },
     {
@@ -84,6 +87,37 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
     { label: t('nav.contact'), page: 'contact' },
   ];
 
+  // Map page names to menu config keys
+  const pageToMenuKey: Record<string, keyof typeof siteConfig.menu | null> = {
+    'home': 'home',
+    'visit': 'visit',
+    'exhibitions': 'exhibitions',
+    'activities': 'activities',
+    'residency': 'residency',
+    'blog': 'blog',
+    'about': 'about',
+    'team': 'team',
+    'shop': 'shop',
+    'archives': 'archives',
+    'contact': 'contact',
+    '': null, // for external links like booking
+  };
+
+  // Filter sitemap based on visibility settings
+  const visibleSitemap = sitemap.filter(item => {
+    // For external links (like Booking), check if we should show it
+    // Booking is shown when menu.shop is true (as per requirements)
+    if (item.externalUrl && item.label === t('nav.booking')) {
+      // Show booking link separately - it's always visible when configured
+      return true; 
+    }
+    
+    const menuKey = pageToMenuKey[item.page];
+    if (menuKey === null) return true; // Show external links
+    
+    return isMenuVisible(menuKey);
+  });
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -104,6 +138,7 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
             <div 
               className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${ASSETS.BUILDING})` }}
+              onClick={onClose}
             />
 
           </motion.div>
@@ -115,6 +150,7 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
             exit={{ x: '100%' }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="w-full md:w-1/2 h-full bg-black flex flex-col relative overflow-y-auto"
+            onClick={onClose}
           >
              {/* Close Button */}
              <div className="absolute top-[calc(8vh+15px)] right-[6vw] z-20">
@@ -126,6 +162,7 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
              {/* Navigation Links Container */}
              <motion.div 
                 className="flex-1 flex flex-col px-[6vw] py-[8vh] bg-black/60"
+                onClick={(e) => e.stopPropagation()}
                 initial="hidden"
                 animate="show"
                 variants={{
@@ -140,7 +177,7 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
                 }}
              >
                 <div className="flex-1 flex flex-col gap-2 px-[0px] py-[0.18px] pt-[15px] pr-[0px] pb-[0px] pl-[0px]">
-                    {sitemap.map((item) => {
+                    {visibleSitemap.map((item) => {
                         const isExpanded = expandedItems.includes(item.label);
                         const hasChildren = item.children && item.children.length > 0;
                         const isActive = activePage === item.page;
@@ -250,21 +287,23 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
                         </a>
                     </div>
 
-                    <div className="text-xl md:text-2xl font-normal text-gray-500 select-none tracking-wide flex items-center">
-                        <button 
-                            className={`cursor-pointer transition-colors ${language === 'en' ? 'text-white' : 'hover:text-white'}`}
-                            onClick={() => setLanguage('en')}
-                        >
-                            EN
-                        </button>
-                        <span className="mx-2">|</span>
-                        <button 
-                            className={`cursor-pointer transition-colors ${language === 'th' ? 'text-white' : 'hover:text-white'}`}
-                            onClick={() => setLanguage('th')}
-                        >
-                            TH
-                        </button>
-                    </div>
+                    {isMenuVisible('languageSwitcher') && (
+                        <div className="text-xl md:text-2xl font-normal text-gray-500 select-none tracking-wide flex items-center">
+                            <button 
+                                className={`cursor-pointer transition-colors ${language === 'en' ? 'text-white' : 'hover:text-white'}`}
+                                onClick={() => setLanguage('en')}
+                            >
+                                EN
+                            </button>
+                            <span className="mx-2">|</span>
+                            <button 
+                                className={`cursor-pointer transition-colors ${language === 'th' ? 'text-white' : 'hover:text-white'}`}
+                                onClick={() => setLanguage('th')}
+                            >
+                                TH
+                            </button>
+                        </div>
+                    )}
                 </motion.div>
 
              </motion.div>

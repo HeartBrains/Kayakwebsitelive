@@ -1,9 +1,9 @@
+import imgProduct from "figma:asset/b602c6fcb8c0e0c94fac7732e44d0776b18060a0.png";
 import { ASSETS } from '../../utils/assets';
 import { ParallaxHero } from '../ui/ParallaxHero';
 import { useState } from 'react';
 import { useLanguage } from '../../utils/languageContext';
 import { getTranslation } from '../../utils/translations';
-import heroImage from 'figma:asset/b602c6fcb8c0e0c94fac7732e44d0776b18060a0.png';
 
 type SortOption = 'newest' | 'price-asc' | 'price-desc';
 
@@ -50,7 +50,7 @@ export function ShopPage({ onNavigate }: ShopPageProps) {
     <div className="w-full bg-white min-h-screen">
       {/* Hero Section */}
       <ParallaxHero 
-        image={heroImage} 
+        image={imgProduct} 
         height="h-[80vh]"
       >
         <div className="absolute inset-0 bg-black/40" />
@@ -73,7 +73,7 @@ export function ShopPage({ onNavigate }: ShopPageProps) {
                     <div className="flex flex-col gap-1">
                         <button 
                             onClick={() => setActiveTab('bookings')}
-                            className={`text-xl md:text-2xl font-sans transition-colors text-left ${
+                            className={`text-xl md:text-2xl font-sans transition-colors text-left cursor-pointer ${
                                 activeTab === 'bookings' ? 'text-black' : 'text-gray-400 hover:text-gray-600'
                             }`}
                         >
@@ -81,7 +81,7 @@ export function ShopPage({ onNavigate }: ShopPageProps) {
                         </button>
                         <button 
                             onClick={() => setActiveTab('products')}
-                            className={`text-xl md:text-2xl font-sans transition-colors text-left ${
+                            className={`text-xl md:text-2xl font-sans transition-colors text-left cursor-pointer ${
                                 activeTab === 'products' ? 'text-black' : 'text-gray-400 hover:text-gray-600'
                             }`}
                         >
@@ -99,7 +99,7 @@ export function ShopPage({ onNavigate }: ShopPageProps) {
                                 <button
                                     key={option.value}
                                     onClick={() => setSortBy(option.value)}
-                                    className={`text-left text-xl md:text-2xl font-normal leading-tight transition-colors duration-200 ${
+                                    className={`text-left text-xl md:text-2xl font-normal leading-tight transition-colors duration-200 cursor-pointer ${
                                         sortBy === option.value ? 'text-black' : 'text-gray-400 hover:text-gray-600'
                                     }`}
                                 >

@@ -22,6 +22,7 @@ export function ExpandingSearch({
     const [query, setQuery] = useState("");
     const id = useId();
 
+    // Collapse other search inputs when this one expands
     useEffect(() => {
         const handleExpand = (e: CustomEvent) => {
             if (e.detail.id !== id) {
@@ -34,7 +35,7 @@ export function ExpandingSearch({
     }, [id]);
 
     const handleSearchSubmit = (e: React.KeyboardEvent) => {
-        if (e.key === 'Enter') {
+        if (e.key === 'Enter' && query.trim()) {
             setIsSearchOpen(true);
         }
     };
@@ -54,6 +55,7 @@ export function ExpandingSearch({
                 onNavigate={onNavigate || (() => {})} 
                 initialQuery={query}
             />
+            
             <motion.div 
                 className={cn("flex items-center gap-2", className)}
                 initial={false}

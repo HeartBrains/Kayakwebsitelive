@@ -1,11 +1,10 @@
-import { Input } from '../ui/input';
-import { Textarea } from '../ui/textarea';
-import { Button } from '../ui/button';
+import { ImageWithFallback } from '../figma/ImageWithFallback';
+import { Mail, MapPin, Phone } from 'lucide-react';
+import { Reveal } from '../ui/Reveal';
 import { useLanguage } from '../../utils/languageContext';
-import { ParallaxHeroSlideshow } from '../ui/ParallaxHeroSlideshow';
-import { Facebook, Instagram, Globe } from 'lucide-react';
+import { HeroSlider } from '../ui/HeroSlider';
 
-import { CONTACT_HERO_IMAGE, CONTACT_HERO_IMAGE_2 } from '../../utils/mockDataBilingual';
+import { CONTACT_HERO_IMAGE, CONTACT_HERO_IMAGE_2 } from '../../utils/imageConstants';
 
 export function ContactPage() {
   const { language } = useLanguage();
@@ -13,12 +12,12 @@ export function ContactPage() {
   return (
     <div className="bg-white min-h-screen pb-24 font-sans text-black">
       {/* Hero Map - Using slideshow with 2 images */}
-       <ParallaxHeroSlideshow 
+       <HeroSlider 
         images={[CONTACT_HERO_IMAGE, CONTACT_HERO_IMAGE_2]}
         height="h-[60vh] md:h-[80vh]"
       >
         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />
-      </ParallaxHeroSlideshow>
+      </HeroSlider>
 
       <div className="w-full px-6 pt-24">
         

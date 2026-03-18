@@ -1,10 +1,10 @@
-import imgPage103 from "figma:asset/14d806eadf2be35c85e440c5a0a82ea2ac7ba651.png";
+import img13 from "figma:asset/39b167d3ecf1724478fcff10310ad52c1e7902e9.png";
 
-export default function ActivityImg() {
+export default function ActivityImg2243() {
   return (
     <div className="relative size-full" data-name="activity-img">
       <div className="absolute h-[2012px] left-0 top-0 w-[3058px]" data-name="page_10~3">
-        <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgPage103} />
+        <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={img13} />
       </div>
     </div>
   );

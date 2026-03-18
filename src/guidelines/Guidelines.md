@@ -2,6 +2,28 @@
 ## font consistent ##
 - make font size consistent for entire website, adjust to 5  font sizes, font's weight to 4 weight
 
+## HomePage Layout & Image Guidelines ##
+- **Layout System:** HomePage must use a percent-based layout system with `6vw` gutters (left and right padding)
+- **Section Structure:** Use two-column layout (50/50 split) on desktop with:
+  - Left column: Section heading (sticky at `top-32`)
+  - Right column: Content grid
+- **Hero Slider:**
+  - Height: `h-[80vh]`
+  - Gradient overlay: `bg-gradient-to-b from-black/30 to-transparent` at top (h-32)
+  - Images from `HOME_HERO_IMAGES` array
+- **Image Aspect Ratio:** All content images must use `aspect-[3/4]` (portrait orientation)
+- **Image Component:** Use `ImageWithFallback` component for all images
+- **Image Styling:**
+  - Container: `w-full bg-gray-100 overflow-hidden relative`
+  - Image: `w-full h-full object-cover`
+  - Hover effect: `transition-transform duration-700 ease-out group-hover:scale-105`
+- **Spacing:**
+  - Top padding: `pt-[96px]`
+  - Section bottom margin: `mb-32 md:mb-40`
+  - Gap between items: `gap-12 md:gap-16` for exhibitions, `gap-12` for activities
+- **Typography:** Headings use `text-xl md:text-2xl font-normal`
+- **Bilingual Support:** Render content separately for Thai and English with conditional rendering based on language state
+
 ## Menu Overlay Guidelines ##
 - **Layout & Alignment:** The Menu Overlay must use a percent-based Grid & Alignment system.
 - **Gutters:** Left and right gutters must be exactly `6vw`.
